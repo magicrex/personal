@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-void printvetor(vector<int> v){
+void printvector(vector<int> v){
     vector<int>::iterator it=v.begin();
     for(it;it!=v.end();++it){
         cout<<*it<<" ";
@@ -104,31 +104,37 @@ int main(){
     //修改动作函数
     cout<<"==============================="<<endl;
     test.assign(vint6.begin(),vint6.end()-1);
-    printvetor(test);
+    printvector(test);
     int arr[]={1,2,3};
     test.assign(arr,arr+3);//assign替换函数可以替换一个对象的区间或者一个同类型的数组
-    printvetor(test);
+    printvector(test);
     test.push_back(4);//尾插，并没有头插
-    printvetor(test);
+    printvector(test);
     test.pop_back();//尾删
-    printvetor(test);
+    printvector(test);
     vector<int>::iterator it = test.begin();
     it++;
     test.insert(it,5);//插入指定位置
-    printvetor(test);
+    printvector(test);
     test.erase(it);//删除指定位置
-    printvetor(test);
+    printvector(test);
     vector<int> test1(5,200);
     cout<<"===============交换============"<<endl;
-    printvetor(test);
-    printvetor(test1);
-    test.swap(test1);
-    printvetor(test);
-    printvetor(test1);
+    printvector(test);
+    printvector(test1);
+    test.swap(test1);//交换函数，将两个对象进行交换
+    printvector(test);
+    printvector(test1);
     cout<<"===============交换结束========"<<endl;
-    printvetor(test);
+    cout<<"===============清空============"<<endl;
+    printvector(test1);
     test.clear();//清空整个顺序表
-    printvetor(test);
-
+    printvector(test1);
+    cout<<"===============清空结束========"<<endl;
+    printvector(test);
+    vector<int>::iterator it2=test.emplace(it,5);//类似于insert但是会返回新插入元素的迭代器
+    printvector(test);
+    test.emplace_back(10);//类似于尾插
+    printvector(test);
     return 0;
 }
