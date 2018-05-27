@@ -6,6 +6,8 @@
  ************************************************************************/
 
 #include<iostream>
+#include<sstream>
+#include<vector>
 #include<sys/socket.h>
 #include<unordered_map>
 #include<netinet/in.h>
@@ -18,14 +20,14 @@ namespace httpserver{
 //用来存放请求的结构体
 typedef struct sockaddr sockaddr;
 typedef struct sockaddr_in sockaddr_in;
-typedef std::unordered_map<std::string,std::string> headlers;
+typedef std::unordered_map<std::string,std::string> Headlers;
 typedef struct Request{
 	std::string method;
 	std::string url;
 	std::string url_path;
 	std::string url_argu;
 	//std::string version;
-	headlers headler;
+	Headlers headler;
 	std::string body;
 }Request;
 //用来存放响应的结构体
@@ -33,7 +35,7 @@ typedef struct Response{
 	//std::string version;
 	int state;
 	std::string message;
-	headlers headler;
+	Headlers headler;
 	std::string body;
 }Response;
 //用来存放上下文，随时可以拓展的结构体
@@ -52,15 +54,20 @@ class http_server{
 public:
 	//start server
 	int start(int argc,char* argv[]);
+    void PrintRequest(Context* context);
 private:
 	//read request
+    int Parseline(std::string first_line,std::string* method,std::string* url);
+    int Parseurl(std::string*  url,std::string* url_argu,std::string* url_path);
+    int ParseHeadler(std::string* eadler_line,std::string* headler);
 	int readrequest(Context* context);
 	//write response
 	int writeresponse(Context* context);
 	//deal request
 	int Handlerrequest(Context* context);
 	
-	void ThreaEntry(void* con);
+	void ThreadEntry(void* con);
+    void process404(Context* context);
 };
 
 
