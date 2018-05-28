@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/mdui.min.css">
+<script src="js/mdui.min.js"></script>
+<title首页</title>
+<style>
+	.text{
+		display:inline-block;
+		width:200px;
+	}
+	.btn1{
+		background:#30F;
+	}
+	.btn2{
+		background:#30F;
+	}
+</style>
+<script>
+function test1(){
+ var a=document.getElementById("name").value;
+ if(a=="付星")
+ {
+	 window.location.href="web.html";
+ }
+ else
+ {
+	 alert("输入错误！");
+ }
+}
+function test2(){
+ var a=document.getElementById("name").value;
+ if(a=="付星")
+ {
+	 console.log(a);
+ }
+ else
+ {
+	 alert("输入错误！");
+ }
+}
+</script>
+</head>
+
+<body>
+<form>
+<div class="mdui-textfield">
+  <input class="mdui-textfield-input" id="name" type="text" placeholder="姓名"/>
+</div>
+<div class="btn">
+<a class="mdui-btn btn1" onClick="test1()">版本1.0</a>
+<a class="mdui-btn btn2" onClick="test2()">版本2.0</a>
+</div>
+</form>
+</body>
+</html>

@@ -15,14 +15,20 @@ namespace httpserver{
         //通过调用函数进行切割
         std::vector<std::string> output;
         StringUtil::Split(first_line," ",&output);
-        method=output[0];
-        url=output[1];
+        *method=output[0];
+        *url=output[1];
         return 1;
     }
 
     int Parseurl(const std::string  url,std::string* url_argu,std::string* url_path){
         //解析url
         //以？为分割符，直接找到其对应位置，然后分别赋值给url_argu和url_path
+        int pos=url.find('?');
+        if(pos==0){
+            return 0;
+        }
+        (*url_argu).assign(url,0,pos-1);
+        (*url_path).assign(url,pos+1,url.size()-pos);
         return 1;
     }
 
@@ -100,14 +106,46 @@ namespace httpserver{
 
     int http_server::writeresponse(Context* context)
     {
+        //将response进行序列化
+        //转换成一个string类型写回到socket
+        const Response* resp=&context->response;
+        std::stringstream ss;//用于动态数组的 
+        ss << "HTTP/1.1 " << resp->state << " "<<resp->message <<"\n";//首行 
+        for(auto item : resp->headler){
+            ss<< item.first <<": " <<item.second<<"\n";//键值对
+        }
+        ss<<"\n";
+        ss<<resp->body;//主体部分
+        const std::string& str=ss.str();//没有触发深拷贝
+        //将ss写入socket中
+        write(context->fd,str.c_str(),str.size()); 
         return 1;
 
     }
 
+    int Server::ProcessStaticFile(Context* context){
+        //静态处理页面，默认路径为wwwroot文件下的index.html文件
+        //
+    }
+
     int http_server::Handlerrequest(Context* context)
     {
-        return 1;
-
+        //进行请求处理
+        //分为静态和动态请求两种
+        const Request* req=&context->request;
+        Response* resp=&context->response;
+        resp->state=200;//状态码
+        resp->message="OK";//状态信息
+        if(req->method=="GET"&&req->url_path==""){
+            //当前方法为GET,且路径为空既默认路径
+            return context->server->ProcessStaticFile(context);
+        }else if((req->method=="GET"&&req->url_path!="" )
+                 || req->method=="POST"){
+            return context->server->ProcessCGI(context);//使用CGI来动态生成
+        }else{
+            Log(ERROR)<<"Unsupport Method"<< req->method <<"\n";  
+        }
+        return 0;
     }
     void http_server::process404(Context* context)
     {

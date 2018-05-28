@@ -38,6 +38,7 @@ typedef struct Response{
 	Headlers headler;
 	std::string body;
 }Response;
+
 //用来存放上下文，随时可以拓展的结构体
 typedef struct Context{
 	Request request;
@@ -47,7 +48,6 @@ typedef struct Context{
 
 
 }Context;
-
 
 class http_server{
 
@@ -69,6 +69,10 @@ private:
 	void ThreadEntry(void* con);
     void process404(Context* context);
 };
-
+class Server{
+public:
+    int ProcessStaticFile(Context* context);
+    int ProcessCGI(Context* context);
+};
 
 }//end pair
