@@ -1,0 +1,26 @@
+#include<string>
+
+int main(){
+    std::cout<<"======定义======"<<endl;
+    //string的定义
+    std::string s0("Hello Wrold!");
+    std::string s1;//实例化一个空的string对象
+    std::string s2(s0);//通告拷贝构造得到一个对象
+    std::string s3(s0,6,5);//在拷贝一个对象时，还可以指定其位置和长度
+    std::string s4("hello wrold");//传一个字符数组作为参数
+    std::string s5("hello wrold",10);//传一个字符数组并指定大小
+    std::string s6(10,'x');//指定大小并传一个指定一个字符作为初始化内容
+    std::string s7(10,42);//传一个数字，作为ASCII码，进行初始化
+    std::string s8(s0.begin(),s0.begin()+5);//传一个迭代器区间作为参数
+    
+    //赋值运算符的重载
+    s0=s3;//将一个对象赋值给另一个对象
+    s0="hello";//将一个字符串或者字符数组赋值给一个对象
+    s0='x';//将一个字符传给一个string对象
+    s0=s6+s7;//将两个对象使用+合并并赋值给第三个对象
+
+
+
+
+    return 0;
+}
