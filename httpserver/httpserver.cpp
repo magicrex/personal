@@ -123,9 +123,33 @@ namespace httpserver{
 
     }
 
+    void httpserver::GetFilePath(Context* context){
+        //加上./wwwroot作为完整路径
+        //当完整路径为一个路径，就尝试去找index.html文件
+        //判断一个路径是目录还是文件
+        //1.linux 的stat函数
+        //2.通过boost库的filesystem模块来进行判定
+        if(IsDir()){
+            //当路径后面没有/时 需要加上
+            if()
+        }
+        //查找index.html文件
+        
+    }
+
     int Server::ProcessStaticFile(Context* context){
         //静态处理页面，默认路径为wwwroot文件下的index.html文件
-        //
+        const Request* req=&context->request;
+        Response* resp=&context->response;
+        //获取静态文件的完整路径
+        std::string file_path;
+        GetFilePath(req->url_path,&file_path);
+        //打开并读取完整文件
+        int ret=ReadAll(file_path,&resp->body);
+        if(ret<0){
+            Log(ERROR)<<"path ERROR"<<file_path<<"\n";
+            return -1;
+        }
     }
 
     int http_server::Handlerrequest(Context* context)

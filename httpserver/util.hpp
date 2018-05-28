@@ -2,7 +2,9 @@
 
 #include<iostream>
 #include<sys/time.h>
+#include<fstream>
 #include<boost/algorithm/string.hpp>
+#include<boost/filesystem.hpp>
 #include"httpserver.h"
 class Timeuti{
 	public:
@@ -89,6 +91,29 @@ public:
             }
             return 1;
     }//end ReadN
+    
+    static bool IsDir(const std::string& url){
+        return boost::filesystem::is_directory(url);
+    }
+
+    static int ReadAll(const std::string& path,std::string* output){
+        //读取文件的所有内容
+        std::ifstream file(path.c_str());
+        if(!file.is_open()){
+            Log(ERROR)<<"open file error"<<path<<"\n";
+            return -1;
+        }
+        //调整文件指针的位置
+        file.seekg(0,file.end);
+        //查询文件指针的位置
+        int  length=file.tellg();
+        //再次把指针设置到文件开头
+        file.seekg(0,file.beg);
+        output->resize(length);
+        file.read(const_cast<char*>(output->c_str()),length);
+        file.close();
+        return -1;
+    }
 };//end FileUtil
 
 
@@ -101,3 +126,5 @@ public:
         return 1;
     }//end Split
 };//ens=d StringUtil
+
+
