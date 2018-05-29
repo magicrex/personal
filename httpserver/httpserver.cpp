@@ -123,21 +123,25 @@ namespace httpserver{
 
     }
 
-    void httpserver::GetFilePath(Context* context){
+    void http_server::GetFilePath(std::string url_path,std::string* file_path){
         //加上./wwwroot作为完整路径
+        *file_path="./wwwroot"+url_path;
         //当完整路径为一个路径，就尝试去找index.html文件
         //判断一个路径是目录还是文件
         //1.linux 的stat函数
         //2.通过boost库的filesystem模块来进行判定
-        if(IsDir()){
+        if(FileUtil::IsDir(file_path->c_str())){
             //当路径后面没有/时 需要加上
-            if()
+            if(file_path->back()!='/'){
+                file_path->push_back('/');
+            }
+            *file_path=(*file_path)+"index.html";
         }
         //查找index.html文件
         
     }
 
-    int Server::ProcessStaticFile(Context* context){
+    int http_server::ProcessStaticFile(Context* context){
         //静态处理页面，默认路径为wwwroot文件下的index.html文件
         const Request* req=&context->request;
         Response* resp=&context->response;
@@ -145,7 +149,7 @@ namespace httpserver{
         std::string file_path;
         GetFilePath(req->url_path,&file_path);
         //打开并读取完整文件
-        int ret=ReadAll(file_path,&resp->body);
+        int ret=FileUtil::ReadAll(file_path,&resp->body);
         if(ret<0){
             Log(ERROR)<<"path ERROR"<<file_path<<"\n";
             return -1;
@@ -162,10 +166,10 @@ namespace httpserver{
         resp->message="OK";//状态信息
         if(req->method=="GET"&&req->url_path==""){
             //当前方法为GET,且路径为空既默认路径
-            return context->server->ProcessStaticFile(context);
+            return ProcessStaticFile(context);
         }else if((req->method=="GET"&&req->url_path!="" )
                  || req->method=="POST"){
-            return context->server->ProcessCGI(context);//使用CGI来动态生成
+            return ProcessCGI(context);//使用CGI来动态生成
         }else{
             Log(ERROR)<<"Unsupport Method"<< req->method <<"\n";  
         }
@@ -187,7 +191,7 @@ namespace httpserver{
     }
 
 
-    void http_server::ThreadEntry(void* con)
+    void* http_server::ThreadEntry(void* con)
     {
         Context* context =reinterpret_cast<Context*>(&con);
         int ret=readrequest(context);
@@ -203,7 +207,7 @@ namespace httpserver{
         writeresponse(context);
         delete context;
         close(context->fd);
-        return ;
+        return 0;
     }
 
     int http_server::start(int argc,char* argv[])
@@ -251,7 +255,7 @@ namespace httpserver{
                 continue;
             }
             pthread_t tid;
-            Context* context=new Context();
+            Context* context;
             context->addr =client_addr;
             context->fd=fd;
             pthread_create(&tid,NULL,ThreadEntry,reinterpret_cast<void*>(context));
@@ -263,12 +267,14 @@ namespace httpserver{
     //打印request
     void PrintRequest(const Context* context)
     {
-        std::cout<<context->request.method<<" "<<context->request.url_path<<"?"<<context->request.url_argu<<" HTTP/1.1"<<std::endl;
         //使用迭代器将healders打印出来
-        auto it=context->request.headler.begin();
-        for(;it!=context->request.headler.end();it++){
-            std::cout<<<<std::endl;
+        const Request* req=&context->request;
+        std::cout<<"HTTP1.1 "<<req->method<<" "<<req->url<<std::endl;
+        Headlers::const_iterator it=req->headler.begin();
+        for(;it!=req->headler.end();it++){
+            std::cout<<(*it).first<<": "<<(*it).second<<std::endl;
         }
-
+        std::cout<<std::endl;
+        std::cout<<req->body<<std::endl;
     }
 }//end namespace

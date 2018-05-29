@@ -55,6 +55,7 @@ public:
 	//start server
 	int start(int argc,char* argv[]);
     void PrintRequest(Context* context);
+	void* ThreadEntry(void* con);
 private:
 	//read request
     int Parseline(std::string first_line,std::string* method,std::string* url);
@@ -62,17 +63,13 @@ private:
     int ParseHeadler(std::string* eadler_line,std::string* headler);
 	int readrequest(Context* context);
 	//write response
+    void GetFilePath(std::string url_path,std::string* file_path);
 	int writeresponse(Context* context);
+    int ProcessStaticFile(Context* context);
+    int ProcessCGI(Context* context);
 	//deal request
 	int Handlerrequest(Context* context);
 	
-	void ThreadEntry(void* con);
     void process404(Context* context);
 };
-class Server{
-public:
-    int ProcessStaticFile(Context* context);
-    int ProcessCGI(Context* context);
-};
-
 }//end pair
