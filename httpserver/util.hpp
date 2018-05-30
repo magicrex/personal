@@ -1,5 +1,3 @@
-#pragma once
-
 #include<iostream>
 #include<sys/time.h>
 #include<fstream>

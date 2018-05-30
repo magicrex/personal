@@ -4,7 +4,7 @@
       > Mail: 374195407@qq.com 
       > Created Time: Sun 15 Apr 2018 02:10:48 PM CST
  ************************************************************************/
-
+#pragma once
 #include<iostream>
 #include<sstream>
 #include<vector>
@@ -15,13 +15,14 @@
 #include<unistd.h>
 #include<stdlib.h>
 #include<string.h>
-//命名空间
-namespace httpserver{
 //用来存放请求的结构体
 typedef struct sockaddr sockaddr;
 typedef struct sockaddr_in sockaddr_in;
+
+//命名空间
+namespace httpserver{
 typedef std::unordered_map<std::string,std::string> Headlers;
-typedef struct Request{
+typedef struct request{
 	std::string method;
 	std::string url;
 	std::string url_path;
@@ -31,7 +32,7 @@ typedef struct Request{
 	std::string body;
 }Request;
 //用来存放响应的结构体
-typedef struct Response{
+typedef struct response{
 	//std::string version;
 	int state;
 	std::string message;
@@ -39,13 +40,15 @@ typedef struct Response{
 	std::string body;
 }Response;
 
+class http_server;
+
 //用来存放上下文，随时可以拓展的结构体
 typedef struct Context{
 	Request request;
 	Response  response;
 	int fd;
 	sockaddr_in addr;
-
+    http_server* service; 
 
 }Context;
 
@@ -55,12 +58,12 @@ public:
 	//start server
 	int start(int argc,char* argv[]);
     void PrintRequest(Context* context);
-	void* ThreadEntry(void* con);
+    static void* ThreadEntry(void* con);
 private:
 	//read request
     int Parseline(std::string first_line,std::string* method,std::string* url);
     int Parseurl(std::string*  url,std::string* url_argu,std::string* url_path);
-    int ParseHeadler(std::string* eadler_line,std::string* headler);
+    int ParseHeadler(std::string* eadler_line,httpserver::Headlers* headler);
 	int readrequest(Context* context);
 	//write response
     void GetFilePath(std::string url_path,std::string* file_path);

@@ -32,10 +32,11 @@ namespace httpserver{
         return 1;
     }
 
-    int ParseHeadler(const std::string Headler_line , httpserver::Headlers*  headler){
+    int ParseHeadler(const std::string Headler_line , httpserver::Headlers* headler){
         //以冒号为分割符
         //然后存进req->headler
         //判断冒号加二的位置，既value的起始位置没有值，也是一个错误
+        
         return 1;
         
     }
@@ -100,8 +101,9 @@ namespace httpserver{
         }
         else
         {
-            return -1;
+            return 0;
         }
+        return 0;
     }//end readrequest
 
     int http_server::writeresponse(Context* context)
@@ -154,6 +156,7 @@ namespace httpserver{
             Log(ERROR)<<"path ERROR"<<file_path<<"\n";
             return -1;
         }
+        return 1;
     }
 
     int http_server::Handlerrequest(Context* context)
@@ -193,18 +196,18 @@ namespace httpserver{
 
     void* http_server::ThreadEntry(void* con)
     {
-        Context* context =reinterpret_cast<Context*>(&con);
-        int ret=readrequest(context);
+        Context* context =reinterpret_cast<Context*>(con);
+        int ret=context->service->readrequest(context);
         if(ret<0)
         {
-            process404(context);
+            context->service->process404(context);
             goto END;
         }
-        PrintRequest(context);
-        Handlerrequest(context);
+        context->service->PrintRequest(context);
+        context->service->Handlerrequest(context);
     END:
         //收尾工作
-        writeresponse(context);
+        context->service->writeresponse(context);
         delete context;
         close(context->fd);
         return 0;
@@ -255,18 +258,17 @@ namespace httpserver{
                 continue;
             }
             pthread_t tid;
-            Context* context;
+            Context* context=new Context();
             context->addr =client_addr;
             context->fd=fd;
             pthread_create(&tid,NULL,ThreadEntry,reinterpret_cast<void*>(context));
-            pthread_detach(&tid);
+            pthread_detach(tid);
         }
         return 0;
     }//end start
 
     //打印request
-    void PrintRequest(const Context* context)
-    {
+    void PrintRequest(const Context* context){
         //使用迭代器将healders打印出来
         const Request* req=&context->request;
         std::cout<<"HTTP1.1 "<<req->method<<" "<<req->url<<std::endl;
