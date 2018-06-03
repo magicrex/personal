@@ -13,6 +13,8 @@
 #include<netinet/in.h>
 #include<arpa/inet.h>
 #include<unistd.h>
+#include<sys/types.h>
+#include<sys/wait.h>
 #include<stdlib.h>
 #include<string.h>
 //用来存放请求的结构体
@@ -38,6 +40,8 @@ typedef struct response{
 	std::string message;
 	Headlers headler;
 	std::string body;
+    std::string cgi_resp;
+    //CGI 程序的返回内容
 }Response;
 
 class http_server;

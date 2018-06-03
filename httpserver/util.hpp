@@ -112,6 +112,24 @@ public:
         file.close();
         return -1;
     }
+    
+    static int ReadAll(int fd,std::string* output){
+        while(true){
+            char buf[1024]={0};
+            ssize_t read_size=read(fd,buf,sizeof(buf)-1);
+            if(read_size<0){
+                Log(ERROR)<<" ReadAll read error"<<"\n";
+                return -1;
+            }
+            if(read_size==0){
+                Log(INFO)<<" readall successful"<<"\n";
+                return 1;
+            }
+            buf[read_size]='\0';
+            *output += buf;
+        }
+        return 0;
+    }
 };//end FileUtil
 
 

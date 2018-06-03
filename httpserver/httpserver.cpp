@@ -27,8 +27,8 @@ namespace httpserver{
         if(pos==0){
             return 0;
         }
-        (*url_argu).assign(url,0,pos-1);
-        (*url_path).assign(url,pos+1,url.size()-pos);
+        (*url_path).assign(url,0,pos-1);
+        (*url_argu).assign(url,pos+1,url.size()-pos);
         return 1;
     }
 
@@ -36,7 +36,17 @@ namespace httpserver{
         //以冒号为分割符
         //然后存进req->headler
         //判断冒号加二的位置，既value的起始位置没有值，也是一个错误
-        
+        size_t pos=Headler_line.find(':');
+        if(pos==std::string::npos){
+            Log(ERROR)<< " Headlers error"<<Headler_line<<"\n";
+            return 0;
+        }
+        if(pos+2>=Headler_line.size()){
+            Log(ERROR)<< " Headlers error"<<Headler_line<<"\n";
+            return 0;
+        }
+        (*headler)[Headler_line.substr(0,pos)]
+            = Headler_line.substr(pos+2);
         return 1;
         
     }
@@ -113,11 +123,15 @@ namespace httpserver{
         const Response* resp=&context->response;
         std::stringstream ss;//用于动态数组的 
         ss << "HTTP/1.1 " << resp->state << " "<<resp->message <<"\n";//首行 
-        for(auto item : resp->headler){
-            ss<< item.first <<": " <<item.second<<"\n";//键值对
+        if(resp->cgi_resp==""){
+            for(auto item : resp->headler){
+                ss<< item.first <<": " <<item.second<<"\n";//键值对
+            }
+            ss<<"\n";
+            ss<<resp->body;//主体部分
+        }else{
+            ss<<resp->cgi_resp;
         }
-        ss<<"\n";
-        ss<<resp->body;//主体部分
         const std::string& str=ss.str();//没有触发深拷贝
         //将ss写入socket中
         write(context->fd,str.c_str(),str.size()); 
@@ -140,7 +154,7 @@ namespace httpserver{
             *file_path=(*file_path)+"index.html";
         }
         //查找index.html文件
-        
+
     }
 
     int http_server::ProcessStaticFile(Context* context){
@@ -158,6 +172,71 @@ namespace httpserver{
         }
         return 1;
     }
+
+    int http_server::ProcessCGI(Context* context){
+        //先创建一对匿名管道全双工通信
+        const Request& req = context->request;
+        Response* resp=&context->response;
+        int fd1[2],fd2[2];
+        pipe(fd1);
+        pipe(fd2);
+        int father_write = fd1[1];
+        int father_read = fd2[0];
+        int child_write = fd1[1];
+        int child_read = fd2[0];
+        //设置环境变量 METHOD请求方法 
+        std::string env="METHOD="+req.method;
+        putenv(const_cast<char*>(env.c_str()));
+        if(req.method=="GET"){
+            env="QUERY_STRING"+req.url_argu;
+            putenv(const_cast<char*>(env.c_str()));
+        }else if(req.method=="POST"){
+            Headlers::const_iterator pos=req.headler.find("Content-Length");
+            env="Conttent-Lengthi="+pos->second;
+            putenv(const_cast<char*>(env.c_str()));
+        }
+        //GET 方法 QUERY_STRING 请求的参数 
+        //POST 请求 CONTENT_LENGTH 长度
+        //fork 父子进程流程不同
+        //父进程：
+        pid_t ret=fork();
+
+        if(ret<0){
+            perror("fork");
+            goto END;
+        }else if(ret > 0){
+            //父进程
+            close(child_read);
+            close(child_write);
+            if(req.method=="POST"){
+                write(father_write,resp->body.c_str(),resp->body.size());
+            }
+            FileUtil::ReadAll(father_write,&resp->cgi_resp);
+            wait(NULL);
+        }else{
+            close(father_read);
+            close(father_write);
+            dup2(child_read,0);
+            dup2(child_write,1);
+            std::string file_path;
+            GetFilePath(req.url_path,&file_path);
+            execl(file_path.c_str(),file_path.c_str(),NULL);
+        }
+END:
+        close(father_read);
+        close(father_write);
+        close(child_read);
+        close(child_write);
+        return 1;
+        //1.如果是POST请求，父进程就要把body写入到管道中
+        // 阻塞式对去管道，尝试把子进程的结果读取出来，并放到Respponse中
+        // 对子进程进行进程等待
+        //2.fork，子进程流程
+        // 把标准输入输出进行重定向
+        //先获取到要替换的可执行文件
+        //由CGI可执行程序完成动态页面的计算，并且写回数据到管道
+
+    }//end ProcessCGI
 
     int http_server::Handlerrequest(Context* context)
     {
@@ -205,7 +284,7 @@ namespace httpserver{
         }
         context->service->PrintRequest(context);
         context->service->Handlerrequest(context);
-    END:
+END:
         //收尾工作
         context->service->writeresponse(context);
         delete context;
