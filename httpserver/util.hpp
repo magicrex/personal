@@ -141,6 +141,22 @@ public:
         //输出参数的引用，输入参数，分割符可以有多个每个参数都起作用，表示有连续分割符时，是否作为一个空字符。 
         return 1;
     }//end Split
+
+    typedef std::unordered_map<std::string,std::string> UrlParam;
+    static int ParseUrlParan(const std::string& input,UrlParam* output){
+        std::vector<std::string> parmas;
+        Split(input,"&",&parmas);
+        for(auto i : parmas){
+            std::vector<std::string> kv;
+            Split(i,"=",&kv);
+            if(kv.size() != 2){
+                continue;
+                Log(WARNING)<<" ParseUrlParan warning"<<"\n";
+            }
+            (*output)[kv[0]]=kv[1];
+        }
+        return 1;
+    }
 };//ens=d StringUtil
 
 
