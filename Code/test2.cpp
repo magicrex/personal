@@ -15,7 +15,7 @@ int main(){
         v[i]=x;
     }
     cout<<endl;
-    int max_sum=0;
+    int max_sum=0x80000000;
     int sum=0;
     for(int i=0;i<n;i++){
         if(sum<=0){

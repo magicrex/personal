@@ -61,8 +61,8 @@ class http_server{
 public:
 	//start server
 	int start(int argc,char* argv[]);
-    void PrintRequest(Context* context);
     static void* ThreadEntry(void* con);
+    void PrintRequest(const Context* context);
 private:
 	//read request
     int Parseline(std::string first_line,std::string* method,std::string* url);
