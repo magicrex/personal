@@ -50,7 +50,7 @@ class http_server;
 typedef struct Context{
 	Request request;
 	Response  response;
-	int fd;
+	int socket_fd;
 	sockaddr_in addr;
     http_server* service; 
 

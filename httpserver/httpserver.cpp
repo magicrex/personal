@@ -13,7 +13,7 @@ namespace httpserver{
     int Parseline(std::string first_line,std::string* method,std::string* url){
         //解析第一行函数
         //通过调用函数进行切割
-        Log(DEBUG)<< " 解析首行开始。"<<"\n";
+        Log(DEBUG)<< " 解析首行开始。"<<first_line<<"\n";
         std::vector<std::string> output;
         StringUtil::Split(first_line," ",&output);
         *method=output[0];
@@ -25,7 +25,7 @@ namespace httpserver{
     int Parseurl(const std::string  url,std::string* url_argu,std::string* url_path){
         //解析url
         //以？为分割符，直接找到其对应位置，然后分别赋值给url_argu和url_path
-        Log(DEBUG)<< " 解析url开始。"<<"\n";
+        Log(DEBUG)<< " 解析url开始。"<<url<<"\n";
         int pos=url.find('?');
         if(pos==0){
             return 0;
@@ -40,7 +40,7 @@ namespace httpserver{
         //以冒号为分割符
         //然后存进req->headler
         //判断冒号加二的位置，既value的起始位置没有值，也是一个错误
-        Log(DEBUG)<< " 解析键值对开始。"<<"\n";
+        Log(DEBUG)<< " 解析键值对开始。"<<Headler_line<<"\n";
         size_t pos=Headler_line.find(':');
         if(pos==std::string::npos){
             Log(ERROR)<< " Headlers error"<<Headler_line<<"\n";
@@ -69,10 +69,9 @@ namespace httpserver{
         //否则就不读了
         Log(DEBUG)<< " 读取请求开始。"<<"\n";
         Request* req=&context->request;
-        context->service->PrintRequest(context);
         std::string first_line;
         int ret =0;
-        ret=FileUtil::Readline(context->fd,&first_line);//读取第一行
+        ret=FileUtil::Readline(context->socket_fd,&first_line);//读取第一行
         if(ret<0){
             Log(ERROR)<<"requset Readline error"<<std::endl;
             return -1;
@@ -91,7 +90,7 @@ namespace httpserver{
         std::string headler_line;
         while(1){
             //循环读取headler
-            ret=FileUtil::Readline(context->fd,&headler_line);
+            ret=FileUtil::Readline(context->socket_fd,&headler_line);
             //如果为空行就退出，不为空进行解析
             if(headler_line.empty()){
                 break;
@@ -112,7 +111,7 @@ namespace httpserver{
             if(true){
                 //有Content-Length
                 int n=0;
-                ret=FileUtil::ReadN(context->fd,n,&req->body);//从输入中读取一个指定长度的字符串
+                ret=FileUtil::ReadN(context->socket_fd,n,&req->body);//从输入中读取一个指定长度的字符串
             }else{
                 //没有Content-Length
             }   
@@ -144,7 +143,7 @@ namespace httpserver{
         }
         const std::string& str=ss.str();//没有触发深拷贝
         //将ss写入socket中
-        write(context->fd,str.c_str(),str.size()); 
+        write(context->socket_fd,str.c_str(),str.size()); 
         Log(DEBUG)<< " 写入响应结束。"<<"\n";
         return 1;
 
@@ -152,7 +151,7 @@ namespace httpserver{
 
     void http_server::GetFilePath(std::string url_path,std::string* file_path){
         //加上./wwwroot作为完整路径
-        Log(DEBUG)<< " 获取路径开始。"<<"\n";
+        Log(DEBUG)<< " 获取路径开始。"<<url_path<<"\n";
         *file_path="./wwwroot"+url_path;
         //当完整路径为一个路径，就尝试去找index.html文件
         //判断一个路径是目录还是文件
@@ -179,6 +178,7 @@ namespace httpserver{
         std::string file_path;
         Log(DEBUG)<< " 获取静态文件路径。"<<"\n";
         GetFilePath(req->url_path,&file_path);
+        Log(DEBUG)<< " 获取静态文件路径结束"<<file_path<<"\n";
         //打开并读取完整文件
         Log(DEBUG)<< " 读取静态文件。"<<"\n";
         int ret=FileUtil::ReadAll(file_path,&resp->body);
@@ -243,6 +243,7 @@ namespace httpserver{
             std::string file_path;
             Log(DEBUG)<< " 获取文件路径。"<<"\n";
             GetFilePath(req.url_path,&file_path);
+            Log(DEBUG)<< " 获取文件路径结束"<<file_path<<"\n";
             Log(DEBUG)<< " 进行程序替换。"<<"\n";
             execl(file_path.c_str(),file_path.c_str(),NULL);
         }
@@ -274,11 +275,11 @@ END:
         resp->state=200;//状态码
         resp->message="OK";//状态信息
         Log(DEBUG)<< " 填写状态码，装填信息结束。"<<"\n";
-        if(req->method=="GET"&&req->url_path==""){
+        if(req->method=="GET"&&req->url_path=="/"){
             //当前方法为GET,且路径为空既默认路径
             Log(DEBUG)<< " 即将进入静态处理。"<<"\n";
             return ProcessStaticFile(context);
-        }else if((req->method=="GET"&&req->url_path!="" )
+        }else if((req->method=="GET"&&req->url_path!="/" )
                  || req->method=="POST"){
             Log(DEBUG)<< " 即将进入动态处理。"<<"\n";
             return ProcessCGI(context);//使用CGI来动态生成
@@ -325,6 +326,8 @@ END:
         Log(DEBUG)<< " 进入线程："<< threadcount<<"\n";
         threadcount++;
         Context* context =reinterpret_cast<Context*>(con);
+        //将数据从端口中读入sock中
+        
         int ret=context->service->readrequest(context);
         if(ret<0)
         {
@@ -342,7 +345,7 @@ END:
         context->service->writeresponse(context);
         Log(DEBUG)<< " 回传结果成功。"<< threadcount<<"\n";
         delete context;
-        close(context->fd);
+        close(context->socket_fd);
         Log(DEBUG)<< " 关闭socket成功。"<< threadcount<<"\n";
         Log(DEBUG)<< " 退出线程："<< threadcount<<"\n";
         return 0;
@@ -359,8 +362,8 @@ END:
         }
         Log(DEBUG) << " 地址端口正确。" << "\n";
 
-        int fd=socket(AF_INET,SOCK_STREAM,0);
-        if(fd<0)
+        int sockt_fd=socket(AF_INET,SOCK_STREAM,0);
+        if(sockt_fd<0)
         {
             Log(CAITICAL)<<"socket"<<std::endl;
             return 2;
@@ -368,13 +371,13 @@ END:
         Log(DEBUG) << " 创建socket端口成功。" << "\n";
         //给socket加一个参数使得文件描述符重用，不至于出现大量的timw_wait
         int opt=1;
-        setsockopt(fd,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt));
+        setsockopt(sockt_fd,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt));
         sockaddr_in server_sock;
         server_sock.sin_family=AF_INET;
         server_sock.sin_port=htons(atoi(argv[2]));
         server_sock.sin_addr.s_addr=inet_addr(argv[1]);
 
-        int ret=bind(fd,(sockaddr*)&server_sock,sizeof(server_sock));
+        int ret=bind(sockt_fd,(sockaddr*)&server_sock,sizeof(server_sock));
         if(ret<0)
         {
             Log(CAITICAL)<<"bind"<<std::endl;
@@ -382,7 +385,7 @@ END:
         }
         Log(DEBUG) << " 绑定端口成功。" << "\n";
 
-        if(listen(fd,5)<0)
+        if(listen(sockt_fd,5)<0)
         {
             Log(CAITICAL)<<"listen"<<std::endl;
             return 4;
@@ -392,8 +395,8 @@ END:
         {
             sockaddr_in client_addr;
             socklen_t len=sizeof(client_addr);
-            ret =accept(fd,(sockaddr*)&client_addr,&len);
-            if(ret<0)
+            int client_socket_fd =accept(sockt_fd,(sockaddr*)&client_addr,&len);
+            if(client_socket_fd<0)
             {
                 Log(INFO)<<"accept"<<std::endl;
                 continue;
@@ -402,7 +405,7 @@ END:
             pthread_t tid;
             Context* context=new Context();
             context->addr =client_addr;
-            context->fd=fd;
+            context->socket_fd=client_socket_fd;
             pthread_create(&tid,NULL,ThreadEntry,reinterpret_cast<void*>(context));
             Log(DEBUG) << " 线程创建成功。" << "\n";
             pthread_detach(tid);
