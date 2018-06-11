@@ -1,0 +1,1495 @@
+In file included from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++config.h:2097:0,
+                 from /usr/include/c++/4.8.2/iostream:38,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/os_defines.h:44:19: 错误：missing binary operator before token "("
+ #if __GLIBC_PREREQ(2,15) && defined(_GNU_SOURCE)
+                   ^
+In file included from /usr/include/c++/4.8.2/cwchar:44:0,
+                 from /usr/include/c++/4.8.2/bits/postypes.h:40,
+                 from /usr/include/c++/4.8.2/iosfwd:40,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/wchar.h:74:43: 错误：missing binary operator before token "("
+ # if defined __cplusplus && __GNUC_PREREQ (4, 4)
+                                           ^
+In file included from /usr/include/sched.h:42:0,
+                 from /usr/include/pthread.h:23,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:35,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr.h:148,
+                 from /usr/include/c++/4.8.2/ext/atomicity.h:35,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:39,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/bits/sched.h:132:20: 错误：missing binary operator before token "("
+ # if __GNUC_PREREQ (2, 91)
+                    ^
+/usr/include/bits/sched.h:170:20: 错误：missing binary operator before token "("
+ # if __GNUC_PREREQ (2, 91)
+                    ^
+In file included from /usr/include/c++/4.8.2/cwchar:44:0,
+                 from /usr/include/c++/4.8.2/bits/postypes.h:40,
+                 from /usr/include/c++/4.8.2/iosfwd:40,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/wchar.h:104:1: 错误：‘__BEGIN_NAMESPACE_C99’不是一个类型名
+ __BEGIN_NAMESPACE_C99
+ ^
+/usr/include/wchar.h:107:1: 错误：‘__END_NAMESPACE_C99’不是一个类型名
+ __END_NAMESPACE_C99
+ ^
+/usr/include/wchar.h:138:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:152:6: 错误：expected initializer before ‘__THROW’
+      __THROW;
+      ^
+/usr/include/wchar.h:156:37: 错误：expected initializer before ‘__THROW’
+    const wchar_t *__restrict __src) __THROW;
+                                     ^
+/usr/include/wchar.h:160:6: 错误：expected initializer before ‘__THROW’
+      __THROW;
+      ^
+/usr/include/wchar.h:164:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute_pure__;
+      ^
+/usr/include/wchar.h:167:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute_pure__;
+      ^
+/usr/include/wchar.h:168:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:197:54: 错误：expected initializer before ‘__THROW’
+          const wchar_t *__restrict __s2, size_t __n) __THROW;
+                                                      ^
+/usr/include/wchar.h:198:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:238:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute_pure__;
+      ^
+/usr/include/wchar.h:240:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:257:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute_pure__;
+      ^
+/usr/include/wchar.h:267:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute_pure__;
+      ^
+/usr/include/wchar.h:278:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute_pure__;
+      ^
+/usr/include/wchar.h:284:32: 错误：expected initializer before ‘__THROW’
+    wchar_t **__restrict __ptr) __THROW;
+                                ^
+/usr/include/wchar.h:287:43: 错误：expected initializer before ‘__THROW’
+ extern size_t wcslen (const wchar_t *__s) __THROW __attribute_pure__;
+                                           ^
+/usr/include/wchar.h:288:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:326:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute_pure__;
+      ^
+/usr/include/wchar.h:330:49: 错误：expected initializer before ‘__THROW’
+     const wchar_t *__restrict __s2, size_t __n) __THROW;
+                                                 ^
+/usr/include/wchar.h:335:6: 错误：expected initializer before ‘__THROW’
+      __THROW;
+      ^
+/usr/include/wchar.h:338:65: 错误：expected initializer before ‘__THROW’
+ extern wchar_t *wmemset (wchar_t *__s, wchar_t __c, size_t __n) __THROW;
+                                                                 ^
+/usr/include/wchar.h:339:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:357:31: 错误：expected initializer before ‘__THROW’
+ extern int wctob (wint_t __c) __THROW;
+                               ^
+/usr/include/wchar.h:361:27: 错误：‘mbstate_t’不是一个类型名
+ extern int mbsinit (const mbstate_t *__ps) __THROW __attribute_pure__;
+                           ^
+/usr/include/wchar.h:361:44: 错误：expected initializer before ‘__THROW’
+ extern int mbsinit (const mbstate_t *__ps) __THROW __attribute_pure__;
+                                            ^
+/usr/include/wchar.h:367:10: 错误：‘mbstate_t’未声明
+          mbstate_t *__restrict __p) __THROW;
+          ^
+/usr/include/wchar.h:367:37: 错误：expected initializer before ‘__THROW’
+          mbstate_t *__restrict __p) __THROW;
+                                     ^
+/usr/include/wchar.h:371:10: 错误：‘mbstate_t’未声明
+          mbstate_t *__restrict __ps) __THROW;
+          ^
+/usr/include/wchar.h:371:38: 错误：expected initializer before ‘__THROW’
+          mbstate_t *__restrict __ps) __THROW;
+                                      ^
+/usr/include/wchar.h:375:4: 错误：‘mbstate_t’未声明
+    mbstate_t *__restrict __ps) __THROW;
+    ^
+/usr/include/wchar.h:375:32: 错误：expected initializer before ‘__THROW’
+    mbstate_t *__restrict __ps) __THROW;
+                                ^
+/usr/include/wchar.h:377:9: 错误：‘mbstate_t’未声明
+         mbstate_t *__restrict __ps) __THROW;
+         ^
+/usr/include/wchar.h:377:37: 错误：expected initializer before ‘__THROW’
+         mbstate_t *__restrict __ps) __THROW;
+                                     ^
+/usr/include/wchar.h:378:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:416:5: 错误：‘mbstate_t’未声明
+     mbstate_t *__restrict __ps) __THROW;
+     ^
+/usr/include/wchar.h:416:33: 错误：expected initializer before ‘__THROW’
+     mbstate_t *__restrict __ps) __THROW;
+                                 ^
+/usr/include/wchar.h:417:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:452:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:475:6: 错误：expected initializer before ‘__THROW’
+      __THROW;
+      ^
+/usr/include/wchar.h:476:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:790:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/wchar.h:858:1: 错误：‘__END_NAMESPACE_C99’不是一个类型名
+ __END_NAMESPACE_C99
+ ^
+In file included from /usr/include/c++/4.8.2/bits/postypes.h:40:0,
+                 from /usr/include/c++/4.8.2/iosfwd:40,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/cwchar:141:11: 错误：‘::btowc’尚未声明
+   using ::btowc;
+           ^
+/usr/include/c++/4.8.2/cwchar:142:11: 错误：‘::fgetwc’尚未声明
+   using ::fgetwc;
+           ^
+/usr/include/c++/4.8.2/cwchar:146:11: 错误：‘::fwide’尚未声明
+   using ::fwide;
+           ^
+/usr/include/c++/4.8.2/cwchar:147:11: 错误：‘::fwprintf’尚未声明
+   using ::fwprintf;
+           ^
+/usr/include/c++/4.8.2/cwchar:148:11: 错误：‘::fwscanf’尚未声明
+   using ::fwscanf;
+           ^
+/usr/include/c++/4.8.2/cwchar:151:11: 错误：‘::mbrlen’尚未声明
+   using ::mbrlen;
+           ^
+/usr/include/c++/4.8.2/cwchar:152:11: 错误：‘::mbrtowc’尚未声明
+   using ::mbrtowc;
+           ^
+/usr/include/c++/4.8.2/cwchar:153:11: 错误：‘::mbsinit’尚未声明
+   using ::mbsinit;
+           ^
+/usr/include/c++/4.8.2/cwchar:154:11: 错误：‘::mbsrtowcs’尚未声明
+   using ::mbsrtowcs;
+           ^
+/usr/include/c++/4.8.2/cwchar:158:11: 错误：‘::swprintf’尚未声明
+   using ::swprintf;
+           ^
+/usr/include/c++/4.8.2/cwchar:160:11: 错误：‘::swscanf’尚未声明
+   using ::swscanf;
+           ^
+/usr/include/c++/4.8.2/cwchar:162:11: 错误：‘::vfwprintf’尚未声明
+   using ::vfwprintf;
+           ^
+/usr/include/c++/4.8.2/cwchar:164:11: 错误：‘::vfwscanf’尚未声明
+   using ::vfwscanf;
+           ^
+/usr/include/c++/4.8.2/cwchar:167:11: 错误：‘::vswprintf’尚未声明
+   using ::vswprintf;
+           ^
+/usr/include/c++/4.8.2/cwchar:170:11: 错误：‘::vswscanf’尚未声明
+   using ::vswscanf;
+           ^
+/usr/include/c++/4.8.2/cwchar:172:11: 错误：‘::vwprintf’尚未声明
+   using ::vwprintf;
+           ^
+/usr/include/c++/4.8.2/cwchar:174:11: 错误：‘::vwscanf’尚未声明
+   using ::vwscanf;
+           ^
+/usr/include/c++/4.8.2/cwchar:176:11: 错误：‘::wcrtomb’尚未声明
+   using ::wcrtomb;
+           ^
+/usr/include/c++/4.8.2/cwchar:177:11: 错误：‘::wcscat’尚未声明
+   using ::wcscat;
+           ^
+/usr/include/c++/4.8.2/cwchar:178:11: 错误：‘::wcscmp’尚未声明
+   using ::wcscmp;
+           ^
+/usr/include/c++/4.8.2/cwchar:179:11: 错误：‘::wcscoll’尚未声明
+   using ::wcscoll;
+           ^
+/usr/include/c++/4.8.2/cwchar:180:11: 错误：‘::wcscpy’尚未声明
+   using ::wcscpy;
+           ^
+/usr/include/c++/4.8.2/cwchar:181:11: 错误：‘::wcscspn’尚未声明
+   using ::wcscspn;
+           ^
+/usr/include/c++/4.8.2/cwchar:182:11: 错误：‘::wcsftime’尚未声明
+   using ::wcsftime;
+           ^
+/usr/include/c++/4.8.2/cwchar:183:11: 错误：‘::wcslen’尚未声明
+   using ::wcslen;
+           ^
+/usr/include/c++/4.8.2/cwchar:184:11: 错误：‘::wcsncat’尚未声明
+   using ::wcsncat;
+           ^
+/usr/include/c++/4.8.2/cwchar:185:11: 错误：‘::wcsncmp’尚未声明
+   using ::wcsncmp;
+           ^
+/usr/include/c++/4.8.2/cwchar:186:11: 错误：‘::wcsncpy’尚未声明
+   using ::wcsncpy;
+           ^
+/usr/include/c++/4.8.2/cwchar:187:11: 错误：‘::wcsrtombs’尚未声明
+   using ::wcsrtombs;
+           ^
+/usr/include/c++/4.8.2/cwchar:188:11: 错误：‘::wcsspn’尚未声明
+   using ::wcsspn;
+           ^
+/usr/include/c++/4.8.2/cwchar:189:11: 错误：‘::wcstod’尚未声明
+   using ::wcstod;
+           ^
+/usr/include/c++/4.8.2/cwchar:191:11: 错误：‘::wcstof’尚未声明
+   using ::wcstof;
+           ^
+/usr/include/c++/4.8.2/cwchar:193:11: 错误：‘::wcstok’尚未声明
+   using ::wcstok;
+           ^
+/usr/include/c++/4.8.2/cwchar:194:11: 错误：‘::wcstol’尚未声明
+   using ::wcstol;
+           ^
+/usr/include/c++/4.8.2/cwchar:195:11: 错误：‘::wcstoul’尚未声明
+   using ::wcstoul;
+           ^
+/usr/include/c++/4.8.2/cwchar:196:11: 错误：‘::wcsxfrm’尚未声明
+   using ::wcsxfrm;
+           ^
+/usr/include/c++/4.8.2/cwchar:197:11: 错误：‘::wctob’尚未声明
+   using ::wctob;
+           ^
+/usr/include/c++/4.8.2/cwchar:198:11: 错误：‘::wmemcmp’尚未声明
+   using ::wmemcmp;
+           ^
+/usr/include/c++/4.8.2/cwchar:199:11: 错误：‘::wmemcpy’尚未声明
+   using ::wmemcpy;
+           ^
+/usr/include/c++/4.8.2/cwchar:200:11: 错误：‘::wmemmove’尚未声明
+   using ::wmemmove;
+           ^
+/usr/include/c++/4.8.2/cwchar:201:11: 错误：‘::wmemset’尚未声明
+   using ::wmemset;
+           ^
+/usr/include/c++/4.8.2/cwchar:202:11: 错误：‘::wprintf’尚未声明
+   using ::wprintf;
+           ^
+/usr/include/c++/4.8.2/cwchar:203:11: 错误：‘::wscanf’尚未声明
+   using ::wscanf;
+           ^
+/usr/include/c++/4.8.2/cwchar:204:11: 错误：‘::wcschr’尚未声明
+   using ::wcschr;
+           ^
+/usr/include/c++/4.8.2/cwchar:205:11: 错误：‘::wcspbrk’尚未声明
+   using ::wcspbrk;
+           ^
+/usr/include/c++/4.8.2/cwchar:206:11: 错误：‘::wcsrchr’尚未声明
+   using ::wcsrchr;
+           ^
+/usr/include/c++/4.8.2/cwchar:207:11: 错误：‘::wcsstr’尚未声明
+   using ::wcsstr;
+           ^
+/usr/include/c++/4.8.2/cwchar:208:11: 错误：‘::wmemchr’尚未声明
+   using ::wmemchr;
+           ^
+/usr/include/c++/4.8.2/cwchar: 在函数‘wchar_t* std::wcschr(wchar_t*, wchar_t)’中:
+/usr/include/c++/4.8.2/cwchar:213:55: 错误：从类型‘const wchar_t*’到类型‘wchar_t*’的转换无效 [-fpermissive]
+   { return wcschr(const_cast<const wchar_t*>(__p), __c); }
+                                                       ^
+/usr/include/c++/4.8.2/cwchar:212:3: 错误：  初始化‘wchar_t* std::wcschr(wchar_t*, wchar_t)’的实参 1 [-fpermissive]
+   wcschr(wchar_t* __p, wchar_t __c)
+   ^
+/usr/include/c++/4.8.2/cwchar: 在函数‘wchar_t* std::wcspbrk(wchar_t*, const wchar_t*)’中:
+/usr/include/c++/4.8.2/cwchar:217:58: 错误：从类型‘const wchar_t*’到类型‘wchar_t*’的转换无效 [-fpermissive]
+   { return wcspbrk(const_cast<const wchar_t*>(__s1), __s2); }
+                                                          ^
+/usr/include/c++/4.8.2/cwchar:216:3: 错误：  初始化‘wchar_t* std::wcspbrk(wchar_t*, const wchar_t*)’的实参 1 [-fpermissive]
+   wcspbrk(wchar_t* __s1, const wchar_t* __s2)
+   ^
+/usr/include/c++/4.8.2/cwchar: 在函数‘wchar_t* std::wcsrchr(wchar_t*, wchar_t)’中:
+/usr/include/c++/4.8.2/cwchar:221:56: 错误：从类型‘const wchar_t*’到类型‘wchar_t*’的转换无效 [-fpermissive]
+   { return wcsrchr(const_cast<const wchar_t*>(__p), __c); }
+                                                        ^
+/usr/include/c++/4.8.2/cwchar:220:3: 错误：  初始化‘wchar_t* std::wcsrchr(wchar_t*, wchar_t)’的实参 1 [-fpermissive]
+   wcsrchr(wchar_t* __p, wchar_t __c)
+   ^
+/usr/include/c++/4.8.2/cwchar: 在函数‘wchar_t* std::wcsstr(wchar_t*, const wchar_t*)’中:
+/usr/include/c++/4.8.2/cwchar:225:57: 错误：从类型‘const wchar_t*’到类型‘wchar_t*’的转换无效 [-fpermissive]
+   { return wcsstr(const_cast<const wchar_t*>(__s1), __s2); }
+                                                         ^
+/usr/include/c++/4.8.2/cwchar:224:3: 错误：  初始化‘wchar_t* std::wcsstr(wchar_t*, const wchar_t*)’的实参 1 [-fpermissive]
+   wcsstr(wchar_t* __s1, const wchar_t* __s2)
+   ^
+/usr/include/c++/4.8.2/cwchar: 在函数‘wchar_t* std::wmemchr(wchar_t*, wchar_t, std::size_t)’中:
+/usr/include/c++/4.8.2/cwchar:229:61: 错误：从类型‘const wchar_t*’到类型‘wchar_t*’的转换无效 [-fpermissive]
+   { return wmemchr(const_cast<const wchar_t*>(__p), __c, __n); }
+                                                             ^
+/usr/include/c++/4.8.2/cwchar:228:3: 错误：  初始化‘wchar_t* std::wmemchr(wchar_t*, wchar_t, std::size_t)’的实参 1 [-fpermissive]
+   wmemchr(wchar_t* __p, wchar_t __c, size_t __n)
+   ^
+/usr/include/c++/4.8.2/cwchar: 在全局域：
+/usr/include/c++/4.8.2/cwchar:248:11: 错误：‘::wcstold’尚未声明
+   using ::wcstold;
+           ^
+/usr/include/c++/4.8.2/cwchar:257:11: 错误：‘::wcstoll’尚未声明
+   using ::wcstoll;
+           ^
+/usr/include/c++/4.8.2/cwchar:258:11: 错误：‘::wcstoull’尚未声明
+   using ::wcstoull;
+           ^
+/usr/include/c++/4.8.2/cwchar:264:22: 错误：‘__gnu_cxx::wcstold’尚未声明
+   using ::__gnu_cxx::wcstold;
+                      ^
+/usr/include/c++/4.8.2/cwchar:265:22: 错误：‘__gnu_cxx::wcstoll’尚未声明
+   using ::__gnu_cxx::wcstoll;
+                      ^
+/usr/include/c++/4.8.2/cwchar:266:22: 错误：‘__gnu_cxx::wcstoull’尚未声明
+   using ::__gnu_cxx::wcstoull;
+                      ^
+In file included from /usr/include/c++/4.8.2/iosfwd:40:0,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/postypes.h:228:16: 错误：‘mbstate_t’在此作用域中尚未声明
+   typedef fpos<mbstate_t> streampos;
+                ^
+/usr/include/c++/4.8.2/bits/postypes.h:228:25: 错误：模板第 1 个参数无效
+   typedef fpos<mbstate_t> streampos;
+                         ^
+/usr/include/c++/4.8.2/bits/postypes.h:228:36: 错误：invalid type in declaration before ‘;’ token
+   typedef fpos<mbstate_t> streampos;
+                                    ^
+/usr/include/c++/4.8.2/bits/postypes.h:230:16: 错误：‘mbstate_t’在此作用域中尚未声明
+   typedef fpos<mbstate_t> wstreampos;
+                ^
+/usr/include/c++/4.8.2/bits/postypes.h:230:25: 错误：模板第 1 个参数无效
+   typedef fpos<mbstate_t> wstreampos;
+                         ^
+/usr/include/c++/4.8.2/bits/postypes.h:230:37: 错误：invalid type in declaration before ‘;’ token
+   typedef fpos<mbstate_t> wstreampos;
+                                     ^
+In file included from /usr/include/c++/4.8.2/ios:40:0,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/char_traits.h:63:15: 错误：‘mbstate_t’不是命名空间‘std’中的一个类型名
+       typedef std::mbstate_t  state_type;
+               ^
+/usr/include/c++/4.8.2/bits/char_traits.h:239:15: 错误：‘mbstate_t’不是一个类型名
+       typedef mbstate_t         state_type;
+               ^
+/usr/include/c++/4.8.2/bits/char_traits.h:310:15: 错误：‘mbstate_t’不是一个类型名
+       typedef mbstate_t         state_type;
+               ^
+/usr/include/c++/4.8.2/bits/char_traits.h: 在静态成员函数‘static int std::char_traits<wchar_t>::compare(const char_type*, const char_type*, std::size_t)’中:
+/usr/include/c++/4.8.2/bits/char_traits.h:326:39: 错误：‘wmemcmp’在此作用域中尚未声明
+       { return wmemcmp(__s1, __s2, __n); }
+                                       ^
+/usr/include/c++/4.8.2/bits/char_traits.h: 在静态成员函数‘static std::size_t std::char_traits<wchar_t>::length(const char_type*)’中:
+/usr/include/c++/4.8.2/bits/char_traits.h:330:26: 错误：‘wcslen’在此作用域中尚未声明
+       { return wcslen(__s); }
+                          ^
+/usr/include/c++/4.8.2/bits/char_traits.h: 在静态成员函数‘static const char_type* std::char_traits<wchar_t>::find(const char_type*, std::size_t, const char_type&)’中:
+/usr/include/c++/4.8.2/bits/char_traits.h:334:37: 错误：从类型‘const char_type* {aka const wchar_t*}’到类型‘wchar_t*’的转换无效 [-fpermissive]
+       { return wmemchr(__s, __a, __n); }
+                                     ^
+In file included from /usr/include/c++/4.8.2/bits/postypes.h:40:0,
+                 from /usr/include/c++/4.8.2/iosfwd:40,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/cwchar:228:3: 错误：  初始化‘wchar_t* std::wmemchr(wchar_t*, wchar_t, std::size_t)’的实参 1 [-fpermissive]
+   wmemchr(wchar_t* __p, wchar_t __c, size_t __n)
+   ^
+In file included from /usr/include/c++/4.8.2/ios:40:0,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/char_traits.h: 在静态成员函数‘static std::char_traits<wchar_t>::char_type* std::char_traits<wchar_t>::move(std::char_traits<wchar_t>::char_type*, const char_type*, std::size_t)’中:
+/usr/include/c++/4.8.2/bits/char_traits.h:338:40: 错误：‘wmemmove’在此作用域中尚未声明
+       { return wmemmove(__s1, __s2, __n); }
+                                        ^
+/usr/include/c++/4.8.2/bits/char_traits.h: 在静态成员函数‘static std::char_traits<wchar_t>::char_type* std::char_traits<wchar_t>::copy(std::char_traits<wchar_t>::char_type*, const char_type*, std::size_t)’中:
+/usr/include/c++/4.8.2/bits/char_traits.h:342:39: 错误：‘wmemcpy’在此作用域中尚未声明
+       { return wmemcpy(__s1, __s2, __n); }
+                                       ^
+/usr/include/c++/4.8.2/bits/char_traits.h: 在静态成员函数‘static std::char_traits<wchar_t>::char_type* std::char_traits<wchar_t>::assign(std::char_traits<wchar_t>::char_type*, std::size_t, std::char_traits<wchar_t>::char_type)’中:
+/usr/include/c++/4.8.2/bits/char_traits.h:346:37: 错误：‘wmemset’在此作用域中尚未声明
+       { return wmemset(__s, __a, __n); }
+                                     ^
+In file included from /usr/include/c++/4.8.2/clocale:42:0,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++locale.h:41,
+                 from /usr/include/c++/4.8.2/bits/localefwd.h:40,
+                 from /usr/include/c++/4.8.2/ios:41,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/locale.h: 在全局域：
+/usr/include/locale.h:32:1: 错误：‘__BEGIN_DECLS’不是一个类型名
+ __BEGIN_DECLS
+ ^
+/usr/include/locale.h:125:63: 错误：expected initializer before ‘__THROW’
+ extern char *setlocale (int __category, const char *__locale) __THROW;
+                                                               ^
+/usr/include/locale.h:128:40: 错误：expected initializer before ‘__THROW’
+ extern struct lconv *localeconv (void) __THROW;
+                                        ^
+/usr/include/locale.h:130:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+In file included from /usr/include/c++/4.8.2/bits/localefwd.h:40:0,
+                 from /usr/include/c++/4.8.2/ios:41,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++locale.h:62:11: 错误：‘__locale_t’不是一个类型名
+   typedef __locale_t  __c_locale;
+           ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++locale.h:69:26: 错误：‘__c_locale’不是一个类型名
+   __convert_from_v(const __c_locale& __cloc __attribute__ ((__unused__)),
+                          ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++locale.h: 在函数‘int std::__convert_from_v(const int&, char*, int, const char*, ...)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++locale.h:77:19: 错误：‘setlocale’不是‘std’的成员
+     char* __old = std::setlocale(LC_NUMERIC, 0);
+                   ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++locale.h:84:2: 错误：‘setlocale’不是‘std’的成员
+  std::setlocale(LC_NUMERIC, "C");
+  ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/c++locale.h:104:2: 错误：‘setlocale’不是‘std’的成员
+  std::setlocale(LC_NUMERIC, __sav);
+  ^
+In file included from /usr/include/c++/4.8.2/cctype:42:0,
+                 from /usr/include/c++/4.8.2/bits/localefwd.h:42,
+                 from /usr/include/c++/4.8.2/ios:41,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/ctype.h: 在全局域：
+/usr/include/ctype.h:29:1: 错误：‘__BEGIN_DECLS’不是一个类型名
+ __BEGIN_DECLS
+ ^
+In file included from /usr/include/c++/4.8.2/cctype:42:0,
+                 from /usr/include/c++/4.8.2/bits/localefwd.h:42,
+                 from /usr/include/c++/4.8.2/ios:41,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/ctype.h:81:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute__ ((__const__));
+      ^
+/usr/include/ctype.h:83:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute__ ((__const__));
+      ^
+/usr/include/ctype.h:85:6: 错误：expected initializer before ‘__THROW’
+      __THROW __attribute__ ((__const__));
+      ^
+/usr/include/ctype.h:105:1: 错误：‘__BEGIN_NAMESPACE_STD’不是一个类型名
+ __BEGIN_NAMESPACE_STD
+ ^
+/usr/include/ctype.h:112:1: 错误：expected initializer before ‘__THROW’
+ __exctype (isalpha);
+ ^
+/usr/include/ctype.h:113:1: 错误：expected initializer before ‘__THROW’
+ __exctype (iscntrl);
+ ^
+/usr/include/ctype.h:114:1: 错误：expected initializer before ‘__THROW’
+ __exctype (isdigit);
+ ^
+/usr/include/ctype.h:115:1: 错误：expected initializer before ‘__THROW’
+ __exctype (islower);
+ ^
+/usr/include/ctype.h:116:1: 错误：expected initializer before ‘__THROW’
+ __exctype (isgraph);
+ ^
+/usr/include/ctype.h:117:1: 错误：expected initializer before ‘__THROW’
+ __exctype (isprint);
+ ^
+/usr/include/ctype.h:118:1: 错误：expected initializer before ‘__THROW’
+ __exctype (ispunct);
+ ^
+/usr/include/ctype.h:119:1: 错误：expected initializer before ‘__THROW’
+ __exctype (isspace);
+ ^
+/usr/include/ctype.h:120:1: 错误：expected initializer before ‘__THROW’
+ __exctype (isupper);
+ ^
+/usr/include/ctype.h:121:1: 错误：expected initializer before ‘__THROW’
+ __exctype (isxdigit);
+ ^
+/usr/include/ctype.h:125:30: 错误：expected initializer before ‘__THROW’
+ extern int tolower (int __c) __THROW;
+                              ^
+/usr/include/ctype.h:128:30: 错误：expected initializer before ‘__THROW’
+ extern int toupper (int __c) __THROW;
+                              ^
+/usr/include/ctype.h:130:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+In file included from /usr/include/c++/4.8.2/ios:41:0,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/localefwd.h:133:40: 错误：‘mbstate_t’在此作用域中尚未声明
+   template<> class codecvt<char, char, mbstate_t>;
+                                        ^
+/usr/include/c++/4.8.2/bits/localefwd.h:133:49: 错误：模板第 3 个参数无效
+   template<> class codecvt<char, char, mbstate_t>;
+                                                 ^
+/usr/include/c++/4.8.2/bits/localefwd.h:135:43: 错误：‘mbstate_t’在此作用域中尚未声明
+   template<> class codecvt<wchar_t, char, mbstate_t>;
+                                           ^
+/usr/include/c++/4.8.2/bits/localefwd.h:135:52: 错误：模板第 3 个参数无效
+   template<> class codecvt<wchar_t, char, mbstate_t>;
+                                                    ^
+In file included from /usr/include/sched.h:33:0,
+                 from /usr/include/pthread.h:23,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:35,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr.h:148,
+                 from /usr/include/c++/4.8.2/ext/atomicity.h:35,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:39,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/time.h:73:1: 错误：‘__BEGIN_NAMESPACE_STD’不是一个类型名
+ __BEGIN_NAMESPACE_STD
+ ^
+/usr/include/time.h:76:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+In file included from /usr/include/sched.h:42:0,
+                 from /usr/include/pthread.h:23,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:35,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr.h:148,
+                 from /usr/include/c++/4.8.2/ext/atomicity.h:35,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:39,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/bits/sched.h:78:1: 错误：‘__BEGIN_DECLS’不是一个类型名
+ __BEGIN_DECLS
+ ^
+/usr/include/bits/sched.h:202:1: 错误：‘__BEGIN_DECLS’不是一个类型名
+ __BEGIN_DECLS
+ ^
+/usr/include/bits/sched.h:206:53: 错误：expected initializer before ‘__THROW’
+ extern cpu_set_t *__sched_cpualloc (size_t __count) __THROW __wur;
+                                                     ^
+/usr/include/bits/sched.h:207:48: 错误：expected initializer before ‘__THROW’
+ extern void __sched_cpufree (cpu_set_t *__set) __THROW;
+                                                ^
+/usr/include/bits/sched.h:209:1: 错误：‘__END_DECLS’不是一个类型名
+ __END_DECLS
+ ^
+In file included from /usr/include/pthread.h:23:0,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:35,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr.h:148,
+                 from /usr/include/c++/4.8.2/ext/atomicity.h:35,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:39,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/sched.h:54:72: 错误：expected initializer before ‘__THROW’
+ extern int sched_getparam (__pid_t __pid, struct sched_param *__param) __THROW;
+                                                                        ^
+/usr/include/sched.h:58:46: 错误：expected initializer before ‘__THROW’
+           const struct sched_param *__param) __THROW;
+                                              ^
+/usr/include/sched.h:61:47: 错误：expected initializer before ‘__THROW’
+ extern int sched_getscheduler (__pid_t __pid) __THROW;
+                                               ^
+/usr/include/sched.h:64:31: 错误：expected initializer before ‘__THROW’
+ extern int sched_yield (void) __THROW;
+                               ^
+/usr/include/sched.h:67:53: 错误：expected initializer before ‘__THROW’
+ extern int sched_get_priority_max (int __algorithm) __THROW;
+                                                     ^
+/usr/include/sched.h:70:53: 错误：expected initializer before ‘__THROW’
+ extern int sched_get_priority_min (int __algorithm) __THROW;
+                                                     ^
+/usr/include/sched.h:73:72: 错误：expected initializer before ‘__THROW’
+ extern int sched_rr_get_interval (__pid_t __pid, struct timespec *__t) __THROW;
+                                                                        ^
+/usr/include/sched.h:125:1: 错误：‘__END_DECLS’不是一个类型名
+ __END_DECLS
+ ^
+In file included from /usr/include/pthread.h:24:0,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:35,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr.h:148,
+                 from /usr/include/c++/4.8.2/ext/atomicity.h:35,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:39,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/time.h:57:1: 错误：‘__BEGIN_NAMESPACE_STD’不是一个类型名
+ __BEGIN_NAMESPACE_STD
+ ^
+/usr/include/time.h:60:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/time.h:153:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/time.h:192:8: 错误：‘time_t’不是一个类型名
+ extern time_t time (time_t *__timer) __THROW;
+        ^
+/usr/include/time.h:195:25: 错误：‘time_t’在此作用域中尚未声明
+ extern double difftime (time_t __time1, time_t __time0)
+                         ^
+/usr/include/time.h:195:41: 错误：‘time_t’在此作用域中尚未声明
+ extern double difftime (time_t __time1, time_t __time0)
+                                         ^
+/usr/include/time.h:195:55: 错误：expression list treated as compound expression in initializer [-fpermissive]
+ extern double difftime (time_t __time1, time_t __time0)
+                                                       ^
+/usr/include/time.h:196:6: 错误：expected ‘,’ or ‘;’ before ‘__THROW’
+      __THROW __attribute__ ((__const__));
+      ^
+/usr/include/time.h:199:8: 错误：‘time_t’不是一个类型名
+ extern time_t mktime (struct tm *__tp) __THROW;
+        ^
+/usr/include/time.h:207:38: 错误：expected initializer before ‘__THROW’
+    const struct tm *__restrict __tp) __THROW;
+                                      ^
+/usr/include/time.h:208:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/time.h:243:36: 错误：‘time_t’不是一个类型名
+ extern struct tm *localtime (const time_t *__timer) __THROW;
+                                    ^
+/usr/include/time.h:243:53: 错误：expected initializer before ‘__THROW’
+ extern struct tm *localtime (const time_t *__timer) __THROW;
+                                                     ^
+/usr/include/time.h:244:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/time.h:264:27: 错误：‘time_t’不是一个类型名
+ extern char *ctime (const time_t *__timer) __THROW;
+                           ^
+/usr/include/time.h:264:44: 错误：expected initializer before ‘__THROW’
+ extern char *ctime (const time_t *__timer) __THROW;
+                                            ^
+/usr/include/time.h:265:1: 错误：‘__END_NAMESPACE_STD’不是一个类型名
+ __END_NAMESPACE_STD
+ ^
+/usr/include/time.h:430:1: 错误：‘__END_DECLS’不是一个类型名
+ __END_DECLS
+ ^
+In file included from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:35:0,
+                 from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr.h:148,
+                 from /usr/include/c++/4.8.2/ext/atomicity.h:35,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:39,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/pthread.h:239:1: 错误：‘__BEGIN_DECLS’不是一个类型名
+ __BEGIN_DECLS
+ ^
+/usr/include/pthread.h:261:26: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_join (pthread_t __th, void **__thread_return);
+                          ^
+/usr/include/pthread.h:261:42: 错误：expected primary-expression before ‘void’
+ extern int pthread_join (pthread_t __th, void **__thread_return);
+                                          ^
+/usr/include/pthread.h:261:64: 错误：expression list treated as compound expression in initializer [-fpermissive]
+ extern int pthread_join (pthread_t __th, void **__thread_return);
+                                                                ^
+/usr/include/pthread.h:282:28: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_detach (pthread_t __th) __THROW;
+                            ^
+/usr/include/pthread.h:282:44: 错误：expected ‘,’ or ‘;’ before ‘__THROW’
+ extern int pthread_detach (pthread_t __th) __THROW;
+                                            ^
+/usr/include/pthread.h:286:8: 错误：‘pthread_t’不是一个类型名
+ extern pthread_t pthread_self (void) __THROW __attribute__ ((__const__));
+        ^
+/usr/include/pthread.h:289:27: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_equal (pthread_t __thread1, pthread_t __thread2)
+                           ^
+/usr/include/pthread.h:289:48: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_equal (pthread_t __thread1, pthread_t __thread2)
+                                                ^
+/usr/include/pthread.h:289:67: 错误：expression list treated as compound expression in initializer [-fpermissive]
+ extern int pthread_equal (pthread_t __thread1, pthread_t __thread2)
+                                                                   ^
+/usr/include/pthread.h:290:3: 错误：expected ‘,’ or ‘;’ before ‘__THROW’
+   __THROW __attribute__ ((__const__));
+   ^
+/usr/include/pthread.h:298:55: 错误：expected initializer before ‘__THROW’
+ extern int pthread_attr_init (pthread_attr_t *__attr) __THROW __nonnull ((1));
+                                                       ^
+/usr/include/pthread.h:302:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:307:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:312:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:318:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:323:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:329:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:334:21: 错误：expected initializer before ‘__THROW’
+            __param) __THROW __nonnull ((1, 2));
+                     ^
+/usr/include/pthread.h:339:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:343:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:348:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:353:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:359:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:363:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:368:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2)) __attribute_deprecated__;
+      ^
+/usr/include/pthread.h:376:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1)) __attribute_deprecated__;
+      ^
+/usr/include/pthread.h:381:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:388:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:432:35: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_setschedparam (pthread_t __target_thread, int __policy,
+                                   ^
+/usr/include/pthread.h:432:62: 错误：expected primary-expression before ‘int’
+ extern int pthread_setschedparam (pthread_t __target_thread, int __policy,
+                                                              ^
+/usr/include/pthread.h:433:7: 错误：expected primary-expression before ‘const’
+       const struct sched_param *__param)
+       ^
+/usr/include/pthread.h:433:40: 错误：expression list treated as compound expression in initializer [-fpermissive]
+       const struct sched_param *__param)
+                                        ^
+/usr/include/pthread.h:434:6: 错误：expected ‘,’ or ‘;’ before ‘__THROW’
+      __THROW __nonnull ((3));
+      ^
+/usr/include/pthread.h:437:35: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_getschedparam (pthread_t __target_thread,
+                                   ^
+/usr/include/pthread.h:438:7: 错误：expected primary-expression before ‘int’
+       int *__restrict __policy,
+       ^
+/usr/include/pthread.h:439:7: 错误：expected primary-expression before ‘struct’
+       struct sched_param *__restrict __param)
+       ^
+/usr/include/pthread.h:439:45: 错误：expression list treated as compound expression in initializer [-fpermissive]
+       struct sched_param *__restrict __param)
+                                             ^
+/usr/include/pthread.h:440:6: 错误：expected ‘,’ or ‘;’ before ‘__THROW’
+      __THROW __nonnull ((2, 3));
+      ^
+/usr/include/pthread.h:443:34: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_setschedprio (pthread_t __target_thread, int __prio)
+                                  ^
+/usr/include/pthread.h:443:61: 错误：expected primary-expression before ‘int’
+ extern int pthread_setschedprio (pthread_t __target_thread, int __prio)
+                                                             ^
+/usr/include/pthread.h:443:71: 错误：expression list treated as compound expression in initializer [-fpermissive]
+ extern int pthread_setschedprio (pthread_t __target_thread, int __prio)
+                                                                       ^
+/usr/include/pthread.h:444:6: 错误：expected ‘,’ or ‘;’ before ‘__THROW’
+      __THROW;
+      ^
+/usr/include/pthread.h:498:36: 错误：expected initializer before ‘__nonnull’
+     void (*__init_routine) (void)) __nonnull ((1, 2));
+                                    ^
+/usr/include/pthread.h:516:28: 错误：‘pthread_t’在此作用域中尚未声明
+ extern int pthread_cancel (pthread_t __th);
+                            ^
+/usr/include/pthread.h:746:70: 错误：expected initializer before ‘__THROWNL’
+ extern int __sigsetjmp (struct __jmp_buf_tag *__env, int __savemask) __THROWNL;
+                                                                      ^
+/usr/include/pthread.h:754:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:758:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:762:6: 错误：expected initializer before ‘__THROWNL’
+      __THROWNL __nonnull ((1));
+      ^
+/usr/include/pthread.h:766:6: 错误：expected initializer before ‘__THROWNL’
+      __THROWNL __nonnull ((1));
+      ^
+/usr/include/pthread.h:777:6: 错误：expected initializer before ‘__THROWNL’
+      __THROWNL __nonnull ((1));
+      ^
+/usr/include/pthread.h:784:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:791:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 3));
+      ^
+/usr/include/pthread.h:810:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:814:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:820:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:825:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:844:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:850:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:856:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:861:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:973:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:977:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:981:6: 错误：expected initializer before ‘__THROWNL’
+      __THROWNL __nonnull ((1));
+      ^
+/usr/include/pthread.h:985:6: 错误：expected initializer before ‘__THROWNL’
+      __THROWNL __nonnull ((1));
+      ^
+/usr/include/pthread.h:994:6: 错误：expected initializer before ‘__nonnull’
+      __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:1006:6: 错误：expected initializer before ‘__nonnull’
+      __nonnull ((1, 2, 3));
+      ^
+/usr/include/pthread.h:1012:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:1016:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:1022:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1, 2));
+      ^
+/usr/include/pthread.h:1026:21: 错误：expected initializer before ‘__THROW’
+      int __pshared) __THROW __nonnull ((1));
+                     ^
+/usr/include/pthread.h:1116:6: 错误：expected initializer before ‘__THROW’
+      __THROW __nonnull ((1));
+      ^
+/usr/include/pthread.h:1119:53: 错误：expected initializer before ‘__THROW’
+ extern int pthread_key_delete (pthread_key_t __key) __THROW;
+                                                     ^
+/usr/include/pthread.h:1122:56: 错误：expected initializer before ‘__THROW’
+ extern void *pthread_getspecific (pthread_key_t __key) __THROW;
+                                                        ^
+/usr/include/pthread.h:1126:28: 错误：expected initializer before ‘__THROW’
+     const void *__pointer) __THROW ;
+                            ^
+/usr/include/pthread.h:1150:31: 错误：expected initializer before ‘__THROW’
+       void (*__child) (void)) __THROW;
+                               ^
+/usr/include/pthread.h:1162:1: 错误：‘__END_DECLS’不是一个类型名
+ __END_DECLS
+ ^
+In file included from /usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr.h:148:0,
+                 from /usr/include/c++/4.8.2/ext/atomicity.h:35,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:39,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:101:1: 错误：‘pthread_once’在此作用域中尚未声明
+ __gthrw(pthread_once)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:101:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_once)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:102:1: 错误：‘pthread_getspecific’在此作用域中尚未声明
+ __gthrw(pthread_getspecific)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:102:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_getspecific)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:103:1: 错误：‘pthread_setspecific’在此作用域中尚未声明
+ __gthrw(pthread_setspecific)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:103:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_setspecific)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:105:1: 错误：‘pthread_create’在此作用域中尚未声明
+ __gthrw(pthread_create)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:105:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_create)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:108:1: 错误：‘pthread_self’在此作用域中尚未声明
+ __gthrw(pthread_self)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:108:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_self)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:113:1: 错误：‘sched_yield’在此作用域中尚未声明
+ __gthrw(sched_yield)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:113:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(sched_yield)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:115:1: 错误：‘pthread_mutex_lock’在此作用域中尚未声明
+ __gthrw(pthread_mutex_lock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:115:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutex_lock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:116:1: 错误：‘pthread_mutex_trylock’在此作用域中尚未声明
+ __gthrw(pthread_mutex_trylock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:116:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutex_trylock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:118:1: 错误：‘pthread_mutex_timedlock’在此作用域中尚未声明
+ __gthrw(pthread_mutex_timedlock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:118:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutex_timedlock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:120:1: 错误：‘pthread_mutex_unlock’在此作用域中尚未声明
+ __gthrw(pthread_mutex_unlock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:120:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutex_unlock)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:121:1: 错误：‘pthread_mutex_init’在此作用域中尚未声明
+ __gthrw(pthread_mutex_init)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:121:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutex_init)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:122:1: 错误：‘pthread_mutex_destroy’在此作用域中尚未声明
+ __gthrw(pthread_mutex_destroy)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:122:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutex_destroy)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:124:1: 错误：‘pthread_cond_init’在此作用域中尚未声明
+ __gthrw(pthread_cond_init)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:124:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_cond_init)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:125:1: 错误：‘pthread_cond_broadcast’在此作用域中尚未声明
+ __gthrw(pthread_cond_broadcast)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:125:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_cond_broadcast)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:126:1: 错误：‘pthread_cond_signal’在此作用域中尚未声明
+ __gthrw(pthread_cond_signal)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:126:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_cond_signal)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:127:1: 错误：‘pthread_cond_wait’在此作用域中尚未声明
+ __gthrw(pthread_cond_wait)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:127:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_cond_wait)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:128:1: 错误：‘pthread_cond_timedwait’在此作用域中尚未声明
+ __gthrw(pthread_cond_timedwait)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:128:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_cond_timedwait)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:129:1: 错误：‘pthread_cond_destroy’在此作用域中尚未声明
+ __gthrw(pthread_cond_destroy)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:129:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_cond_destroy)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:131:1: 错误：‘pthread_key_create’在此作用域中尚未声明
+ __gthrw(pthread_key_create)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:131:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_key_create)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:132:1: 错误：‘pthread_key_delete’在此作用域中尚未声明
+ __gthrw(pthread_key_delete)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:132:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_key_delete)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:133:1: 错误：‘pthread_mutexattr_init’在此作用域中尚未声明
+ __gthrw(pthread_mutexattr_init)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:133:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutexattr_init)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:134:1: 错误：‘pthread_mutexattr_settype’在此作用域中尚未声明
+ __gthrw(pthread_mutexattr_settype)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:134:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutexattr_settype)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:135:1: 错误：‘pthread_mutexattr_destroy’在此作用域中尚未声明
+ __gthrw(pthread_mutexattr_destroy)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:135:1: 错误：invalid type in declaration before ‘;’ token
+ __gthrw(pthread_mutexattr_destroy)
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:659:19: 错误：‘__gthread_create’声明为‘inline’变量
+ __gthread_create (__gthread_t *__threadid, void *(*__func) (void*),
+                   ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:659:19: 错误：‘__gthread_t’在此作用域中尚未声明
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:659:32: 错误：‘__threadid’在此作用域中尚未声明
+ __gthread_create (__gthread_t *__threadid, void *(*__func) (void*),
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:659:44: 错误：expected primary-expression before ‘void’
+ __gthread_create (__gthread_t *__threadid, void *(*__func) (void*),
+                                            ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:660:5: 错误：expected primary-expression before ‘void’
+     void *__args)
+     ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:660:17: 错误：expression list treated as compound expression in initializer [-fpermissive]
+     void *__args)
+                 ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:661:1: 错误：expected ‘,’ or ‘;’ before ‘{’ token
+ {
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:666:17: 错误：‘__gthread_join’声明为‘inline’变量
+ __gthread_join (__gthread_t __threadid, void **__value_ptr)
+                 ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:666:17: 错误：‘__gthread_t’在此作用域中尚未声明
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:666:41: 错误：expected primary-expression before ‘void’
+ __gthread_join (__gthread_t __threadid, void **__value_ptr)
+                                         ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:666:59: 错误：expression list treated as compound expression in initializer [-fpermissive]
+ __gthread_join (__gthread_t __threadid, void **__value_ptr)
+                                                           ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:667:1: 错误：expected ‘,’ or ‘;’ before ‘{’ token
+ {
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:672:19: 错误：‘__gthread_detach’声明为‘inline’变量
+ __gthread_detach (__gthread_t __threadid)
+                   ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:672:19: 错误：‘__gthread_t’在此作用域中尚未声明
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:673:1: 错误：expected ‘,’ or ‘;’ before ‘{’ token
+ {
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:678:18: 错误：‘__gthread_equal’声明为‘inline’变量
+ __gthread_equal (__gthread_t __t1, __gthread_t __t2)
+                  ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:678:18: 错误：‘__gthread_t’在此作用域中尚未声明
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:678:36: 错误：‘__gthread_t’在此作用域中尚未声明
+ __gthread_equal (__gthread_t __t1, __gthread_t __t2)
+                                    ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:678:52: 错误：expression list treated as compound expression in initializer [-fpermissive]
+ __gthread_equal (__gthread_t __t1, __gthread_t __t2)
+                                                    ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:679:1: 错误：expected ‘,’ or ‘;’ before ‘{’ token
+ {
+ ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:683:15: 错误：‘__gthread_t’不是一个类型名
+ static inline __gthread_t
+               ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_yield()’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:692:33: 错误：‘__gthrw_sched_yield’ cannot be used as a function
+   return __gthrw_(sched_yield) ();
+                                 ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_once(__gthread_once_t*, void (*)())’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:699:50: 错误：‘__gthrw_pthread_once’ cannot be used as a function
+     return __gthrw_(pthread_once) (__once, __func);
+                                                  ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_key_create(__gthread_key_t*, void (*)(void*))’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:707:53: 错误：‘__gthrw_pthread_key_create’ cannot be used as a function
+   return __gthrw_(pthread_key_create) (__key, __dtor);
+                                                     ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_key_delete(__gthread_key_t)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:713:45: 错误：‘__gthrw_pthread_key_delete’ cannot be used as a function
+   return __gthrw_(pthread_key_delete) (__key);
+                                             ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘void* __gthread_getspecific(__gthread_key_t)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:719:46: 错误：‘__gthrw_pthread_getspecific’ cannot be used as a function
+   return __gthrw_(pthread_getspecific) (__key);
+                                              ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_setspecific(__gthread_key_t, const void*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:725:53: 错误：‘__gthrw_pthread_setspecific’ cannot be used as a function
+   return __gthrw_(pthread_setspecific) (__key, __ptr);
+                                                     ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘void __gthread_mutex_init_function(__gthread_mutex_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:732:48: 错误：‘__gthrw_pthread_mutex_init’ cannot be used as a function
+     __gthrw_(pthread_mutex_init) (__mutex, NULL);
+                                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_mutex_destroy(__gthread_mutex_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:739:52: 错误：‘__gthrw_pthread_mutex_destroy’ cannot be used as a function
+     return __gthrw_(pthread_mutex_destroy) (__mutex);
+                                                    ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_mutex_lock(__gthread_mutex_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:748:49: 错误：‘__gthrw_pthread_mutex_lock’ cannot be used as a function
+     return __gthrw_(pthread_mutex_lock) (__mutex);
+                                                 ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_mutex_trylock(__gthread_mutex_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:757:52: 错误：‘__gthrw_pthread_mutex_trylock’ cannot be used as a function
+     return __gthrw_(pthread_mutex_trylock) (__mutex);
+                                                    ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_mutex_timedlock(__gthread_mutex_t*, const __gthread_time_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:768:69: 错误：‘__gthrw_pthread_mutex_timedlock’ cannot be used as a function
+     return __gthrw_(pthread_mutex_timedlock) (__mutex, __abs_timeout);
+                                                                     ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_mutex_unlock(__gthread_mutex_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:778:51: 错误：‘__gthrw_pthread_mutex_unlock’ cannot be used as a function
+     return __gthrw_(pthread_mutex_unlock) (__mutex);
+                                                   ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_recursive_mutex_init_function(__gthread_recursive_mutex_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:793:54: 错误：‘__gthrw_pthread_mutexattr_init’ cannot be used as a function
+       __r = __gthrw_(pthread_mutexattr_init) (&__attr);
+                                                      ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:796:10: 错误：‘PTHREAD_MUTEX_RECURSIVE’在此作用域中尚未声明
+          PTHREAD_MUTEX_RECURSIVE);
+          ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:796:33: 错误：‘__gthrw_pthread_mutexattr_settype’ cannot be used as a function
+          PTHREAD_MUTEX_RECURSIVE);
+                                 ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:798:54: 错误：‘__gthrw_pthread_mutex_init’ cannot be used as a function
+  __r = __gthrw_(pthread_mutex_init) (__mutex, &__attr);
+                                                      ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:800:52: 错误：‘__gthrw_pthread_mutexattr_destroy’ cannot be used as a function
+  __r = __gthrw_(pthread_mutexattr_destroy) (&__attr);
+                                                    ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_cond_broadcast(__gthread_cond_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:852:50: 错误：‘__gthrw_pthread_cond_broadcast’ cannot be used as a function
+   return __gthrw_(pthread_cond_broadcast) (__cond);
+                                                  ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_cond_signal(__gthread_cond_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:858:47: 错误：‘__gthrw_pthread_cond_signal’ cannot be used as a function
+   return __gthrw_(pthread_cond_signal) (__cond);
+                                               ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_cond_wait(__gthread_cond_t*, __gthread_mutex_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:864:54: 错误：‘__gthrw_pthread_cond_wait’ cannot be used as a function
+   return __gthrw_(pthread_cond_wait) (__cond, __mutex);
+                                                      ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_cond_timedwait(__gthread_cond_t*, __gthread_mutex_t*, const __gthread_time_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:871:74: 错误：‘__gthrw_pthread_cond_timedwait’ cannot be used as a function
+   return __gthrw_(pthread_cond_timedwait) (__cond, __mutex, __abs_timeout);
+                                                                          ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h: 在函数‘int __gthread_cond_destroy(__gthread_cond_t*)’中:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/gthr-default.h:884:48: 错误：‘__gthrw_pthread_cond_destroy’ cannot be used as a function
+   return __gthrw_(pthread_cond_destroy) (__cond);
+                                                ^
+In file included from /usr/include/c++/4.8.2/bits/ios_base.h:41:0,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/locale_classes.h: 在全局域：
+/usr/include/c++/4.8.2/bits/locale_classes.h:347:12: 错误：‘__c_locale’不是一个类型名
+     static __c_locale                   _S_c_locale;
+            ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:378:24: 错误：‘__c_locale’未声明
+     _S_create_c_locale(__c_locale& __cloc, const char* __s,
+                        ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:379:10: 错误：‘__c_locale’未声明
+          __c_locale __old = 0);
+          ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:381:12: 错误：‘__c_locale’不是一个类型名
+     static __c_locale
+            ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:385:25: 错误：‘__c_locale’未声明
+     _S_destroy_c_locale(__c_locale& __cloc);
+                         ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:387:12: 错误：‘__c_locale’不是一个类型名
+     static __c_locale
+            ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:392:12: 错误：‘__c_locale’不是一个类型名
+     static __c_locale
+            ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:597:7: 错误：‘__c_locale’不是一个类型名
+       __c_locale   _M_c_locale_collate;
+       ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:625:26: 错误：expected ‘)’ before ‘__cloc’
+       collate(__c_locale __cloc, size_t __refs = 0)
+                          ^
+/usr/include/c++/4.8.2/bits/locale_classes.h: 在构造函数‘std::collate<_CharT>::collate(std::size_t)’中:
+/usr/include/c++/4.8.2/bits/locale_classes.h:612:24: 错误：类‘std::collate<_CharT>’没有名为‘_M_c_locale_collate’的字段
+       : facet(__refs), _M_c_locale_collate(_S_get_c_locale())
+                        ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:612:60: 错误：‘_S_get_c_locale’的实参不依赖模板参数，所以‘_S_get_c_locale’的声明必须可用 [-fpermissive]
+       : facet(__refs), _M_c_locale_collate(_S_get_c_locale())
+                                                            ^
+/usr/include/c++/4.8.2/bits/locale_classes.h:612:60: 附注：(如果您使用‘-fpermissive’，G++ 会接受您的代码，但是允许使用未定义的名称是不建议使用的风格)
+/usr/include/c++/4.8.2/bits/locale_classes.h: 在析构函数‘virtual std::collate<_CharT>::~collate()’中:
+/usr/include/c++/4.8.2/bits/locale_classes.h:689:29: 错误：‘_M_c_locale_collate’在此作用域中尚未声明
+       { _S_destroy_c_locale(_M_c_locale_collate); }
+                             ^
+In file included from /usr/include/c++/4.8.2/cwctype:50:0,
+                 from /usr/include/c++/4.8.2/bits/locale_facets.h:39,
+                 from /usr/include/c++/4.8.2/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/wctype.h: 在全局域：
+/usr/include/wctype.h:49:1: 错误：‘__BEGIN_NAMESPACE_C99’不是一个类型名
+ __BEGIN_NAMESPACE_C99
+ ^
+/usr/include/wctype.h:53:1: 错误：‘__END_NAMESPACE_C99’不是一个类型名
+ __END_NAMESPACE_C99
+ ^
+/usr/include/wctype.h:102:1: 错误：‘__BEGIN_DECLS’不是一个类型名
+ __BEGIN_DECLS
+ ^
+/usr/include/wctype.h:117:35: 错误：expected initializer before ‘__THROW’
+ extern int iswalpha (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:120:35: 错误：expected initializer before ‘__THROW’
+ extern int iswcntrl (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:124:35: 错误：expected initializer before ‘__THROW’
+ extern int iswdigit (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:128:35: 错误：expected initializer before ‘__THROW’
+ extern int iswgraph (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:133:35: 错误：expected initializer before ‘__THROW’
+ extern int iswlower (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:136:35: 错误：expected initializer before ‘__THROW’
+ extern int iswprint (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:141:35: 错误：expected initializer before ‘__THROW’
+ extern int iswpunct (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:146:35: 错误：expected initializer before ‘__THROW’
+ extern int iswspace (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:151:35: 错误：expected initializer before ‘__THROW’
+ extern int iswupper (wint_t __wc) __THROW;
+                                   ^
+/usr/include/wctype.h:156:36: 错误：expected initializer before ‘__THROW’
+ extern int iswxdigit (wint_t __wc) __THROW;
+                                    ^
+/usr/include/wctype.h:171:8: 错误：‘wctype_t’不是一个类型名
+ extern wctype_t wctype (const char *__property) __THROW;
+        ^
+/usr/include/wctype.h:175:35: 错误：‘wctype_t’未声明
+ extern int iswctype (wint_t __wc, wctype_t __desc) __THROW;
+                                   ^
+/usr/include/wctype.h:175:52: 错误：expected initializer before ‘__THROW’
+ extern int iswctype (wint_t __wc, wctype_t __desc) __THROW;
+                                                    ^
+/usr/include/wctype.h:176:1: 错误：‘__END_NAMESPACE_C99’不是一个类型名
+ __END_NAMESPACE_C99
+ ^
+/usr/include/wctype.h:187:1: 错误：‘__END_NAMESPACE_C99’不是一个类型名
+ __END_NAMESPACE_C99
+ ^
+/usr/include/wctype.h:197:38: 错误：expected initializer before ‘__THROW’
+ extern wint_t towupper (wint_t __wc) __THROW;
+                                      ^
+/usr/include/wctype.h:198:1: 错误：‘__END_NAMESPACE_C99’不是一个类型名
+ __END_NAMESPACE_C99
+ ^
+/usr/include/wctype.h:221:39: 错误：‘wctrans_t’未声明
+ extern wint_t towctrans (wint_t __wc, wctrans_t __desc) __THROW;
+                                       ^
+/usr/include/wctype.h:221:57: 错误：expected initializer before ‘__THROW’
+ extern wint_t towctrans (wint_t __wc, wctrans_t __desc) __THROW;
+                                                         ^
+/usr/include/wctype.h:222:1: 错误：‘__END_NAMESPACE_C99’不是一个类型名
+ __END_NAMESPACE_C99
+ ^
+In file included from /usr/include/c++/4.8.2/bits/locale_facets.h:41:0,
+                 from /usr/include/c++/4.8.2/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:49:35: 错误：‘_ISupper’在此作用域中尚未声明
+     static const mask upper     = _ISupper;
+                                   ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:50:32: 错误：‘_ISlower’在此作用域中尚未声明
+     static const mask lower  = _ISlower;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:51:32: 错误：‘_ISalpha’在此作用域中尚未声明
+     static const mask alpha  = _ISalpha;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:52:32: 错误：‘_ISdigit’在此作用域中尚未声明
+     static const mask digit  = _ISdigit;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:53:33: 错误：‘_ISxdigit’在此作用域中尚未声明
+     static const mask xdigit  = _ISxdigit;
+                                 ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:54:32: 错误：‘_ISspace’在此作用域中尚未声明
+     static const mask space  = _ISspace;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:55:32: 错误：‘_ISprint’在此作用域中尚未声明
+     static const mask print  = _ISprint;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:56:32: 错误：‘_ISalpha’在此作用域中尚未声明
+     static const mask graph  = _ISalpha | _ISdigit | _ISpunct;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:56:43: 错误：‘_ISdigit’在此作用域中尚未声明
+     static const mask graph  = _ISalpha | _ISdigit | _ISpunct;
+                                           ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:56:54: 错误：‘_ISpunct’在此作用域中尚未声明
+     static const mask graph  = _ISalpha | _ISdigit | _ISpunct;
+                                                      ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:57:32: 错误：‘_IScntrl’在此作用域中尚未声明
+     static const mask cntrl  = _IScntrl;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:58:32: 错误：‘_ISpunct’在此作用域中尚未声明
+     static const mask punct  = _ISpunct;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:59:32: 错误：‘_ISalpha’在此作用域中尚未声明
+     static const mask alnum  = _ISalpha | _ISdigit;
+                                ^
+/usr/include/c++/4.8.2/x86_64-redhat-linux/bits/ctype_base.h:59:43: 错误：‘_ISdigit’在此作用域中尚未声明
+     static const mask alnum  = _ISalpha | _ISdigit;
+                                           ^
+In file included from /usr/include/c++/4.8.2/bits/basic_ios.h:37:0,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/locale_facets.h:67:12: 错误：‘__c_locale’不是一个类型名
+      const __c_locale&) throw();
+            ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:73:12: 错误：‘__c_locale’不是一个类型名
+      const __c_locale&) throw();
+            ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:78:12: 错误：‘__c_locale’不是一个类型名
+      const __c_locale&) throw();
+            ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:83:12: 错误：‘__c_locale’不是一个类型名
+      const __c_locale&) throw();
+            ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:683:7: 错误：‘__c_locale’不是一个类型名
+       __c_locale  _M_c_locale_ctype;
+       ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:724:24: 错误：expected ‘)’ before ‘__cloc’
+       ctype(__c_locale __cloc, const mask* __table = 0, bool __del = false,
+                        ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1181:15: 错误：‘wctype_t’不是一个类型名
+       typedef wctype_t  __wmask_type;
+               ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1184:7: 错误：‘__c_locale’不是一个类型名
+       __c_locale  _M_c_locale_ctype;
+       ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1193:7: 错误：‘__wmask_type’不是一个类型名
+       __wmask_type              _M_wmask[16];
+       ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1219:24: 错误：expected ‘)’ before ‘__cloc’
+       ctype(__c_locale __cloc, size_t __refs = 0);
+                        ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1222:7: 错误：‘__wmask_type’不是一个类型名
+       __wmask_type
+       ^
+In file included from /usr/include/c++/4.8.2/bits/basic_ios.h:37:0,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/locale_facets.h:1693:27: 错误：expected ‘)’ before ‘__cloc’
+       numpunct(__c_locale __cloc, size_t __refs = 0)
+                           ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1850:30: 错误：‘__c_locale’未声明
+       _M_initialize_numpunct(__c_locale __cloc = 0);
+                              ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1861:44: 错误：变量或字段‘_M_initialize_numpunct’声明为 void
+     numpunct<char>::_M_initialize_numpunct(__c_locale __cloc);
+                                            ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1861:44: 错误：‘__c_locale’在此作用域中尚未声明
+/usr/include/c++/4.8.2/bits/locale_facets.h:1869:47: 错误：变量或字段‘_M_initialize_numpunct’声明为 void
+     numpunct<wchar_t>::_M_initialize_numpunct(__c_locale __cloc);
+                                               ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1869:47: 错误：‘__c_locale’在此作用域中尚未声明
+/usr/include/c++/4.8.2/bits/locale_facets.h: 在构造函数‘std::numpunct_byname<_CharT>::numpunct_byname(const char*, std::size_t)’中:
+/usr/include/c++/4.8.2/bits/locale_facets.h:1887:6: 错误：‘__c_locale’在此作用域中尚未声明
+      __c_locale __tmp;
+      ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1887:17: 错误：expected ‘;’ before ‘__tmp’
+      __c_locale __tmp;
+                 ^
+/usr/include/c++/4.8.2/bits/locale_facets.h:1888:31: 错误：‘__tmp’在此作用域中尚未声明
+      this->_S_create_c_locale(__tmp, __s);
+                               ^
+In file included from /usr/include/c++/4.8.2/bits/locale_facets.h:2608:0,
+                 from /usr/include/c++/4.8.2/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from testjson.cpp:1:
+/usr/include/c++/4.8.2/bits/locale_facets.tcc: 在成员函数‘virtual _InIter std::num_get<_CharT, _InIter>::do_get(std::num_get<_CharT, _InIter>::iter_type, std::num_get<_CharT, _InIter>::iter_type, std::ios_base&, std::ios_base::iostate&, float&) const’中:
+/usr/include/c++/4.8.2/bits/locale_facets.tcc:692:71: 错误：‘_S_get_c_locale’的实参不依赖模板参数，所以‘_S_get_c_locale’的声明必须可用 [-fpermissive]
+       std::__convert_to_v(__xtrc.c_str(), __v, __err, _S_get_c_locale());
+                                                                       ^
+/usr/include/c++/4.8.2/bits/locale_facets.tcc: 在成员函数‘virtual _InIter std::num_get<_CharT, _InIter>::do_get(std::num_get<_CharT, _InIter>::iter_type, std::num_get<_CharT, _InIter>::iter_type, std::ios_base&, std::ios_base::iostate&, double&) const’中:
+/usr/include/c++/4.8.2/bits/locale_facets.tcc:707:71: 错误：‘_S_get_c_locale’的实参不依赖模板参数，所以‘_S_get_c_locale’的声明必须可用 [-fpermissive]
+       std::__convert_to_v(__xtrc.c_str(), __v, __err, _S_get_c_locale());
+                                                                       ^
+/usr/include/c++/4.8.2/bits/locale_facets.tcc: 在成员函数‘virtual _InIter std::num_get<_CharT, _InIter>::do_get(std::num_get<_CharT, _InIter>::iter_type, std::num_get<_CharT, _InIter>::iter_type, std::ios_base&, std::ios_base::iostate&, long double&) const’中:
+/usr/include/c++/4.8.2/bits/locale_facets.tcc:739:71: 错误：‘_S_get_c_locale’的实参不依赖模板参数，所以‘_S_get_c_locale’的声明必须可用 [-fpermissive]
+       std::__convert_to_v(__xtrc.c_str(), __v, __err, _S_get_c_locale());
+                                                                       ^
+/usr/include/c++/4.8.2/bits/locale_facets.tcc: 在成员函数‘_OutIter std::num_put<_CharT, _OutIter>::_M_insert_float(_OutIter, std::ios_base&, _CharT, char, _ValueT) const’中:
+/usr/include/c++/4.8.2/bits/locale_facets.tcc:995:48: 错误：‘_S_get_c_locale’的实参不依赖模板参数，所以‘_S_get_c_locale’的声明必须可用 [-fpermissive]
+  __len = std::__convert_from_v(_S_get_c_locale(), __cs, __cs_size,
+                                                ^
+/usr/include/c++/4.8.2/bits/locale_facets.tcc:1003:52: 错误：‘_S_get_c_locale’的实参不依赖模板参数，所以‘_S_get_c_locale’的声明必须可用 [-fpermissive]
+      __len = std::__convert_from_v(_S_get_c_locale(), __cs, __cs_size,
+                                                    ^
+make: *** [testjsoncpp] 错误 1
