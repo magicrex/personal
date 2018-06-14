@@ -6,6 +6,7 @@ httpserver:httpserver.cpp  httpserver_main.cpp
 
 cgi_main:cgi_main.cpp
 	g++ $^ -o $@ -std=c++11 -lpthread -lboost_system -lboost_filesystem 
+	cp cgi_main ./wwwroot/add
 
 .PHONY:clean
 clean:

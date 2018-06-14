@@ -53,7 +53,6 @@ typedef struct Context{
 	int socket_fd;
 	sockaddr_in addr;
     http_server* service; 
-
 }Context;
 
 class http_server{

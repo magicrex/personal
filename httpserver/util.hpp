@@ -27,6 +27,7 @@ enum loglevel{
 	CAITICAL
 };
 
+
 inline std::ostream& Log(loglevel level,const char* file,int line)
 {
 	std::string prefix;
@@ -42,7 +43,7 @@ inline std::ostream& Log(loglevel level,const char* file,int line)
 		prefix='c';
 	else
 		prefix='n';
-	std::cout<<"["<<prefix<<":"<<Timeuti::TimeStamp()<<"]"<<"["<<file<<":"<<line<<"]"<<":";
+    std::cout<<"["<<prefix<<":"<<Timeuti::TimeStamp()<<"]"<<"["<<file<<":"<<line<<"]"<<":";
 	return std::cout;
 }
 
@@ -122,13 +123,12 @@ public:
                 return -1;
             }
             if(read_size==0){
-                Log(INFO)<<" readall successful"<<"\n";
                 return 1;
             }
             buf[read_size]='\0';
             *output += buf;
         }
-        return 0;
+        return 1;
     }
 };//end FileUtil
 
