@@ -142,6 +142,7 @@ namespace httpserver{
         }
         const std::string& str=ss.str();//没有触发深拷贝
         //将ss写入socket中
+        std::cout<<"response 的长度"<<str.size()<<"\n";
         write(context->socket_fd,str.c_str(),str.size()); 
         return 1;
 
@@ -159,10 +160,12 @@ namespace httpserver{
             }
             *file_path=(*file_path)+"index.html";
         }
+        Log(DEBUG)<<"文件路径："<<*file_path<<"\n";
     }
 
     int http_server::ProcessStaticFile(Context* context){
         //静态处理页面，默认路径为wwwroot文件下的index.html文件
+        Log(DEBUG)<<"运行静态网页"<<"\n";
         const Request* req=&context->request;
         Response* resp=&context->response;
         //获取静态文件的完整路径
@@ -174,6 +177,7 @@ namespace httpserver{
             Log(ERROR)<<"path ERROR"<<file_path<<"\n";
             return -1;
         }
+        std::cout<<resp->body.size()<<std::endl;
         return 1;
     }
 
@@ -186,6 +190,7 @@ namespace httpserver{
         //先获取到要替换的可执行文件
         //由CGI可执行程序完成动态页面的计算，并且写回数据到管道
         //先创建一对匿名管道全双工通信
+        Log(DEBUG)<<"运行动态生成网页"<<"\n";
         const Request& req = context->request;
         Response* resp=&context->response;
         int fd1[2],fd2[2];
@@ -257,11 +262,10 @@ END:
         Response* resp=&context->response;
         resp->state=200;//状态码
         resp->message="OK";//状态信息
-        if(req->method=="GET"&&req->url_path=="/"){
+        if(req->method=="GET"){
             //当前方法为GET,且路径为空既默认路径
             return ProcessStaticFile(context);
-        }else if((req->method=="GET"&&req->url_path!="/" )
-                 || req->method=="POST"){
+        }else if(req->method=="POST"){
             return ProcessCGI(context);//使用CGI来动态生成
         }else{
             Log(ERROR)<<"Unsupport Method"<< req->method <<"\n";  

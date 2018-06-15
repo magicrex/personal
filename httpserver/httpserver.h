@@ -6,6 +6,8 @@
  ************************************************************************/
 #pragma once
 #include<iostream>
+#include<stdio.h>
+#include<mysql++.h>
 #include<sstream>
 #include<vector>
 #include<sys/socket.h>
@@ -23,6 +25,10 @@ typedef struct sockaddr_in sockaddr_in;
 
 //命名空间
 namespace httpserver{
+
+#define JS_PATH "/js/mdui.min.js"
+#define CSS_PATH "/css/mdui.min.css"   
+
 typedef std::unordered_map<std::string,std::string> Headlers;
 typedef struct request{
 	std::string method;

@@ -116,7 +116,7 @@ public:
     
     static int ReadAll(int fd,std::string* output){
         while(true){
-            char buf[1024]={0};
+            char buf[1024*5]={0};
             ssize_t read_size=read(fd,buf,sizeof(buf)-1);
             if(read_size<0){
                 Log(ERROR)<<" ReadAll read error"<<"\n";
@@ -157,6 +157,9 @@ public:
         }
         return 1;
     }
-};//ens=d StringUtil
+};//end StringUtil
+class DBUtil{
+public:
+        
 
-
+};//end DBUtil
