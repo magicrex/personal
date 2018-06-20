@@ -158,8 +158,3 @@ public:
         return 1;
     }
 };//end StringUtil
-class DBUtil{
-public:
-        
-
-};//end DBUtil

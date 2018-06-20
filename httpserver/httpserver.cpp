@@ -104,11 +104,11 @@ namespace httpserver{
         }
         else if(req->method=="POST")
         {
-            Headlers::iterator it;
+            httpserver::Headlers::iterator it;
             it =req->headler.find("Content-Length");//取到长度传给ReadN函数
             if(it!=req->headler.end()){
                 //有Content-Length
-                int n=0;
+                int n=std::stoi((*it).second);
                 ret=FileUtil::ReadN(context->socket_fd,n,&req->body);//从输入中读取一个指定长度的字符串
             }else{
                 //没有Content-Length
@@ -158,7 +158,7 @@ namespace httpserver{
             if(file_path->back()!='/'){
                 file_path->push_back('/');
             }
-            *file_path=(*file_path)+"index.html";
+            *file_path=(*file_path)+"index.tpl";
         }
         Log(DEBUG)<<"文件路径："<<*file_path<<"\n";
     }
@@ -295,7 +295,7 @@ END:
             std::cout<<(*it).first<<": "<<(*it).second<<std::endl;
         }
         std::cout<<std::endl;
-        std::cout<<req->body<<std::endl;
+        std::cout<<"body "<<req->body<<std::endl;
     }
     int threadcount=1;
     void* http_server::ThreadEntry(void* con)

@@ -1,5 +1,9 @@
 #include <mysql++.h>
-#include"httpserver.h"
+#include<vector>
+#include<iostream>
+#include<sstream>
+#include<stdio.h>
+#include<stdlib.h>
 using namespace mysqlpp;
 //insert into cc(id, name, status) values(22, "laoyang", "ok");
 const char* str_insertmessage = "insert into message value(\"%s\", \"%s\");";
@@ -77,4 +81,58 @@ bool updatemessage(const char* username,const char* password)
 }
 
 //查
+bool selectmessage(const char* username)
+{
+    Connection conn(false);
+    conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,str_selectmessage,username);
+    Query query = conn.query(str_Insert);
+    StoreQueryResult res=query.store();
+    mysqlpp::StoreQueryResult::const_iterator it;
+    std::stringstream ss;
+    for (it = res.begin(); it != res.end(); ++it) 
+    {
+            mysqlpp::Row row = *it;
+            ss << row[1];
+    }
+    std::string s=ss.str();
+    if(s.empty()){
+        return false;
+    }else{
+        return true;
+    }
 
+}
+
+//查密码
+bool selectpassword(const char* username,const char* password)
+{
+    Connection conn(false);
+    conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,str_selectmessage,username);
+    Query query = conn.query(str_Insert);
+    StoreQueryResult res=query.store();
+    mysqlpp::StoreQueryResult::const_iterator it;
+    std::string pass(password);
+    std::stringstream ss;
+    for (it = res.begin(); it != res.end(); ++it) 
+    {
+            mysqlpp::Row row = *it;
+            ss << row[1];
+    }
+    std::string s;
+    s=ss.str();
+    if(s.empty()){
+        return false;
+    }else{
+        if(s==password){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
