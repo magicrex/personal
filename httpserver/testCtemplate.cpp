@@ -7,7 +7,6 @@ int main(int argc,char** argv){
     TemplateDictionary dict( "example");
     dict.SetValue( "NAME" ,  "John Smith"  );
     int  winnings = random() % 100000;
-    dict.SetIntValue( "VALUE" , winnings );
     TemplateDictionary *dict1 = dict.AddSectionDictionary( "IN_TABLE"  );
     TemplateDictionary *dict2 = dict.AddSectionDictionary( "IN_TABLE"  );
     dict1->SetValue( "ITEM" ,  "Lihaibo"  );
@@ -22,7 +21,7 @@ int main(int argc,char** argv){
     TemplateDictionary *dict3 = dict.AddIncludeDictionary( "INCLUDED_TEMPLATE"  );
     dict3->SetFilename( "ctInclude.tpl"  );    
     dict3->SetValue( "INCLUDE_VAR" , "This is a include template."  );
-    Template* tpl = Template::GetTemplate( "ctexample.tpl",DO_NOT_STRIP);
+    Template* tpl = Template::GetTemplate("ctexample.tpl",DO_NOT_STRIP);
     std::string output;
     tpl->Expand(&output,&dict);
     std::cout<<output;

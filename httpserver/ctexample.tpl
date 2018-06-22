@@ -1,4 +1,5 @@
 <!--ctexample.tpl-->
+<!doctype html>
 <html>
     <head>
         <title>{{NAME}}</title>

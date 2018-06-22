@@ -11,14 +11,12 @@ void HttpResponse(const std::string& body){
 }
 
 
+int main(int argc,char* argv[],char* env[]){
 
-int main(){
-
-    //读取参数
     const char* method=getenv("REQUEST_METHOD");
     if(method == NULL){
-        HttpResponse("No Env Method");
-        return -1;
+        HttpResponse("1  No Env Method");
+        return 0;
     }
 
     StringUtil::UrlParam parmas;
@@ -58,10 +56,11 @@ int main(){
         dict.SetValue("usermess","用户不存在");
     }
 END:
-    ctemplate::Template* tpl=ctemplate::Template::GetTemplate("index.tpl",ctemplate::DO_NOT_STRIP);
+    ctemplate::Template* tpl=ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/index.tpl",ctemplate::DO_NOT_STRIP);
+
     std::string output;
     tpl->Expand(&output,&dict);
-    std::cout<<output;
+    HttpResponse(output);
     ctemplate::Template::ClearCache();
     return -1;
 }

@@ -142,7 +142,6 @@ namespace httpserver{
         }
         const std::string& str=ss.str();//没有触发深拷贝
         //将ss写入socket中
-        std::cout<<"response 的长度"<<str.size()<<"\n";
         write(context->socket_fd,str.c_str(),str.size()); 
         return 1;
 
@@ -160,12 +159,10 @@ namespace httpserver{
             }
             *file_path=(*file_path)+"index.tpl";
         }
-        Log(DEBUG)<<"文件路径："<<*file_path<<"\n";
     }
 
     int http_server::ProcessStaticFile(Context* context){
         //静态处理页面，默认路径为wwwroot文件下的index.html文件
-        Log(DEBUG)<<"运行静态网页"<<"\n";
         const Request* req=&context->request;
         Response* resp=&context->response;
         //获取静态文件的完整路径
@@ -177,7 +174,6 @@ namespace httpserver{
             Log(ERROR)<<"path ERROR"<<file_path<<"\n";
             return -1;
         }
-        std::cout<<resp->body.size()<<std::endl;
         return 1;
     }
 
@@ -190,7 +186,6 @@ namespace httpserver{
         //先获取到要替换的可执行文件
         //由CGI可执行程序完成动态页面的计算，并且写回数据到管道
         //先创建一对匿名管道全双工通信
-        Log(DEBUG)<<"运行动态生成网页"<<"\n";
         const Request& req = context->request;
         Response* resp=&context->response;
         int fd1[2],fd2[2];
@@ -200,18 +195,7 @@ namespace httpserver{
         int father_read = fd2[0];
         int child_write = fd2[1];
         int child_read = fd1[0];
-        //设置环境变量 METHOD请求方法 
-        std::string env="REQUEST_METHOD="+req.method;
-        std::cout<<env;
-        putenv(const_cast<char*>(env.c_str()));
-        if(req.method=="GET"){
-            env="QUERY_STRING="+req.url_argu;
-            putenv(const_cast<char*>(env.c_str()));
-        }else if(req.method=="POST"){
-            Headlers::const_iterator pos=req.headler.find("Content-Length");
-            env="Conttent-Lengthi="+pos->second;
-            putenv(const_cast<char*>(env.c_str()));
-        }
+
         //GET 方法 QUERY_STRING 请求的参数 
         //POST 请求 CONTENT_LENGTH 长度
         //fork 父子进程流程不同
@@ -227,21 +211,38 @@ namespace httpserver{
             close(child_read);
             close(child_write);
             if(req.method=="POST"){
-                write(father_write,resp->body.c_str(),resp->body.size());
+                write(father_write,req.body.c_str(),req.body.size());
             }
+            // std::string env;
+            // env=getenv("REQUEST_METHOD");
+            // Log(DEBUG)<<"REQUEST_METHOD="<<env<<"\n";
+            // env=getenv("Content-Length");
+            // Log(DEBUG)<<"Content-Length="<<env<<"\n";
             FileUtil::ReadAll(father_read,&resp->cgi_resp);
             wait(NULL);
         }else{
             //子进程
+            //设置环境变量 METHOD请求方法 
+            std::string env1="REQUEST_METHOD="+req.method;
+            std::string env2;
+            if(req.method=="GET"){
+                env2="QUERY_STRING="+req.url_argu;
+            }else if(req.method=="POST"){
+                Headlers::const_iterator pos=req.headler.find("Content-Length");
+                env2="CONTENT_LENGTH="+pos->second;
+            }
+            char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()), NULL};
             close(father_read);
             close(father_write);
             dup2(child_read,0);
             dup2(child_write,1);
             std::string file_path;
             GetFilePath(req.url_path,&file_path);
-            Log(DEBUG)<<" 完整路径"<< file_path<<"\n";
             //程序替换，参数一是CGI的路径，参数二是CGI程序的参数，参数三必须是NULL
-            execl(file_path.c_str(),file_path.c_str(),NULL);
+            if((execle(file_path.c_str(),file_path.c_str(),NULL,envp))==-1){
+                Log(ERROR)<<"file_path:"<< file_path<<"\n";
+                Log(ERROR)<<"execle error"<<"\n";
+            }
         }
 END:
         close(father_read);
@@ -289,7 +290,7 @@ END:
 
     void http_server::PrintRequest(const Context* context){
         const Request* req=&context->request;
-    std::cout<<"HTTP1.1 "<<req->method<<" "<<req->url_path<<" "<<req->url_argu <<std::endl;
+        std::cout<<"HTTP1.1 "<<req->method<<" "<<req->url<<std::endl;
         Headlers::const_iterator it=req->headler.begin();
         for(;it!=req->headler.end();it++){
             std::cout<<(*it).first<<": "<<(*it).second<<std::endl;

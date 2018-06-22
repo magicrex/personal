@@ -47,6 +47,38 @@ inline std::ostream& Log(loglevel level,const char* file,int line)
 	return std::cout;
 }
 
+std::ofstream& OpenFile() {
+    static std::ofstream file;
+    file.open("./log.txt", std::ios::app);
+    if (!file.is_open()) {
+        // TODO
+    }
+    return file;
+}
+
+inline std::ostream& LogToFile(loglevel level,const char* file,int line)
+{
+    static std::ofstream* f = NULL;
+    if (f == NULL) {
+        f = &OpenFile();
+    }
+	std::string prefix;
+	if(level==DEBUG)
+		prefix='d';
+	else if(level==INFO)
+		prefix='i';
+	else if(level==WARNING)
+		prefix='w';
+	else if(level==ERROR)
+		prefix='e';
+	else if(level==CAITICAL)
+		prefix='c';
+	else
+		prefix='n';
+    *f<<"["<<prefix<<":"<<Timeuti::TimeStamp()<<"]"<<"["<<file<<":"<<line<<"]"<<":";
+    return *f;
+}
+
 
 #define Log(level) Log(level,__FILE__,__LINE__)
 
