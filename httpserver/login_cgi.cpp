@@ -56,7 +56,7 @@ int main(int argc,char* argv[],char* env[]){
         dict.SetValue("usermess","用户不存在");
     }
 END:
-    ctemplate::Template* tpl=ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/index.tpl",ctemplate::DO_NOT_STRIP);
+    ctemplate::Template* tpl=ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/login_cgi.tpl",ctemplate::DO_NOT_STRIP);
 
     std::string output;
     tpl->Expand(&output,&dict);
