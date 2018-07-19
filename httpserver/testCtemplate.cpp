@@ -5,10 +5,9 @@
 using namespace ctemplate;
 int main(int argc,char** argv){
     TemplateDictionary dict( "example");
-    dict.SetValue( "NAME" ,  "John Smith"  );
     int  winnings = random() % 100000;
-    TemplateDictionary *dict1 = dict.AddSectionDictionary( "IN_TABLE"  );
-    TemplateDictionary *dict2 = dict.AddSectionDictionary( "IN_TABLE"  );
+    TemplateDictionary *dict1 = dict.AddSectionDictionary( "IN_TABLE");
+    TemplateDictionary *dict2 = dict.AddSectionDictionary( "IN_TABLE");
     dict1->SetValue( "ITEM" ,  "Lihaibo"  );
     dict1->SetFormattedValue( "TAXED_VALUE" ,  "%.2f" , winnings * 0.83 );
     dict2->SetValue( "ITEM" ,  "Qiyuehua"  );

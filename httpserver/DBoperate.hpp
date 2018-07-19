@@ -136,3 +136,30 @@ bool selectpassword(const char* username,const char* password)
         }
     }
 }
+
+//查内容
+std::vector<std::vector<std::string> > selectcontent(const char* tablename,const char* classname){
+    Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
+    conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,str_selecttable,tablename);
+    Query query = conn.query(str_Insert);
+    StoreQueryResult res=query.store();
+    mysqlpp::StoreQueryResult::const_iterator it;
+    std::vector<std::vector<std::string> > v;
+    for(it=res.begin();it !=res.end();++it){
+        std::vector<std::string> tmp;
+        for(int i=0;i<5;++i){
+            mysqlpp::Row row= *it;
+            std::stringstream ss;
+            ss<<row[i];
+            tmp.push_back(ss.str());
+        }
+        if(tmp[3]==classname)
+            v.push_back(tmp);
+    }
+    return v;
+}
+

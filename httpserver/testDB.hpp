@@ -8,7 +8,7 @@ using namespace std;
 using namespace mysqlpp;
 //insert into cc(id, name, status) values(22, "laoyang", "ok");
 const char* str_insertmessage = "insert into message value(\"%s\", \"%s\");";
-const char* str_createtable="create table %s(id varchar(30) primary key,addr varchar(20) not null);";
+const char* str_createtable="create table %s(title varchar(10),url varchar(50)not null,message varchar(100),class varchar(10)not null,date TimeStamp) charset=utf8 collate utf8_bin;";
 const char* str_insertaddr="insert into %s value(\"%s\", \"%s\")";
 const char* str_deleteaddr = "delete from %s where id = \"%s\";";
 const char* str_updatemessage = "update message set password = \"%s\" where username = \"%s\";";
@@ -25,6 +25,7 @@ const char* str_selecttable  = "select * from %s;";
 bool createtable(const char* tablename)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -37,6 +38,7 @@ bool createtable(const char* tablename)
 bool insertmessage(const char* value1,const char* value2)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -49,6 +51,7 @@ bool insertmessage(const char* value1,const char* value2)
 bool insertaddr(const char* tablename,const char* value1,const char* value2)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -61,6 +64,7 @@ bool insertaddr(const char* tablename,const char* value1,const char* value2)
 bool deleteaddr(const char* tablename,const char* value1)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -73,6 +77,7 @@ bool deleteaddr(const char* tablename,const char* value1)
 bool updatemessage(const char* username,const char* password)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -85,6 +90,7 @@ bool updatemessage(const char* username,const char* password)
 bool selectmessage(const char* username)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -111,6 +117,7 @@ bool selectmessage(const char* username)
 bool selectpassword(const char* username,const char* password)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -137,4 +144,28 @@ bool selectpassword(const char* username,const char* password)
         }
     }
 }
-
+//查内容
+std::vector<std::vector<std::string> > selectcontent(const char* tablename,const char* classname){
+    Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
+    conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,str_selecttable,tablename);
+    Query query = conn.query(str_Insert);
+    StoreQueryResult res=query.store();
+    mysqlpp::StoreQueryResult::const_iterator it;
+    std::vector<std::vector<std::string> > v;
+    for(it=res.begin();it !=res.end();++it){
+        std::vector<std::string> tmp;
+        for(int i=0;i<5;++i){
+            mysqlpp::Row row= *it;
+            stringstream ss;
+            ss<<row[i];
+            tmp.push_back(ss.str());
+        }
+        if(tmp[3]==classname)
+            v.push_back(tmp);
+    }
+    return v;
+}

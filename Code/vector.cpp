@@ -1,4 +1,43 @@
-#include<iostream>
+#include<int i=0;i<n;i++){
+                int m;
+                            cin>>m;
+                            if(m<1||m>100){
+                                                return 0;
+                                                            
+                            }
+                                        v[i]=m;
+                                                    num=num+m;                                                                                  
+                                                            
+}
+if(num%n!=0){
+                cout<<-1<<endl;
+                            return 0;
+                                    
+}
+        int ping=num/n;
+                num=0;
+                for(int i=0;i<n;i++){
+                    if(v[i]>ping){
+                                        num=num+v[i]-ping;
+                                                    
+                    }
+                            
+                }
+if(num==0){
+                cout<<0<<endl;
+                            return 0;
+                                    
+}
+        if(num!=0&&num%2==0){                                                                             
+                    cout<<num/2<<endl;
+        }else{
+                        cout<<-1<<endl;
+                                
+        }   
+    }
+    return 0;
+    }:wq
+(stream>
 #include<vector>
 using namespace std;
 

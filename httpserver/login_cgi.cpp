@@ -10,6 +10,43 @@ void HttpResponse(const std::string& body){
 
 }
 
+bool loginfun(std::string username){
+    //用来处理已经验证成功的情况
+    std::vector<std::vector<std::string> > table1;
+    //将信息读到一个字符串数组中
+    table1=selectcontent(username.c_str(),"个人简历");
+    int len=table1.size();
+    //开始将信息填入模板中
+    ctemplate::TemplateDictionary dict("personal");
+    //将姓名读入标题
+    dict.SetValue("USERNMAE",username.c_str());
+    //先将标题打印出来
+    //字符串数组输出
+    ctemplate::TemplateDictionary* p1=dict.AddSectionDictionary("RESUME");
+    p1->SetValue("value1","标题");
+    p1->SetValue("value2","地址");
+    p1->SetValue("value3","备注");
+    p1->SetValue("value4","分类");
+    p1->SetValue("value5","日期");
+    for(int i=0;i<len;i++){
+        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("RESUME");
+        p->SetValue("value1",table1[i][0].c_str());
+        p->SetValue("value2",table1[i][1].c_str());
+        p->SetValue("value3",table1[i][2].c_str());
+        p->SetValue("value4",table1[i][3].c_str());
+        p->SetValue("value5",table1[i][4].c_str());
+    }
+    if(1){
+       dict.ShowSection("RESUME"); 
+    }
+    //将所有内容输出到标准输出
+    ctemplate::Template* tpl = ctemplate::Template::GetTemplate("./wwwroot/personal.tpl",ctemplate::DO_NOT_STRIP);
+    std::string output;
+    tpl->Expand(&output,&dict);
+    std::cout<<output;
+    ctemplate::Template::ClearCache();
+    return true;
+}
 
 int main(int argc,char* argv[],char* env[]){
 
@@ -48,7 +85,11 @@ int main(int argc,char* argv[],char* env[]){
     if(selectmessage(username.c_str())){
         //用户名存在
         if(selectpassword(username.c_str(),password.c_str())){
-
+            if(loginfun(username)){
+                return 0;
+            }else{
+                Log(ERROR)<<"login false"<<"\n";
+            }
         }else{
             dict.SetValue("passmess","密码错误");
         }
