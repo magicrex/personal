@@ -9,8 +9,8 @@
 	}
 </style>
 <script src="js/mdui.min.js"></script>
-<title>{{USERNAME}}主页</title>
-</head><ul></ul>
+<title>{{USERNAME}}的主页</title>
+</head>
 
 <body>
 <div class="mdui-tab" mdui-tab>
@@ -21,8 +21,15 @@
 <!--标签1-->
 <div id="example1-tab1" class="mdui-p-a-2">
 	<div class="mdui-table-fluid">
-		{{#RESUME}}
 		<table class="mdui-table">
+        <thead>
+            <th>标题</th>
+            <th>地址</th>
+            <th>备注</th>
+            <th>分类</th>
+            <th>日期</th>
+        </thead>
+		{{#RESUME}}
 		<tbody>
 		<tr>
 			<td>{{value1}}</td>
@@ -32,12 +39,12 @@
 			<td>{{value5}}</td>
 		</tr>
 		</tbody>
-		</table>
 		{{/RESUME}}
+		</table>
 	</div>
 	<div class="mdui-divider-dark" style="height: 10px"></div>
 	<div class="mdui-card" style="height: 350px">
-	<label style="position: relative;left: 5%;top: 20px">添加一个新文件：</label><br>
+	<label style="position: relative;left: 5%;top: 20px">添加一个新简历：</label><br>
 	<from action="" method="post" name="files" style="position: relative;left: 5%;top: 20px">
 		<input type="file" name="File1">
 	</from>
@@ -52,10 +59,53 @@
 </div>
 <!--标签2-->
 <div id="example1-tab2" class="mdui-p-a-2">
-
+	<div class="mdui-table-fluid">
+		<table class="mdui-table">
+        <thead>
+            <th>标题</th>
+            <th>地址</th>
+            <th>备注</th>
+            <th>分类</th>
+            <th>日期</th>
+        </thead>
+		{{#NOTES}}
+		<tbody>
+		<tr>
+			<td>{{value1}}</td>
+			<td>{{value2}}</td>
+			<td>{{value3}}</td>
+			<td>{{value4}}</td>
+			<td>{{value5}}</td>
+		</tr>
+		</tbody>
+		{{/NOTES}}
+		</table>
+	</div>
 </div>
 <!--标签3-->
 <div id="example1-tab3" class="mdui-p-a-2">
+	<div class="mdui-table-fluid">
+		<table class="mdui-table">
+        <thead>
+            <th>标题</th>
+            <th>地址</th>
+            <th>备注</th>
+            <th>分类</th>
+            <th>日期</th>
+        </thead>
+		{{#PROJECT}}
+		<tbody>
+		<tr>
+			<td>{{value1}}</td>
+			<td>{{value2}}</td>
+			<td>{{value3}}</td>
+			<td>{{value4}}</td>
+			<td>{{value5}}</td>
+		</tr>
+		</tbody>
+		{{/PROJECT}}
+		</table>
+	</div>
 
 </div>
 
