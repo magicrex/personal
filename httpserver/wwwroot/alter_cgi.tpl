@@ -56,12 +56,9 @@
 <div class="mdui-panel-item-header">
 <div class="mdui-panel-item-title">查询</div>
 <i class="mdui-panel-item-arrow mdui-icon material-icons">+</i>
-
-
 </div>
 <div class="mdui-panel-item-body">
 <form action="select_cgi" method="post">
-<div class="mdui-panel-item-body">
 <div class="mdui-textfield mdui-textfield-floating-label">
 <label class="mdui-textfield-label">账号</label>
 <input class="mdui-textfield-input" type="text" name="username" required/>
@@ -71,7 +68,6 @@
 <button class="mdui-btn mdui-ripple" mdui-panel-item-close>取消</button>
 <button class="mdui-btn mdui-ripple">确定</button>
 </div>
-
 </form>
 </div>
 </div>  
@@ -83,7 +79,7 @@
 
 <div class="mdui-card" style="display: inline-block;width:48%;height: 25%">
 <div class="mdui-card-media">
-<img src="./images/dog.PNG"/>
+<img src="./images/4.jpg"/>
 <div class="mdui-card-media-covered">
 <div class="mdui-card-primary">
 <div class="mdui-panel" mdui-panel style="background:#000; filter:alpha(opacity:30); opacity:0.5">
@@ -125,7 +121,7 @@
 
 <div class="mdui-card" style="display: inline-block;width:48%; height: 25%">
 <div class="mdui-card-media">
-<img src="./images/dog.PNG"/>
+<img src="./images/3.jpg"/>
 <div class="mdui-card-media-covered">
 <div class="mdui-card-primary">
 <div class="mdui-panel" mdui-panel style="background:#000; filter:alpha(opacity:30); opacity:0.5">

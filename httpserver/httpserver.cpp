@@ -231,7 +231,14 @@ namespace httpserver{
                 Headlers::const_iterator pos=req.headler.find("Content-Length");
                 env2="CONTENT_LENGTH="+pos->second;
             }
-            char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()), NULL};
+            //读取SESSID传给程序
+            std::string env3;
+            Headlers::const_iterator pos=req.headler.find("Cookie");
+            if(pos!=req.headler.end()){
+                env3="COOKIE"+pos->second;
+            }
+            
+            char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()),const_cast<char*>(env3.c_str()), NULL};
             close(father_read);
             close(father_write);
             dup2(child_read,0);
