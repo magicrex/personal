@@ -10,26 +10,7 @@ void HttpResponse(const std::string& body){
 
 }
 
-bool SetCookie(const char* name){
-    std::string sessid=CookieUtil::GetCookie(name);
-    if(updatecookie(name)){
-        if(insertcookie(name,sessid.c_str())){
-            std::cout<<"Set-Cookie:SESSID="<<sessid<<"\n";
-            return true;
-        }else{
-            return false;
-        }
-    }else{
-        return false;
-    }
-}
-
 bool loginfun(std::string username){
-    if(!SetCookie(username.c_str())){
-        return false;
-    }
-
-
     //用来处理已经验证成功的情况
     std::vector<std::vector<std::string> > table1;
     std::vector<std::vector<std::string> > table2;

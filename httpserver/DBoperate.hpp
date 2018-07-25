@@ -15,6 +15,7 @@ const char* str_selectmessage = "select * from message where username=\"%s\";";
 const char* str_selecttable  = "select * from %s;";
 const char* str_insertcookie = "insert into cookie(name,sessid) value(\"%s\", \"%s\");";
 const char* str_selectcookie = "select * from cookie where sessid=\"%s\";";
+const char* str_updatecookie = "update cookie set flag = 0  where name = \"%s\";";
 
 #define DATEBASE_NAME "cpp"
 #define DATEBASE_IP "127.0.0.1"
@@ -93,6 +94,18 @@ bool updatemessage(const char* username,const char* password)
     return  query.exec();
 }
 
+//改cookie的flag
+bool updatecookie(const char* username)
+{
+    Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
+    conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,str_updatecookie,username);
+    Query query = conn.query(str_Insert);
+    return  query.exec();
+}
 //查
 bool selectmessage(const char* username)
 {

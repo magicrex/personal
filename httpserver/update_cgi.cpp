@@ -1,4 +1,3 @@
-
 #include<iostream>
 #include<string>
 #include"util.hpp"
@@ -38,41 +37,47 @@ int main(int argc,char* argv[],char* env[]){
 //**********************************************
 //*************测试使用*************************
 //**********************************************
-//        std::string username,password;
+//        std::string username,email,password;
 //        std::cin>>username;
+//        std::cin>>email;
 //        std::cin>>password;
 //**********************************************
 
     //判断参数,如果两者任意一个为空，就结束
     ctemplate::TemplateDictionary dict("login");
-    if(username.empty()||password.empty()){
+    if(username.empty()||oldpass.empty()||newpass.empty()){
         if(username.empty())
             dict.SetValue("usermess","用户名为空");
         if(oldpass.empty())
-            dict.SetValue("oldpass","旧密码为空");
+            dict.SetValue("oldmess","旧密码为空");
         if(newpass.empty())
             dict.SetValue("newpass","新密码为空");
         goto END;
     }
 
-    //三者都有值
+    //判断姓名密码长度不超过20
+    if(newpass.size()>20){
+        dict.SetValue("newpass","新密码长度超出范围");
+        goto END;
+    }
+
+    //两者都有值
     if(selectmessage(username.c_str())){
         //用户名存在
-        if(selectpassword(username.c_str(),password.c_str())){
-            if(loginfun(username)){
-                return 0;
+        if(selectpassword(username.c_str(),oldpass.c_str())){
+            if(updatemessage(username.c_str(),newpass.c_str())){
+                dict.SetValue("usermess","修改成功");
             }else{
-                Log(ERROR)<<"login false"<<"\n";
+                dict.SetValue("usermess","未知错误");
             }
         }else{
-            dict.SetValue("passmess","密码错误");
+            dict.SetValue("oldmess","密码错误");
         }
     }else{
         dict.SetValue("usermess","用户不存在");
     }
 END:
-    ctemplate::Template* tpl=ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/login_cgi.tpl",ctemplate::DO_NOT_STRIP);
-
+    ctemplate::Template* tpl=ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/update_cgi.tpl",ctemplate::DO_NOT_STRIP);
     std::string output;
     tpl->Expand(&output,&dict);
     HttpResponse(output);

@@ -58,7 +58,7 @@
 <i class="mdui-panel-item-arrow mdui-icon material-icons">+</i>
 </div>
 <div class="mdui-panel-item-body">
-<form action="select_cgi" method="post">
+<form action="select_cgi" method="get">
 <div class="mdui-textfield mdui-textfield-floating-label">
 <label class="mdui-textfield-label">账号</label>
 <input class="mdui-textfield-input" type="text" name="username" required/>
@@ -98,7 +98,7 @@
 <div class="mdui-textfield mdui-textfield-floating-label">
 <label class="mdui-textfield-label">邮箱</label>
 <input class="mdui-textfield-input" type="email" name="email" required/>
-<div class="mdui-textfield-error">邮箱格式错误/div>
+<div class="mdui-textfield-error">邮箱格式错误</div>
 </div>
 <div class="mdui-textfield mdui-textfield-floating-label">
 <label class="mdui-textfield-label">密码</label>

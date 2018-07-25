@@ -19,6 +19,7 @@ int main(){
 //    }
     cout<<insertcookie("root","SESSID=asdfghjkl")<<endl;
     cout<<selectcookie("SESSID=asdfghjkl")<<endl;
+    cout<<updatecookie("root")<<endl;
     return 0;
 
 }

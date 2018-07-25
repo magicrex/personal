@@ -59,8 +59,8 @@
 <div class="mdui-panel-item-title">查询</div>
 <i class="mdui-panel-item-arrow mdui-icon material-icons">+</i>
 </div>
-<form action="select_cgi" method="get">
 <div class="mdui-panel-item-body">
+<form action="select_cgi" method="get">
 <div class="mdui-textfield mdui-textfield-floating-label">
 <label class="mdui-textfield-label">账号</label>
 <input class="mdui-textfield-input" type="text" name="username" required/>
@@ -70,8 +70,8 @@
 <button class="mdui-btn mdui-ripple" mdui-panel-item-close>取消</button>
 <button class="mdui-btn mdui-ripple">确定</button>
 </div>
-</div>
 </form>
+</div>
 </div>  
 </div>
 </div>
@@ -100,7 +100,7 @@
 <div class="mdui-textfield mdui-textfield-floating-label">
 <label class="mdui-textfield-label">邮箱</label>
 <input class="mdui-textfield-input" type="email" name="email" required/>
-<div class="mdui-textfield-error">邮箱格式错误/div>
+<div class="mdui-textfield-error">邮箱格式错误</div>
 </div>
 <div class="mdui-textfield mdui-textfield-floating-label">
 <label class="mdui-textfield-label">密码</label>

@@ -2,7 +2,7 @@
 #all:testDB_main
 #	g++ $^ -o $@ -std=c++11 -lpthread -lboost_system -lboost_filesystem -I/usr/include/mysql -I/usr/local/include/mysql++ -L/usr/lib64/mysql -lmysqlpp -lmysqlclient -lnsl -lm
 
-all:httpserver login_cgi
+all:httpserver login_cgi regist_cgi update_cgi
 
 httpserver:httpserver.cpp  httpserver_main.cpp
 	g++ $^ -o $@ -std=c++11 -lpthread -lboost_system -lboost_filesystem -I/usr/include/mysql -I/usr/local/include/mysql++ -L/usr/lib64/mysql -lmysqlpp -lmysqlclient -lnsl -lm -g
@@ -14,8 +14,16 @@ httpserver:httpserver.cpp  httpserver_main.cpp
 login_cgi:login_cgi.cpp
 	g++ $^ -o $@ -std=c++11 -lboost_system -lboost_filesystem -I/usr/include/mysql -I/usr/local/include/mysql++ -L/usr/lib64/mysql -lmysqlpp -lmysqlclient -lnsl -lm -lctemplate -lpthread -g
 	cp login_cgi ./wwwroot/login_cgi
+
+regist_cgi:regist_cgi.cpp
+	g++ $^ -o $@ -std=c++11 -lboost_system -lboost_filesystem -I/usr/include/mysql -I/usr/local/include/mysql++ -L/usr/lib64/mysql -lmysqlpp -lmysqlclient -lnsl -lm -lctemplate -lpthread -g
+	cp regist_cgi ./wwwroot/regist_cgi
+
+update_cgi:update_cgi.cpp
+	g++ $^ -o $@ -std=c++11 -lboost_system -lboost_filesystem -I/usr/include/mysql -I/usr/local/include/mysql++ -L/usr/lib64/mysql -lmysqlpp -lmysqlclient -lnsl -lm -lctemplate -lpthread -g
+	cp update_cgi ./wwwroot/update_cgi
 .PHONY:clean
 clean:
 #	rm testDB_main
 #	rm -f httpserver cgi_main
-	rm -f httpserver login_cgi ./wwwroot/login_cgi
+	rm -f httpserver login_cgi ./wwwroot/login_cgi ./wwwroot/regist_cgi ./wwwroot/update_cgi
