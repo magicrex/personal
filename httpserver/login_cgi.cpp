@@ -58,6 +58,9 @@ bool loginfun(std::string username){
     if(1){
        dict.ShowSection("RESUME"); 
     }
+    //上传提示和简介提示
+    dict.SetValue("UPMESS","请上传PDF格式的文件");
+    dict.SetValue("MESSMESS","简介字数少于20");
     //学习笔记模块
     for(int i=0;i<len2;i++){
         ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("NOTES");

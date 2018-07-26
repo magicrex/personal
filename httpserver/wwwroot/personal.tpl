@@ -9,6 +9,7 @@
 	}
 </style>
 <script src="js/mdui.min.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
 <title>{{USERNAME}}的主页</title>
 </head>
 
@@ -43,18 +44,39 @@
 		</table>
 	</div>
 	<div class="mdui-divider-dark" style="height: 10px"></div>
-	<div class="mdui-card" style="height: 350px">
+	<div class="mdui-card" style="height: 250px">
 	<label style="position: relative;left: 5%;top: 20px">添加一个新简历：</label><br>
-	<from action="" method="post" name="files" style="position: relative;left: 5%;top: 20px">
-		<input type="file" name="File1">
-	</from>
-	<br>
+        <form id="uploadForm" enctype="multipart/form-data" style="position: relative;left: 5%;top: 20px">
+            <input id="file" type="file" name="file"/>
+        </form>
+    <label style="position: relative;left: 5%;top: 20px">{{UPMESS}}</label>
+    <br>
 	<from action="" method="post" name="message" >
-	<lable style="position: relative;left: 5%;top: 50px">简介：</lable><br>
-	<textarea rows="10" cols="30" style="position: relative;left: 5%;top: 60px"> 
+	<lable style="position: relative;left: 5%;top: 40px">简介：</lable><br>
+	<textarea id="xmessage" rows="3" cols="30" style="position: relative;left: 5%;top: 50px"> 
 	</textarea><br>
-	<button style="position: relative;left: 5%;top: 80px">确定</button>
+    <label style="position: relative;left: 5%;top: 50px">{{MESSMESS}}</label>
+    <br>
+	<button id="upload" type="button" style="position: relative;left: 5%;top: 80px">确定</button>
 	</from>
+
+    <script>
+    $('button').click(function(){
+        var message = $("#xmessage").val()
+        var data = new FormData($('#uploadForm')[0])
+        data.append("message",message)
+        $.ajax({
+            url: 'a.out',
+            type: 'POST',
+            cache: false,
+            data: data,
+            processData: false,
+            contentType: false
+        }).done(function(res) {
+        }).fail(function(res) {});
+
+    });
+</script>
 	</div>
 </div>
 <!--标签2-->
@@ -106,8 +128,6 @@
 		{{/PROJECT}}
 		</table>
 	</div>
-
 </div>
-
 </body>
 </html>

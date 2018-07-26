@@ -227,28 +227,49 @@ namespace httpserver{
             std::string env2;
             if(req.method=="GET"){
                 env2="QUERY_STRING="+req.url_argu;
+                char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()), NULL};
+                close(father_read);
+                close(father_write);
+                dup2(child_read,0);
+                dup2(child_write,1);
+                std::string file_path;
+                GetFilePath(req.url_path,&file_path);
+                //程序替换，参数一是CGI的路径，参数二是CGI程序的参数，参数三必须是NULL
+                if((execle(file_path.c_str(),file_path.c_str(),NULL,envp))==-1){
+                    Log(ERROR)<<"file_path:"<< file_path<<"\n";
+                    Log(ERROR)<<"execle error"<<"\n";
+                }
             }else if(req.method=="POST"){
                 Headlers::const_iterator pos=req.headler.find("Content-Length");
                 env2="CONTENT_LENGTH="+pos->second;
-            }
-            //读取SESSID传给程序
-            std::string env3;
-            Headlers::const_iterator pos=req.headler.find("Cookie");
-            if(pos!=req.headler.end()){
-                env3="COOKIE"+pos->second;
-            }
-            
-            char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()),const_cast<char*>(env3.c_str()), NULL};
-            close(father_read);
-            close(father_write);
-            dup2(child_read,0);
-            dup2(child_write,1);
-            std::string file_path;
-            GetFilePath(req.url_path,&file_path);
-            //程序替换，参数一是CGI的路径，参数二是CGI程序的参数，参数三必须是NULL
-            if((execle(file_path.c_str(),file_path.c_str(),NULL,envp))==-1){
-                Log(ERROR)<<"file_path:"<< file_path<<"\n";
-                Log(ERROR)<<"execle error"<<"\n";
+                //读取SESSID传给程序
+                std::string env3;
+                pos=req.headler.find("Cookie");
+                if(pos!=req.headler.end()){
+                    env3="COOKIE"+pos->second;
+                }
+                //将Contenttype传递
+                std::string env4;
+                pos=req.headler.find("Content-Type");
+                if(pos!=req.headler.end()){
+                    env4="Content-Type;"+pos->second;
+                }
+                //为了程序替换
+                char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()),\
+                    const_cast<char*>(env3.c_str()),const_cast<char*>(env4.c_str()),NULL};
+                close(father_read);
+                close(father_write);
+                dup2(child_read,0);
+                dup2(child_write,1);
+                std::string file_path;
+                GetFilePath(req.url_path,&file_path);
+                //程序替换，参数一是CGI的路径，参数二是CGI程序的参数，参数三必须是NULL
+                if((execle(file_path.c_str(),file_path.c_str(),NULL,envp))==-1){
+                    Log(ERROR)<<"file_path:"<< file_path<<"\n";
+                    Log(ERROR)<<"execle error"<<"\n";
+                }
+            }else{
+                process404(context);
             }
         }
 END:
@@ -303,7 +324,9 @@ END:
             std::cout<<(*it).first<<": "<<(*it).second<<std::endl;
         }
         std::cout<<std::endl;
-        std::cout<<"body "<<req->body<<std::endl;
+        std::cout<<"body "<<std::endl;
+        std::cout<<req->body<<std::endl;
+
     }
     int threadcount=1;
     void* http_server::ThreadEntry(void* con)
