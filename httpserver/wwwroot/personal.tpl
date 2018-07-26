@@ -66,7 +66,7 @@
         var data = new FormData($('#uploadForm')[0])
         data.append("message",message)
         $.ajax({
-            url: 'a.out',
+            url: 'upfile_cgi',
             type: 'POST',
             cache: false,
             data: data,

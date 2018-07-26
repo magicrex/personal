@@ -249,14 +249,20 @@ namespace httpserver{
                     env3="COOKIE"+pos->second;
                 }
                 //将Contenttype传递
-                std::string env4;
+                std::string env4,env5;
                 pos=req.headler.find("Content-Type");
                 if(pos!=req.headler.end()){
-                    env4="Content-Type;"+pos->second;
+                    std::vector<std::string> output;
+                    std::string contenttype=pos->second;
+                    StringUtil::Split(contenttype,";=",&output);
+                    env4="CONTENT_TYPE="+output[0];
+                    if(output.size()>=3){
+                        env5="BOUNDRY="+output[2];
+                    }
                 }
                 //为了程序替换
                 char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()),\
-                    const_cast<char*>(env3.c_str()),const_cast<char*>(env4.c_str()),NULL};
+                    const_cast<char*>(env3.c_str()),const_cast<char*>(env4.c_str()),const_cast<char*>(env5.c_str()),NULL};
                 close(father_read);
                 close(father_write);
                 dup2(child_read,0);

@@ -185,6 +185,30 @@ std::string selectcookie(const char* sessid)
     return s;
 }
 
+//查cookie状态
+bool selectcookiestatus(const char* sessid)
+{
+    Connection conn(false);
+    conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,str_selectcookie,sessid);
+    Query query = conn.query(str_Insert);
+    StoreQueryResult res=query.store();
+    mysqlpp::StoreQueryResult::const_iterator it;
+    std::stringstream ss;
+    for (it = res.begin(); it != res.end(); ++it) 
+    {
+            mysqlpp::Row row = *it;
+            ss << row[3];
+    }
+    std::string s;
+    s=ss.str();
+    if(s.c_str()=="1")
+        return true;
+    else
+        return false;
+}
 //查内容
 std::vector<std::vector<std::string> > selectcontent(const char* tablename,const char* classname){
     Connection conn(false);

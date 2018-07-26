@@ -2,6 +2,8 @@
 #include<sys/time.h>
 #include<fstream>
 #include<boost/algorithm/string.hpp>
+#include<boost/regex.hpp>
+#include<boost/algorithm/string/regex.hpp>
 #include<boost/filesystem.hpp>
 #include<time.h>
 #include"httpserver.h"
@@ -175,6 +177,10 @@ public:
         return 1;
     }//end Split
 
+    static int Split_Regex(const std::string& input,const std::string& split_string,std::vector<std::string>* output){
+        boost::split_regex(*output,input,boost::regex(split_string.c_str()));
+        return 1;
+    }
     typedef std::unordered_map<std::string,std::string> UrlParam;
     static int ParseUrlParan(const std::string& input,UrlParam* output){
         std::vector<std::string> parmas;
