@@ -46,7 +46,7 @@
 	<div class="mdui-divider-dark" style="height: 10px"></div>
 	<div class="mdui-card" style="height: 250px">
 	<label style="position: relative;left: 5%;top: 20px">添加一个新简历：</label><br>
-        <form id="uploadForm" enctype="multipart/form-data" style="position: relative;left: 5%;top: 20px">
+        <form id="uploadForm" enctype="multipart/form-data" style="position: relative;left: 5%;top: 20px" >
             <input id="file" type="file" name="file"/>
         </form>
     <label style="position: relative;left: 5%;top: 20px">{{UPMESS}}</label>
@@ -64,7 +64,6 @@
     $('button').click(function(){
         var message = $("#xmessage").val()
         var data = new FormData($('#uploadForm')[0])
-        data.append("message",message)
         $.ajax({
             url: 'upfile_cgi',
             type: 'POST',

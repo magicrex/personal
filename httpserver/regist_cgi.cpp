@@ -73,7 +73,10 @@ int main(int argc,char* argv[],char* env[]){
     }else{
         if(insertmessage(username.c_str(),password.c_str())){
             if(createtable(username.c_str())){
-                dict.SetValue("usermess","注册成功");
+                if(DirUtil::CreateDir(username))
+                    dict.SetValue("usermess","注册成功");
+                else
+                    dict.SetValue("usermess","未知错误");
             }else{
                 dict.SetValue("usermess","用户已存在");
             }

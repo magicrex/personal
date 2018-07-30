@@ -22,7 +22,7 @@ update_cgi:update_cgi.cpp
 	cp update_cgi ./wwwroot/update_cgi
 
 upfile_cgi:upfile_cgi.cpp
-	g++ $^ -o $@ $(BASE) $(DATA1) $(DATA2) $(TEMP) -g
+	g++ $^ -o $@ $(BASE) $(DATA1) $(DATA2) $(TEMP) -lboost_regex -g
 	cp upfile_cgi ./wwwroot/upfile_cgi
 .PHONY:clean
 clean:

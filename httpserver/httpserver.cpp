@@ -104,14 +104,48 @@ namespace httpserver{
         }
         else if(req->method=="POST")
         {
+            int contlen;
             httpserver::Headlers::iterator it;
             it =req->headler.find("Content-Length");//取到长度传给ReadN函数
             if(it!=req->headler.end()){
                 //有Content-Length
                 int n=std::stoi((*it).second);
-                ret=FileUtil::ReadN(context->socket_fd,n,&req->body);//从输入中读取一个指定长度的字符串
+                contlen=n;
             }else{
                 //没有Content-Length
+                Log(ERROR)<<" request error"<<"\n";
+                return -1;
+            }   
+
+            it =req->headler.find("Content-Type");//类型
+            if(it!=req->headler.end()){
+                //将值使用;进行切分
+                std::vector<std::string> type;
+                StringUtil::Split(req->headler["Content-Type"],";",&type);
+                if(type.empty()){
+                    Log(ERROR)<<" request error"<<"\n";
+                    return -1;
+                }else{
+                    if(type[0]=="application/x-www-form-urlencoded"){
+                        ret=FileUtil::ReadN(context->socket_fd,contlen,&req->body);//从输入中读取一个指定长度的字符串
+                    }else if(type[0]=="multipart/form-data"){
+                        //读取sessid
+                        it=req->headler.find("Cookie");   
+                        if(it!=req->headler.end()){
+                            std::vector<std::string> cookie;
+                            StringUtil::Split(req->headler["Cookie"],"=",&cookie);
+                            FileUtil::ReadNFile(context->socket_fd,contlen,cookie[1]);
+                        }else{
+                            Log(ERROR)<<" request error"<<"\n";
+                            return -1;
+                        }
+                    }else{
+                        Log(ERROR)<<" request error"<<type[0]<<"\n";
+                        return -1;
+                    }
+                }
+            }else{
+                //没有Content-Type
                 Log(ERROR)<<" request error"<<"\n";
                 return -1;
             }   
@@ -144,7 +178,6 @@ namespace httpserver{
         //将ss写入socket中
         write(context->socket_fd,str.c_str(),str.size()); 
         return 1;
-
     }
 
     void http_server::GetFilePath(std::string url_path,std::string* file_path){
@@ -275,6 +308,7 @@ namespace httpserver{
                     Log(ERROR)<<"execle error"<<"\n";
                 }
             }else{
+                Log(DEBUG)<<"request error"<<"\n";
                 process404(context);
             }
         }
@@ -331,7 +365,7 @@ END:
         }
         std::cout<<std::endl;
         std::cout<<"body "<<std::endl;
-        std::cout<<req->body<<std::endl;
+        //    std::cout<<req->body<<std::endl;
 
     }
     int threadcount=1;

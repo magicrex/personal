@@ -84,6 +84,7 @@ inline std::ostream& LogToFile(loglevel level,const char* file,int line)
 
 
 #define Log(level) Log(level,__FILE__,__LINE__)
+#define LogToFile(level) LogToFile(level,__FILE__,__LINE__)
 
 class FileUtil{
 public:
@@ -114,18 +115,31 @@ public:
        }//end while
        return 1;
     }//end Readline
-
+    //写入一个string中，不适用于数据过大
     static int ReadN(int fd,size_t len,std::string* output){
-            output->clear();
-            output->shrink_to_fit();
-            char c='\0';
-            while(len--){
-                recv(fd,&c,1,0);
-                output->push_back(c);
-            }
-            return 1;
+        output->clear();
+        output->shrink_to_fit();
+        char c='\0';
+        while(len--){
+            recv(fd,&c,1,0);
+            output->push_back(c);
+        }
+        return 1;
     }//end ReadN
-    
+    //上传文件时数据过大，写入缓存文件中
+    static int ReadNFile(int fd,size_t len,std::string input){
+        std::ofstream cache;
+        std::string cachename("./wwwroot/cache/");
+        cachename=cachename+input;
+        cache.open(cachename,std::ofstream::out);
+        char c='\0';
+        while(len--){
+            recv(fd,&c,1,0);
+            cache<<c;
+        }
+        return 1;
+    }//end ReadNFile
+
     static bool IsDir(const std::string& url){
         return boost::filesystem::is_directory(url);
     }
@@ -148,7 +162,7 @@ public:
         file.close();
         return 1;
     }
-    
+
     static int ReadAll(int fd,std::string* output){
         while(true){
             char buf[1024*5]={0};
@@ -212,3 +226,16 @@ public:
         return names+timestring;
     }
 };//end CookieUtil
+
+class DirUtil{
+public:
+    static int CreateDir(std::string name){
+        std::string prepath=("./wwwroot/AllFile/");
+        prepath=prepath+name;
+        int ret=mkdir(prepath.c_str(),S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH);
+        if(ret==0)
+            return 1;
+        else
+            return 0;
+    }
+};//end DirUtil

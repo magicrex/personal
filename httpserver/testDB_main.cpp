@@ -1,5 +1,6 @@
 #include<iostream>
-#include"testDB.hpp"
+//#include"testDB.hpp"
+#include"DBoperate.hpp"
 using namespace std;
 
 
@@ -17,9 +18,13 @@ int main(){
 //            cout<<v[i][j]<<endl;
 //        }
 //    }
-    cout<<insertcookie("root","SESSID=asdfghjkl")<<endl;
-    cout<<selectcookie("SESSID=asdfghjkl")<<endl;
-    cout<<updatecookie("root")<<endl;
+//    cout<<insertcookie("root","SESSID=asdfghjkl")<<endl;
+//    cout<<selectcookie("SESSID=asdfghjkl")<<endl;
+//    cout<<updatecookie("root")<<endl;
+    if(insertaddr("root","3.9.Linux进程间关系和守护进程.pdf","heeekeke","无","个人简历")){
+        cout<<"true"<<endl;
+    }else
+        cout<<"false"<<endl;
     return 0;
 
 }

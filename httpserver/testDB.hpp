@@ -9,7 +9,7 @@ using namespace mysqlpp;
 //insert into cc(id, name, status) values(22, "laoyang", "ok");
 const char* str_insertmessage = "insert into message value(\"%s\", \"%s\");";
 const char* str_createtable="create table %s(title varchar(10),url varchar(50)not null,message varchar(100),class varchar(10)not null,date TimeStamp) charset=utf8 collate utf8_bin;";
-const char* str_insertaddr="insert into %s value(\"%s\", \"%s\")";
+const char* str_insertaddr="insert into %s(title,url,message,class) values(\"%s\",\"%s\",\"%s\", \"%s\");";
 const char* str_deleteaddr = "delete from %s where id = \"%s\";";
 const char* str_updatemessage = "update message set password = \"%s\" where username = \"%s\";";
 const char* str_selectmessage = "select * from message where username=\"%s\";";
@@ -51,14 +51,15 @@ bool insertmessage(const char* value1,const char* value2)
 }
 
 //增内容
-bool insertaddr(const char* tablename,const char* value1,const char* value2)
+bool insertaddr(const char* tablename,const char* value1,const char* value2,const char* value3,const char* value4)
 {
     Connection conn(false);
     conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
-    sprintf((char*)str_Insert,str_insertaddr,tablename,value1,value2);
+    sprintf((char*)str_Insert,str_insertaddr,tablename,value1,value2,value3,value4);
+    cout<<str_Insert<<endl;
     Query query = conn.query(str_Insert);
     return  query.exec();
 }
@@ -214,4 +215,28 @@ std::vector<std::vector<std::string> > selectcontent(const char* tablename,const
             v.push_back(tmp);
     }
     return v;
+}
+bool selectcookiestatus(const char* sessid)
+{
+    Connection conn(false);
+    conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,str_selectcookie,sessid);
+    Query query = conn.query(str_Insert);
+    StoreQueryResult res=query.store();
+    mysqlpp::StoreQueryResult::const_iterator it;
+    std::stringstream ss;
+    for (it = res.begin(); it != res.end(); ++it) 
+    {
+            mysqlpp::Row row = *it;
+            ss << row[3];
+    }
+    std::string s;
+    s=ss.str();
+    cout<<s.c_str()<<endl;
+    if(s=="1")
+        return true;
+    else
+        return false;
 }
