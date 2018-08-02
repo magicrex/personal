@@ -111,7 +111,7 @@ bool loginfun(std::string username){
     return true;
 }
 
-int main(int argc,char* argv[],char* env[]){
+int main(){
 
    const char* method=getenv("REQUEST_METHOD");
    if(method == NULL){

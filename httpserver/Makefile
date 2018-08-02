@@ -33,3 +33,5 @@ modimess_cgi:modimess_cgi.cpp
 .PHONY:clean
 clean:
 	rm -f httpserver login_cgi regist_cgi update_cgi upfile_cgi delfile_cgi modimess_cgi
+	rm -f ./wwwroot/login_cgi ./wwwroot/regist_cgi ./wwwroot/update_cgi ./wwwroot/upfile_cgi delfile_cgi modimess_cgi
+	rm -f ./wwwroot/delfile_cgi ./wwwroot/modimess_cgi

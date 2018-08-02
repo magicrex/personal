@@ -1,4 +1,3 @@
-<!--index.tpl-->
 <!doctype html>
 <html>
 <head>
@@ -117,7 +116,6 @@
 </div>
 </div>
 </div>
-</div>
 
 <div class="mdui-card" style="display: inline-block;width:48%; height: 25%">
 <div class="mdui-card-media">
@@ -160,6 +158,7 @@
 </div>
 </div>
 
+</div>
 </div>
 </body>
 </html>
