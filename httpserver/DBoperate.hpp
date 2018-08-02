@@ -7,9 +7,9 @@
 using namespace mysqlpp;
 //insert into cc(id, name, status) values(22, "laoyang", "ok");
 const char* str_insertmessage = "insert into message value(\"%s\", \"%s\");";
-const char* str_createtable="create table %s(title varchar(30),url varchar(100) not null,message varchar(100),class varchar(10) not null, data TimeStamp) charset=utf8 collate utf8_bin;";
+const char* str_createtable="create table %s(title varchar(30) primary key,url varchar(100) not null,message varchar(100),class varchar(10) not null, data TimeStamp) charset=utf8 collate utf8_bin;";
 const char* str_insertaddr="insert into %s(title,url,message,class) values(\"%s\",\"%s\",\"%s\", \"%s\");";
-const char* str_deleteaddr = "delete from %s where id = \"%s\";";
+const char* str_deleteaddr = "delete from %s where title = \"%s\";";
 const char* str_updatemessage = "update message set password = \"%s\" where username = \"%s\";";
 const char* str_selectmessage = "select * from message where username=\"%s\";";
 const char* str_selecttable  = "select * from %s;";
@@ -27,6 +27,7 @@ const char* str_updatecookie = "update cookie set flag = 0  where name = \"%s\";
 bool createtable(const char* tablename)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -65,6 +66,7 @@ bool insertaddr(const char* tablename,const char* value1,const char* value2,cons
 bool insertcookie(const char* username,const char* sessid)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -76,6 +78,7 @@ bool insertcookie(const char* username,const char* sessid)
 bool deleteaddr(const char* tablename,const char* value1)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -88,6 +91,7 @@ bool deleteaddr(const char* tablename,const char* value1)
 bool updatemessage(const char* username,const char* password)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -112,6 +116,7 @@ bool updatecookie(const char* username)
 bool selectmessage(const char* username)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -138,6 +143,7 @@ bool selectmessage(const char* username)
 bool selectpassword(const char* username,const char* password)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -169,6 +175,7 @@ bool selectpassword(const char* username,const char* password)
 std::string selectcookie(const char* sessid)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
@@ -191,6 +198,7 @@ std::string selectcookie(const char* sessid)
 bool selectcookiestatus(const char* sessid)
 {
     Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);

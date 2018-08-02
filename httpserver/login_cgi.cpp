@@ -58,8 +58,25 @@ bool loginfun(std::string username){
     if(1){
        dict.ShowSection("RESUME"); 
     }
+    //字符串数组输出
+    //个人简历模块
+    for(int i=0;i<len1;i++){
+        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("DELFILE");
+        p->SetValue("value1",table1[i][0].c_str());
+    }
+    if(1){
+       dict.ShowSection("DELFILE"); 
+    }
+    for(int i=0;i<len1;i++){
+        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("MODIMESS");
+        p->SetValue("value1",table1[i][0].c_str());
+    }
+    if(1){
+       dict.ShowSection("MODIMESS"); 
+    }
     //上传提示和简介提示
     dict.SetValue("UPMESS","请上传PDF格式的文件");
+    dict.SetValue("DELMESS","建议下载之后，再删除文件");
     dict.SetValue("MESSMESS","简介字数少于20");
     //学习笔记模块
     for(int i=0;i<len2;i++){

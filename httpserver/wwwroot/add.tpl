@@ -22,53 +22,20 @@
                         document.writeln(res);
                             });
     }
-        function Deletefun(){
-            var data=$("#delfile").val();
-            $.ajax({
-            url: data,
-            type: 'DELETE',
-            cache: false,
-            processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
-        }
-        function Modimess(){
-            var name=$("#modimess").val();
-            var nei=$("#xmessage").val();
-            var formdata=new FormData();
-            formdata.append("filename",name);
-            formdata.append("message",nei);
-            $.ajax({
-            url: 'modimess_cgi',
-            type: 'POST',
-            cache: false,
-            data: formdata,
-            processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
-        }
     </script>
 <title>{{USERNAME}}的主页</title>
 </head>
 <body>
 <div class="mdui-panel mdui-panel-popout" mdui-panel>
 
-  <div class="mdui-panel-item">
+  <div class="mdui-panel-item mdui-panel-item-open">
     <div class="mdui-panel-item-header">个人简历</div>
     <div class="mdui-panel-item-body">
     <div class="mdui-table-fluid">
         <table class="mdui-table">
         <thead>
             <th>标题</th>
-            <th>操作</th>
+            <th>地址</th>
             <th>备注</th>
             <th>分类</th>
             <th>日期</th>
@@ -87,38 +54,23 @@
         </table>
     </div>
     <div class="mdui-divider-dark" style="height: 10px"></div>
-    <div class="mdui-card" style="height: 500px">
-    <form action="upfile_cgi" method="post" id="uploadForm" enctype="multipart/form-data" style="position: relative;left: 5%;top: 20px" >
-        <label >添加一个新简历：</label><br>
-        <input id="file" type="file" name="file"/><br>
-        <label >{{UPMESS}}</label><br>
-        <button id="upload" type="button" onclick="up()" >确定</button><br>
+    <div class="mdui-card" style="height: 250px">
+    <label style="position: relative;left: 5%;top: 20px">添加一个新简历：</label><br>
+        <form action="upfile_cgi" method="post" id="uploadForm" enctype="multipart/form-data" style="position: relative;left: 5%;top: 20px" >
+            <input id="file" type="file" name="file"/>
+            <button id="upload" type="button" onclick="up()" style="position: relative;left: 5%;top: 80px">确定</button>
         </form>
+    <label style="position: relative;left: 5%;top: 20px">{{UPMESS}}</label>
     <br>
-    <from action="delfile_cgi" method="DELETE" style="position: relative;left: 5%;top: 60px">
-        <lable>需要删除的文件:</lable><br>
-        <select id="delfile"  name="delfile">
-        {{#DELFILE}}
-        <option value="{{value1}}">{{value1}}</option>
-        {{/DELFILE}}
-        </select><br>
-        <label >{{DELMESS}}</label><br>
-        <input type="button" value="删除" name="delf" onclick="Deletefun()" >
-    </from>
+    <from action="" method="post" name="message" >
+    <lable style="position: relative;left: 5%;top: 40px">简介：</lable><br>
+    <textarea id="xmessage" rows="3" cols="30" style="position: relative;left: 5%;top: 50px"> 
+    </textarea><br>
+    <label style="position: relative;left: 5%;top: 50px">{{MESSMESS}}</label>
     <br>
-    <from action="modimess_cgi" method="post" id="amessage" name="amessage" style="position: relative;left: 5%;top: 100px">
-        <lable>修改的文件:</lable><br>
-        <select id="modimess"  name="modimess">
-        {{#MODIMESS}}
-        <option value="{{value1}}">{{value1}}</option>
-        {{/MODIMESS}}
-        </select><br>
-        <lable >修改简介：</lable><br>
-            <textarea id="xmessage" name="xmessage" rows="3" cols="30" > 
-            </textarea><br>
-        <label>{{MESSMESS}}</label><br>
-        <input type="button" value="修改" name="modim" onclick="Modimess()">
+    <button id="upload" type="button" style="position: relative;left: 5%;top: 80px">确定</button>
     </from>
+
     </div>
       
     </div>

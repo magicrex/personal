@@ -10,7 +10,7 @@ using namespace mysqlpp;
 const char* str_insertmessage = "insert into message value(\"%s\", \"%s\");";
 const char* str_createtable="create table %s(title varchar(10),url varchar(50)not null,message varchar(100),class varchar(10)not null,date TimeStamp) charset=utf8 collate utf8_bin;";
 const char* str_insertaddr="insert into %s(title,url,message,class) values(\"%s\",\"%s\",\"%s\", \"%s\");";
-const char* str_deleteaddr = "delete from %s where id = \"%s\";";
+const char* str_deleteaddr = "delete from %s where title  = \"%s\";";
 const char* str_updatemessage = "update message set password = \"%s\" where username = \"%s\";";
 const char* str_selectmessage = "select * from message where username=\"%s\";";
 const char* str_selecttable  = "select * from %s;";
@@ -84,6 +84,7 @@ bool deleteaddr(const char* tablename,const char* value1)
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
     sprintf((char*)str_Insert,str_deleteaddr,tablename,value1);
+    cout<<str_Insert<<endl;
     Query query = conn.query(str_Insert);
     return  query.exec();
 }
@@ -137,7 +138,6 @@ bool selectmessage(const char* username)
     }else{
         return true;
     }
-
 }
 
 //查密码

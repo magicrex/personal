@@ -1,6 +1,6 @@
 #include<iostream>
-//#include"testDB.hpp"
-#include"DBoperate.hpp"
+#include"testDB.hpp"
+//#include"DBoperate.hpp"
 using namespace std;
 
 
@@ -21,7 +21,11 @@ int main(){
 //    cout<<insertcookie("root","SESSID=asdfghjkl")<<endl;
 //    cout<<selectcookie("SESSID=asdfghjkl")<<endl;
 //    cout<<updatecookie("root")<<endl;
-    if(insertaddr("root","3.9.Linux进程间关系和守护进程.pdf","heeekeke","无","个人简历")){
+    std::string username;
+    std::string filename;
+    username="root";
+    filename="3.5.Linux基础IO.pdf";
+    if(deleteaddr(username.c_str(),filename.c_str())){
         cout<<"true"<<endl;
     }else
         cout<<"false"<<endl;

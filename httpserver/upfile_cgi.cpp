@@ -3,7 +3,9 @@
 #include"util.hpp"
 #include<ctemplate/template.h>
 #include"DBoperate.hpp"
+
 void HttpResponse(const std::string& body){
+    std::cout<<"Content-Type: text/html"<<"\n";
     std::cout<<"Content-Length:"<<body.size()<<"\n";
     std::cout<<"\n";
     std::cout<<body;
@@ -79,7 +81,7 @@ void Info(std::string username,const char* message){
         dict.ShowSection("PROJECT"); 
     }
     //将所有内容输出到标准输出
-    ctemplate::Template* tpl = ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/personal.tpl",ctemplate::DO_NOT_STRIP);
+    ctemplate::Template* tpl = ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/add.tpl",ctemplate::DO_NOT_STRIP);
     std::string output;
     tpl->Expand(&output,&dict);
     HttpResponse(output);
@@ -91,6 +93,11 @@ int main(int argc,char* argv[],char* env[]){
     const char* method=getenv("REQUEST_METHOD");
     if(method == NULL){
         HttpResponse("1  No Env Method");
+        return 0;
+    }
+    //检查是否是POST
+    if(std::string(method)!="POST"){
+        Error("非POST方法");
         return 0;
     }
     //进行Cookie检查
@@ -119,11 +126,6 @@ int main(int argc,char* argv[],char* env[]){
         Error("未知Content-Length");
         return 0;
     }
-    //检查是否是POST
-    if(std::string(method)!="POST"){
-        Error("非POST方法");
-        return 0;
-    }
     //进行contenttype检查
     const char* str_conttype=getenv("CONTENT_TYPE");
     std::string conttype(str_conttype);
@@ -141,7 +143,7 @@ int main(int argc,char* argv[],char* env[]){
     std::string cachepath("./wwwroot/cache/");
     cachepath=cachepath+sessid;
     std::ifstream pread(cachepath.c_str(),std::ios::in);
-    std::string filepath("./wwwroot/");
+    std::string filepath("./wwwroot/AllFile/");
     filepath=filepath+username+"/";
     //读取整个文件的内容
     char c='\0';
@@ -154,7 +156,7 @@ int main(int argc,char* argv[],char* env[]){
             Error("文件解析出错");
             return 0;
         }else if(flag==4){
-            std::ofstream pin(filepath.c_str());
+            std::ofstream pin(filepath.c_str(),std::ofstream::out);
             pin << c;
             while(!pread.eof()){
                 c=pread.get();
@@ -166,12 +168,11 @@ int main(int argc,char* argv[],char* env[]){
                 Info(username,"上传成功");
                 return 0;
             }else{
-                std::string e("插入数据库错误");
-                e=e+username.c_str()+filename.c_str()+filepath.c_str();
+                std::string e("上传失败，文件已存在");
                 Error(e.c_str());
                 return 0;
             }
-        }else if(c=='\n'){
+        }else if(flag<4&&c=='\r'){
             //第零行和第三行不处理
             if(flag==1){
                 //第一行进行;解析，取出filename
@@ -198,6 +199,6 @@ int main(int argc,char* argv[],char* env[]){
         }else{
             firstring.push_back(c);
         }
-        }
-        return 0;
     }
+    return 0;
+}

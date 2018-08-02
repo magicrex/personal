@@ -20,6 +20,8 @@
 #include<sys/wait.h>
 #include<stdlib.h>
 #include<string.h>
+#include<fcntl.h>
+        //获取静态文件的完整路径
 //用来存放请求的结构体
 typedef struct sockaddr sockaddr;
 typedef struct sockaddr_in sockaddr_in;
