@@ -1,4 +1,3 @@
-<!--index.tpl-->
 <!doctype html>
 <html>
 <head>
@@ -173,7 +172,6 @@
             <th>标题</th>
             <th>操作</th>
             <th>备注</th>
-            <th>分类</th>
             <th>日期</th>
         </thead>
         {{#RESUME}}
@@ -183,7 +181,6 @@
             <td><a href="{{value2}}" dowmload="{{value1}}" >下载</a></td>
             <td>{{value3}}</td>
             <td>{{value4}}</td>
-            <td>{{value5}}</td>
         </tr>
         </tbody>
         {{/RESUME}}
@@ -290,22 +287,22 @@
     </div>
     </div>
   </div>
-  
+   
   <div class="mdui-panel-item">
     <div class="mdui-panel-item-header">项目练习</div>
     <div class="mdui-panel-item-body">
 
-
+        {{#PROJECT}}
         <div class="mdui-panel" mdui-panel>
             <div class="mdui-panel-item">
-            <div class="mdui-panel-item-header">项目1</div>
+            <div class="mdui-panel-item-header">{{value1}}</div>
             <div class="mdui-panel-item-body">
 
                 <div class="mdui-panel" mdui-panel>
                     <div class="mdui-panel-item">
                     <div class="mdui-panel-item-header">项目简介</div>
                     <div class="mdui-panel-item-body">
-                        <p>空</p>
+                        <p>{{value2}}</p>
                     </div>
                     </div>
                 </div>
@@ -313,7 +310,7 @@
                     <div class="mdui-panel-item">
                     <div class="mdui-panel-item-header">运行环境</div>
                     <div class="mdui-panel-item-body">
-                        <p>空</p>
+                        <p>{{value3}}</p>
                     </div>
                     </div>
                 </div>
@@ -321,7 +318,7 @@
                     <div class="mdui-panel-item">
                     <div class="mdui-panel-item-header">项目功能</div>
                     <div class="mdui-panel-item-body">
-                        <p>空</p>
+                        <p>{{value4}}</p>
                     </div>
                     </div>
                 </div>
@@ -329,7 +326,7 @@
                     <div class="mdui-panel-item">
                     <div class="mdui-panel-item-header">核心流程</div>
                     <div class="mdui-panel-item-body">
-                        <p>空</p>
+                        <p>{{value5}}</p>
                     </div>
                     </div>
                 </div>
@@ -337,7 +334,7 @@
                     <div class="mdui-panel-item">
                     <div class="mdui-panel-item-header">相关链接</div>
                     <div class="mdui-panel-item-body">
-                        <p>空</p>
+                        <p>{{value6}}</p>
                     </div>
                     </div>
                 </div>
@@ -345,6 +342,7 @@
             </div>
             </div>
         </div>
+        {{/PROJECT}}
 
         <div class="mdui-divider-dark" style="height: 10px"></div>
         <div class="mdui-card" style="overflow-y: auto;height: 700px">
@@ -410,10 +408,12 @@
         <from action="set_cgi" method="POST" style="position: relative;left: 5%;top: 50px">
         <lable>选择多个项目进行展示：</lable><br>
         {{#SETPROJ}}
-        <input tyep="checkbox" name="check" value="{{value1}}" />
+        <lable>{{value1}}</lable><input type="checkbox" name="check" value="{{value1}}" /><br>
+        <lable>test</lable><input type="checkbox" name="check" value="test" /><br>
         {{/SETPROJ}}
         </from>
         <br>
+        <lable style="position: relative;left: 5%;top: 50px">{{SETMESS}}</lable><br>
         <input style="position: relative;left: 5%;top: 50px" type="button" id="Doset" value="确定">
     </div>
     </div>

@@ -26,7 +26,7 @@ const char* project_update4 = "update %s set message=\"%s\" where func=\"%s\";";
 const char* project_update5 = "update %s set message=\"%s\" where flow=\"%s\";";
 const char* project_update6 = "update %s set message=\"%s\" where url=\"%s\";";
 const char* set_create="create table %s(title varchar(50) ,class varchar(50)) charset=utf8 collate=utf8_bin;";
-const char* set_insert="insert into %s value(\"%s\",\"%s\");";
+const char* set_insertx="insert into %s value(\"%s\",\"%s\");";
 const char* set_delete = "drop table %s;";
 const char* set_select = "select * from %s;";
 const char* cookie_insert = "insert into cookie(name,sessid) value(\"%s\", \"%s\");";
@@ -144,7 +144,7 @@ bool setinsert(const char* value1,const char* value2,const char* value3)
     conn.connect(DATEBASE_NAME5, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
-    sprintf((char*)str_Insert,set_insert,value1,value2,value3);
+    sprintf((char*)str_Insert,set_insertx,value1,value2,value3);
     Query query = conn.query(str_Insert);
     return  query.exec();
 }
@@ -214,7 +214,7 @@ bool userupdate(const char* username,const char* password)
     conn.connect(DATEBASE_NAME1, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
     char str_Insert[DATA_BUF_SIZE] = {0};
     memset(str_Insert, 0, DATA_BUF_SIZE);
-    sprintf((char*)str_Insert,str_updatemessage,password,username);
+    sprintf((char*)str_Insert,user_update,password,username);
     Query query = conn.query(str_Insert);
     return  query.exec();
 }
@@ -302,7 +302,7 @@ bool userselect(const char* username)
 }
 
 //查密码密码是否正确
-bool selectpassword(const char* username,const char* password)
+bool userselectpass(const char* username,const char* password)
 {
     Connection conn(false);
     conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
@@ -431,7 +431,7 @@ std::vector<std::vector<std::string> > noteselect(const char* tablename){
     return v;
 }
 //查项目内容
-std::vector<std::vector<std::string> > noteselect(const char* tablename){
+std::vector<std::vector<std::string> > projectselect(const char* tablename){
     Connection conn(false);
     conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME4, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
@@ -455,7 +455,7 @@ std::vector<std::vector<std::string> > noteselect(const char* tablename){
     return v;
 }
 //查设置内容
-std::vector<std::vector<std::string> > noteselect(const char* tablename){
+std::vector<std::vector<std::string> > setselect(const char* tablename){
     Connection conn(false);
     conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
     conn.connect(DATEBASE_NAME5, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
