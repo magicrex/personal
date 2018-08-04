@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -15,9 +16,9 @@
             processData: false,
             contentType: false
             }).done(function(res){
-                    document.writeln(res);
+                    document.write(res);
                     }).fail(function(res){
-                        document.writeln(res);
+                        document.write(res);
                             });
         }
     </script>
@@ -94,10 +95,10 @@
     </script>
     <script>
         function Addstu(){
-            var mess21=$("#mess21").val();
-            var mess22=$("#mess22").val();
-            var mess23=$("#mess23").val();
-            var mess24=$("#mess24").val();
+            var mess21=$("#mess21").val;
+            var mess22=$("#mess22").val;
+            var mess23=$("#mess23").val;
+            var mess24=$("#mess24").val;
             var formdata=new FormData();
             formdata.append("title",mess21);
             formdata.append("message",mess22);
@@ -119,12 +120,12 @@
     </script>
     <script>
         function Addpro(){
-            var mess31=$("#mess31").val();
-            var mess32=$("#mess32").val();
-            var mess33=$("#mess33").val();
-            var mess34=$("#mess34").val();
-            var mess35=$("#mess35").val();
-            var mess36=$("#mess36").val();
+            var mess31=$("#mess31").val;
+            var mess32=$("#mess32").val;
+            var mess33=$("#mess33").val;
+            var mess34=$("#mess34").val;
+            var mess35=$("#mess35").val;
+            var mess36=$("#mess36").val;
             var formdata=new FormData();
             formdata.append("pro_title",mess31);
             formdata.append("pro_message",mess32);
@@ -147,15 +148,15 @@
         }
     </script>
         <script>
-        function doset(){
+        $("#Doset").click(function(){
             var checkID = [];
+            $("input[name='check']:checked").each(function(i){
+              checkID[i] =$(this).val();
+             });
             var resu=$("#setresu").val();
              var formdata=new FormData();
             formdata.append("setresu",resu);
-            $("input[name='check']:checked").each(function(i){
-              checkID[i] =$(this).val();
-            formdata.append("setproj",checkID[i]);
-             });
+            formdata.append("setproj",checkID);
             $.ajax({
             url: 'set_cgi',
             type: 'POST',
@@ -168,7 +169,7 @@
                     }).fail(function(res){
                         document.writeln(res);
                             });
-        }
+        })
 
     </script>
 <title>{{USERNAME}}的主页</title>
@@ -176,7 +177,7 @@
 <body>
 <div class="mdui-panel mdui-panel-popout" mdui-panel>
 
-  <div class="mdui-panel-item">
+  <div class="mdui-panel-item mdui-panel-item-open">
     <div class="mdui-panel-item-header">
     <div class="mdui-panel-item-title">个人简历</div>
     <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
@@ -273,20 +274,20 @@
         <from>
         <lable style="font-weight: 400">添加一个链接:</lable>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">标题</label>
-                <textarea  id="mess21" Class="mdui-textfield-input"></textarea>
+              <label id="mess21" class="mdui-textfield-label">标题</label>
+                <textarea Class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">简介</label>
-                <textarea id="mess22" class="mdui-textfield-input"></textarea>
+              <label id="mess22" class="mdui-textfield-label">简介</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">分类</label>
-                <textarea id="mess23" class="mdui-textfield-input"></textarea>
+              <label id="mess23" class="mdui-textfield-label">分类</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">链接</label>
-                <textarea id="mess24" class="mdui-textfield-input"></textarea>
+              <label id="mess24" class="mdui-textfield-label">链接</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <button id="addstu" class="mdui-btn mdui-ripple" style="margin-left: 90%" onclick="Addstu()">确定</button>
         </from>
@@ -371,28 +372,28 @@
         <from>
         <lable style="font-weight: 400">添加一个项目:</lable>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">项目名称</label>
-                <textarea id="mess31" Class="mdui-textfield-input"></textarea>
+              <label id="mess31" class="mdui-textfield-label">项目名称</label>
+                <textarea Class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">项目简介</label>
-                <textarea id="mess32" class="mdui-textfield-input"></textarea>
+              <label id="mess32" class="mdui-textfield-label">项目简介</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">运行环境</label>
-                <textarea id="mess33" class="mdui-textfield-input"></textarea>
+              <label id="mess33" class="mdui-textfield-label">运行环境</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">项目功能</label>
-                <textarea id="mess34" class="mdui-textfield-input"></textarea>
+              <label id="mess34" class="mdui-textfield-label">项目功能</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">核心流程</label>
-                <textarea id="mess35" class="mdui-textfield-input"></textarea>
+              <label id="mess35" class="mdui-textfield-label">核心流程</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <div class="mdui-textfield">
-              <label class="mdui-textfield-label">相关链接</label>
-                <textarea id="mess36" class="mdui-textfield-input"></textarea>
+              <label id="mess36" class="mdui-textfield-label">相关链接</label>
+                <textarea class="mdui-textfield-input"></textarea>
         </div>
         <button id="addpro" class="mdui-btn mdui-ripple" style="margin-left: 90%" onclick="Addpro()">确定</button>
         </from>
@@ -434,12 +435,12 @@
         <lable>选择多个项目进行展示：</lable><br>
         {{#SETPROJ}}
         <lable>{{value1}}</lable><input type="checkbox" name="check" value="{{value1}}" /><br>
+        <lable>test</lable><input type="checkbox" name="check" value="test" /><br>
         {{/SETPROJ}}
         </from>
         <br>
         <lable style="position: relative;left: 5%;top: 50px">{{SETMESS}}</lable><br>
-        <input style="position: relative;left: 5%;top: 50px" type="button" value="确定" id="Doset" onclick="doset()">
-
+        <input style="position: relative;left: 5%;top: 50px" type="button" id="Doset" value="确定">
     </div>
     </div>
     </div>

@@ -4,7 +4,7 @@ BASE=-std=c++11 -lboost_system -lboost_filesystem
 DATA1=-I/usr/include/mysql -I/usr/local/include/mysql++ 
 DATA2=-L/usr/lib64/mysql -lmysqlpp -lmysqlclient -lnsl -lm
 TEMP=-lctemplate -lpthread
-all:httpserver login_cgi regist_cgi update_cgi upfile_cgi delfile_cgi modimess_cgi
+all:httpserver login_cgi regist_cgi update_cgi upfile_cgi delfile_cgi modimess_cgi addstu_cgi addpro_cgi
 
 httpserver:httpserver.cpp  httpserver_main.cpp
 	g++ $^ -o $@ $(BASE) -lpthread $(DATA1) $(DATA2) -g
@@ -30,8 +30,14 @@ delfile_cgi:delfile_cgi.cpp
 modimess_cgi:modimess_cgi.cpp
 	g++ $^ -o $@ $(BASE) $(DATA1) $(DATA2) $(TEMP) -lboost_regex -g
 	cp modimess_cgi ./wwwroot/modimess_cgi
+addstu_cgi:addstu_cgi.cpp
+	g++ $^ -o $@ $(BASE) $(DATA1) $(DATA2) $(TEMP) -lboost_regex -g
+	cp addstu_cgi ./wwwroot/addstu_cgi
+addpro_cgi:addpro_cgi.cpp
+	g++ $^ -o $@ $(BASE) $(DATA1) $(DATA2) $(TEMP) -lboost_regex -g
+	cp addpro_cgi ./wwwroot/addpro_cgi
 .PHONY:clean
 clean:
-	rm -f httpserver login_cgi regist_cgi update_cgi upfile_cgi delfile_cgi modimess_cgi
+	rm -f httpserver login_cgi regist_cgi update_cgi upfile_cgi delfile_cgi modimess_cgi addstu_cgi addpro_cgi
 	rm -f ./wwwroot/login_cgi ./wwwroot/regist_cgi ./wwwroot/update_cgi ./wwwroot/upfile_cgi delfile_cgi modimess_cgi
-	rm -f ./wwwroot/delfile_cgi ./wwwroot/modimess_cgi
+	rm -f ./wwwroot/delfile_cgi ./wwwroot/modimess_cgi ./wwwroot/addstu_cgi ./wwwroot/addpro_cgi

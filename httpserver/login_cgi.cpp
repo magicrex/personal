@@ -120,7 +120,7 @@ bool loginfun(std::string username){
         p->SetValue("value3",table3[i][2].c_str());
         p->SetValue("value4",table3[i][3].c_str());
         p->SetValue("value5",table3[i][4].c_str());
-        p->SetValue("value6",table3[i][4].c_str());
+        p->SetValue("value6",table3[i][5].c_str());
     }
     if(1){
        dict.ShowSection("PROJECT"); 

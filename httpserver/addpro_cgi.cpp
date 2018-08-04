@@ -144,7 +144,7 @@ void Info(std::string username,const char* message){
     dict.SetValue("SETMESS","将根据你的设置进行展示内容");
 
     //将所有内容输出到标准输出
-    ctemplate::Template* tpl = ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/note_cgi.tpl",ctemplate::DO_NOT_STRIP);
+    ctemplate::Template* tpl = ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/project_cgi.tpl",ctemplate::DO_NOT_STRIP);
     std::string output;
     tpl->Expand(&output,&dict);
     HttpResponse(output);
@@ -253,15 +253,33 @@ int main(){
         title.pop_back();
         title.pop_back();
         std::string message(output[1]);
-        std::string classn(output[2]);
-        std::string urln(output[3]);
-        if(noteinsert(username.c_str(),title.c_str(),message.c_str(),classn.c_str(),urln.c_str())){
-            Info(username.c_str(),"无");
-            return 0;
+        std::string envn(output[2]);
+        std::string funcn(output[3]);
+        std::string flown(output[4]);
+        std::string urln(output[5]);
+        if(projectinsert(username.c_str(),title.c_str(),message.c_str(),envn.c_str())){
+            if(projectupdate4(username.c_str(),title.c_str(),funcn.c_str())){
+                if(projectupdate5(username.c_str(),title.c_str(),flown.c_str())){
+                    if(projectupdate6(username.c_str(),title.c_str(),urln.c_str())){
+                        Error(urln.c_str());
+                        //Info(username.c_str(),"无");
+                        return 0;
+                    }else{
+                        Error("project 数据库 未知错误");
+                        return 0;
+                    }
+                }else{
+                    Error("project 数据库 未知错误");
+                    return 0;
+                }
+            }else{
+                Error("project 数据库 未知错误");
+                return 0;
+            }
         }else{
-            Error("note 数据库 未知错误");
+            Error("project 数据库 未知错误");
             return 0;
-        }
-    }
+        }            
+    } 
     return 0;
 }
