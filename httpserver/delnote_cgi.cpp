@@ -97,7 +97,7 @@ void Info(std::string username,const char* message){
     
     }
 
-    dict.SetValue("DELNMESS","建议保存之后，再删除内容");
+    dict.SetValue("DELNMESS","删除成功");
 
     //项目练习模块
     for(int i=0;i<len3;i++){
@@ -141,10 +141,10 @@ void Info(std::string username,const char* message){
        dict.ShowSection("SETPROJ"); 
     }
 
-    dict.SetValue("SETMESS","设置成功");
+    dict.SetValue("SETMESS","将根据你的设置进行展示内容");
 
     //将所有内容输出到标准输出
-    ctemplate::Template* tpl = ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/set_cgi.tpl",ctemplate::DO_NOT_STRIP);
+    ctemplate::Template* tpl = ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/note_cgi.tpl",ctemplate::DO_NOT_STRIP);
     std::string output;
     tpl->Expand(&output,&dict);
     HttpResponse(output);
@@ -211,14 +211,6 @@ int main(){
         boundry="--"+boundry;
     }
 
-    if(!setdelete(username.c_str())){
-        Error("未知数据表");
-        return 0;
-    }
-    if(!setcreate(username.c_str())){
-        Error("数据表创建失败");
-        return 0;
-    }
     //读取文件内容
     std::string cachepath("./wwwroot/cache/");
     cachepath=cachepath+sessid;
@@ -257,37 +249,16 @@ int main(){
             }
             output.push_back(tmp);
         }
-        int outlen=output.size();
-        for(int i=0;i<outlen;i++){
-            if(i==0){
-                output[0].pop_back();
-                output[0].pop_back();
-                if(setinsert(username.c_str(),output[0].c_str(),"resume")){
-                    
-                }else{
-                    std::stringstream ss;
-                    ss<<i;
-                    ss<<"set 数据库 未知错误";
-                    Error(ss.str().c_str());
-                    return 0;
-                }
-            }else{
-                output[i].pop_back();
-                output[i].pop_back();
-                if(setinsert(username.c_str(),output[i].c_str(),"project")){
-                    
-                }else{
-                    std::stringstream ss;
-                    ss<<i;
-                    ss<<"set 数据库 未知错误";
-                    ss<<output[i].c_str();
-                    Error(ss.str().c_str());
-                    return 0;
-                }
-            }
+        std::string title(output[0]);
+        title.pop_back();
+        title.pop_back();
+        if(notedelete(username.c_str(),title.c_str())){
+            Info(username.c_str(),"删除成功");
+            return 0;
+        }else{
+            Error("note 数据库 未知错误");
+            return 0;
         }
-        Info(username.c_str(),"设置成功");
-        return 0;
     }
     return 0;
 }

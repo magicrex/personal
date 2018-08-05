@@ -1,24 +1,28 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/mdui.css">
-<script src="js/mdui.js"></script>
+<link rel="stylesheet" href="css/mdui.min.css">
+<script src="js/mdui.min.js"></script>
 <script src="js/jquery-3.3.1.js"></script>
+<script>
+function LoadJs(){
+    console.log("123");
+}
+</script>
     <script>
     function Upfile(){
-        var data = new FormData($('#uploadForm')[0])
+        var data = new FormData($('#uploadForm')[0]);
         $.ajax({
             url: 'upfile_cgi',
             type: 'POST',
             cache: false,
             data: data,
             processData: false,
-            contentType: false
-            }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success:function (resp){
+                $("#upmess").html('123');
+            }
+            })
         }
     </script>
     <script>
@@ -58,7 +62,7 @@
         function Deleteproj(){
             var data=$("#delproj").val();
             $.ajax({
-            url: 'delproj',
+            url: 'delproj_cgi',
             type: 'POST',
             data: data,
             cache: false,
@@ -173,10 +177,10 @@
     </script>
 <title>{{USERNAME}}的主页</title>
 </head>
-<body>
+<body onload="LoadJs()">
 <div class="mdui-panel mdui-panel-popout" mdui-panel>
 
-  <div class="mdui-panel-item">
+  <div class="mdui-panel-item" id="card1"> 
     <div class="mdui-panel-item-header">
     <div class="mdui-panel-item-title">个人简历</div>
     <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
@@ -207,7 +211,7 @@
     <form action="upfile_cgi" method="post" id="uploadForm" enctype="multipart/form-data" style="position: relative;left: 5%;top: 20px" >
         <label >添加一个新简历：</label><br>
         <input id="file" type="file" name="file"/><br>
-        <label >{{UPMESS}}</label><br>
+        <label id="upmess">{{UPMESS}}</label><br>
         <button id="upload" type="button" onclick="Upfile()" >确定</button><br>
         </form>
     <br>

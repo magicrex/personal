@@ -1,8 +1,6 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-//认为前n个元素已经有序
-//从前扫描将元素放到合适的位置
 void shellsort(vector<int>& array){
     int len=array.size();
     int dis=len/2;

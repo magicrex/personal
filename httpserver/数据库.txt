@@ -1,0 +1,66 @@
+使用六个数据库
+第一个数据库user 有一张表存放所有用户信息
+创建create database user;
+创建表message 既用户信息表
+create table message(username varchar(20) primary key,password varchar(20) not null) charset=utf8 collate utf8_bin;
+增加用户：
+insert into message value('message','fuxing');
+查询用户，根据用户名：
+select * from message where username='root';
+修改用户密码：
+update message set password='l' where username='root';
+
+
+第二个数据库resume用来为每个用户建立一个同名的数据表进行存放个人简历
+create database resume;
+创建表：
+create table root(title varchar(30) primary key,url varchar(100) not null,message varchar(100), data TimeStamp) charset=utf8 collate utf8_bin;
+插入数据：
+insert into root(title,url,message) values('test.pdf','http://192.168.16.131:9090/Allfile/root/test.pdf','无');
+查询：
+select * from root;
+删除：
+delete from root where title='test.pdf';
+改：
+update root set message='有' where title='test.pdf';
+
+第三个数据库note用来存放笔记链接
+create database note;
+创建：
+create table root(title varchar(30) primary key,url varchar(100) not null,message varchar(100),class varchar(10) not null, data TimeStamp) charset=utf8 collate utf8_bin;
+增加：
+insert into root(title,url,message,class) values('test','http://sdfddsf','无','c++');
+删除：
+delete from root where title='test';
+查：
+select * from root order by class;
+使用class排序
+
+
+第四个数据库project用来存放项目
+create database project;
+创建：项目名称，项目简介，项目环境，项目功能，项目流程，项目链cc接
+create table root(title varchar(50) primary key,message text,env varchar(50),func text,flow text,url text) charset=utf8 collate=utf8_bin;
+插入
+insert into root value('test','message','dfjdkfj','fdsfsdafsdaf','fasdfsadf','fsadfasdfdsa');
+删除：
+delete from root where title='test';
+查询：select * from root;
+
+第五个数据库用来存放要展示的内容set
+create database myset;
+创建表
+create table root(title varchar(50) ,class varchar(50)) charset=utf8 collate=utf8_bin;
+删除表
+drop table root;
+插入：
+insert into root value('test.pdf','resume');
+
+第六个数据库用来存放cookie
+create database cookie;
+创建：
+create table cookie(name varchar(50) not null,sessid varchar(50) primary key,data TimeStamp,flag int) charset=utf8 collate utf8_bin;
+查询：
+insert into cookie(name,sessid) value('    ','   ');
+修改:
+update cookie set flag = 0  where name = '   ';

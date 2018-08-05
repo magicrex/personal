@@ -39,7 +39,7 @@ const char* cookie_update = "update cookie set flag = 0  where name = \"%s\";";
 #define DATEBASE_NAME2 "resume"
 #define DATEBASE_NAME3 "note"
 #define DATEBASE_NAME4 "project"
-#define DATEBASE_NAME5 "set"
+#define DATEBASE_NAME5 "myset"
 #define DATEBASE_NAME6 "cookie"
 #define DATEBASE_IP "127.0.0.1"
 #define DATEBASE_USERNAME "root"
