@@ -19,8 +19,8 @@ function LoadJs(){
             data: data,
             processData: false,
             contentType: false,
-            success:function (resp){
-                $("#upmess").html('123');
+            success: function(resp){
+                $("#card1").html(resp);
             }
             })
         }
@@ -33,12 +33,11 @@ function LoadJs(){
             type: 'DELETE',
             cache: false,
             processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success: function(resp){
+                $("#card1").html(resp);
+            }
+            })
         }
     </script>
     <script>
@@ -50,12 +49,11 @@ function LoadJs(){
             data: date,
             cache: false,
             processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success:function (resp){
+                $("#card2").html(resp);
+            }
+         })
         }
     </script>
     <script>
@@ -67,12 +65,11 @@ function LoadJs(){
             data: data,
             cache: false,
             processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success:function (resp){
+                $("#card3").html(resp);
+            }
+        })
         }
     </script>
     <script>
@@ -88,12 +85,11 @@ function LoadJs(){
             cache: false,
             data: formdata,
             processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success:function (resp){
+                $("#card1").html(resp);
+            }
+        })
         }
     </script>
     <script>
@@ -113,12 +109,11 @@ function LoadJs(){
             cache: false,
             data: formdata,
             processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success:function (resp){
+                $("#card2").html(resp);
+            }
+        })
         }
     </script>
     <script>
@@ -142,12 +137,11 @@ function LoadJs(){
             cache: false,
             data: formdata,
             processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success:function (resp){
+                $("#card3").html(resp);
+            }
+        })
         }
     </script>
         <script>
@@ -166,12 +160,11 @@ function LoadJs(){
             cache: false,
             data: formdata,
             processData: false,
-            contentType: false
-                   }).done(function(res){
-                    document.writeln(res);
-                    }).fail(function(res){
-                        document.writeln(res);
-                            });
+            contentType: false,
+            success:function (resp){
+                $("#card4").html(resp);
+            }
+        })
         }
 
     </script>
@@ -223,7 +216,7 @@ function LoadJs(){
         {{/DELFILE}}
         </select><br>
         <label >{{DELFMESS}}</label><br>
-        <input type="button" value="删除" name="delf" onclick="Deletefile()" >
+        <button type="button" onclick="Deletefile()" >删除</button><br>
     </from>
     <br>
     <from action="modimess_cgi" method="post" id="amessage" name="amessage" style="position: relative;left: 5%;top: 100px">
@@ -237,14 +230,14 @@ function LoadJs(){
             <textarea id="xmessage" name="xmessage" rows="3" cols="30" > 
             </textarea><br>
         <label>{{MESSMESS}}</label><br>
-        <input type="button" value="修改" name="modim" onclick="Modimess()">
+        <button type="button" onclick="Modimess()">修改</button>
     </from>
     </div>
       
     </div>
   </div>
   
-  <div class="mdui-panel-item">
+  <div class="mdui-panel-item" id="card2">
     <div class="mdui-panel-item-header">
     <div class="mdui-panel-item-title">学习笔记</div>
     <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
@@ -275,7 +268,7 @@ function LoadJs(){
     <div class="mdui-divider-dark" style="height: 10px"></div>
     <div class="mdui-card" style="overflow-y: auto;height: 550px">
         <from>
-        <lable style="font-weight: 400">添加一个链接:</lable>
+        <lable style="font-weight: 400">添加一个链接:{{ADDNOTE}}</lable>
         <div class="mdui-textfield">
               <label class="mdui-textfield-label">标题</label>
                 <textarea  id="mess21" Class="mdui-textfield-input"></textarea>
@@ -292,7 +285,7 @@ function LoadJs(){
               <label class="mdui-textfield-label">链接</label>
                 <textarea id="mess24" class="mdui-textfield-input"></textarea>
         </div>
-        <button id="addstu" class="mdui-btn mdui-ripple" style="margin-left: 90%" onclick="Addstu()">确定</button>
+        <button type="button" id="addstu" style="margin-left: 90%" onclick="Addstu()">确定</button>
         </from>
         <br>
         <br>
@@ -305,13 +298,13 @@ function LoadJs(){
         {{/DELNOTE}}
         </select><br>
         <label >{{DELNMESS}}</label><br>
-        <input type="button" value="删除" name="deln" onclick="Deletenote()" >
+        <button type="button" onclick="Deletenote()" >删除</button>
     </from>
     </div>
     </div>
   </div>
    
-  <div class="mdui-panel-item">
+  <div class="mdui-panel-item" id="card3">
     <div class="mdui-panel-item-header">
     <div class="mdui-panel-item-title">项目练习</div>
     <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
@@ -373,7 +366,7 @@ function LoadJs(){
         <div class="mdui-divider-dark" style="height: 10px"></div>
         <div class="mdui-card" style="overflow-y: auto;height: 700px">
         <from>
-        <lable style="font-weight: 400">添加一个项目:</lable>
+        <lable style="font-weight: 400">添加一个项目:{{ADDPROJ}}</lable>
         <div class="mdui-textfield">
               <label class="mdui-textfield-label">项目名称</label>
                 <textarea id="mess31" Class="mdui-textfield-input"></textarea>
@@ -398,7 +391,7 @@ function LoadJs(){
               <label class="mdui-textfield-label">相关链接</label>
                 <textarea id="mess36" class="mdui-textfield-input"></textarea>
         </div>
-        <button id="addpro" class="mdui-btn mdui-ripple" style="margin-left: 90%" onclick="Addpro()">确定</button>
+        <button id="addpro" type="button" onclick="Addpro()">确定</button>
         </from>
         <br>
         <br>
@@ -410,13 +403,13 @@ function LoadJs(){
         {{/DELPROJ}}
         </select><br>
         <label >{{DELPMESS}}</label><br>
-        <input type="button" value="删除" name="delp" onclick="Deleteproj()" >
+        <button type="button" onclick="Deleteproj()" >删除</button>
     </from>
     </div>
     </div>
     </div>
     
-    <div class="mdui-panel-item">
+    <div class="mdui-panel-item" id="card4">
     <div class="mdui-panel-item-header">
     <div class="mdui-panel-item-title">设置显示</div>
     <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
@@ -442,7 +435,7 @@ function LoadJs(){
         </from>
         <br>
         <lable style="position: relative;left: 5%;top: 50px">{{SETMESS}}</lable><br>
-        <input style="position: relative;left: 5%;top: 50px" type="button" value="确定" id="Doset" onclick="doset()">
+        <button style="position: relative;left: 5%;top: 50px" type="button" onclick="doset()">确定</button>
 
     </div>
     </div>

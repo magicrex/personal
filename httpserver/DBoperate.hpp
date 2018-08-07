@@ -13,7 +13,8 @@ const char* resume_create="create table %s(title varchar(30) primary key,url var
 const char* resume_insert="insert into %s(title,url,message) values(\"%s\",\"%s\",\"%s\");";
 const char* resume_delete = "delete from %s where title = \"%s\";";
 const char* resume_select = "select * from %s;";
-const char* resume_selectfile = "select * from %s where title=%s;";
+const char* resume_selectfile = "select * from %s where title=\"%s\";";
+const char* resume_selecturl = "select url from %s where title=\"%s\";";
 const char* resume_update = "update %s set message=\"%s\" where title=\"%s\";";
 const char* note_create="create table %s(title varchar(30) primary key,url varchar(100) not null,message varchar(100),class varchar(10) not null, data TimeStamp) charset=utf8 collate utf8_bin;";
 const char* note_insert="insert into %s(title,url,message,class) values(\"%s\",\"%s\",\"%s\",\"%s\");";
@@ -432,6 +433,28 @@ std::vector<std::vector<std::string> > resumeselect(const char* tablename){
         v.push_back(tmp);
     }
     return v;
+}
+//查简历url
+std::string resumeselecturl(const char* tablename,const char* title){
+    Connection conn(false);
+    conn.set_option(new mysqlpp::SetCharsetNameOption("UTF8"));
+    conn.connect(DATEBASE_NAME2, DATEBASE_IP, DATEBASE_USERNAME, DATEBASE_PWD);
+    char str_Insert[DATA_BUF_SIZE] = {0};
+    memset(str_Insert, 0, DATA_BUF_SIZE);
+    sprintf((char*)str_Insert,resume_selecturl,tablename,title);
+    std::cout<<str_Insert<<std::endl;
+    Query query = conn.query(str_Insert);
+    StoreQueryResult res=query.store();
+    mysqlpp::StoreQueryResult::const_iterator it;
+    std::stringstream ss;
+    for (it = res.begin(); it != res.end(); ++it) 
+    {
+            mysqlpp::Row row = *it;
+            ss << row[0];
+    }
+    std::string s;
+    s=ss.str();
+    return s;
 }
 
 //查笔记内容

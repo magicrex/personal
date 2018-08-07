@@ -1,4 +1,57 @@
-    <div class="mdui-panel-item-header">项目练习</div>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/mdui.min.css">
+<script src="js/mdui.min.js"></script>
+<title>{{USERNAME}}的主页</title>
+</head>
+<body >
+<div class="mdui-panel mdui-panel-popout" mdui-panel>
+
+  <div class="mdui-panel-item" id="card1"> 
+    <div class="mdui-panel-item-header">
+    <div class="mdui-panel-item-title">个人简历</div>
+    <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+    <embed width="800" height="600" src="{{FILEURL}}"></embed>        
+    </div>
+  </div>
+  
+  <div class="mdui-panel-item" id="card2">
+    <div class="mdui-panel-item-header">
+    <div class="mdui-panel-item-title">学习笔记</div>
+    <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+        <div class="mdui-table-fluid">
+        <table class="mdui-table">
+        <thead>
+            <th>标题</th>
+            <th>地址</th>
+            <th>简介</th>
+            <th>分类</th>
+        </thead>
+        {{#NOTES}}
+        <tbody>
+        <tr>
+            <td>{{value1}}</td>
+            <td>{{value2}}</td>
+            <td>{{value3}}</td>
+            <td>{{value4}}</td>
+        </tr>
+        </tbody>
+        {{/NOTES}}
+        </table>
+        </div>
+    </div>
+  </div>
+   
+  <div class="mdui-panel-item" id="card3">
+    <div class="mdui-panel-item-header">
+    <div class="mdui-panel-item-title">项目练习</div>
+    <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
     <div class="mdui-panel-item-body">
 
         {{#PROJECT}}
@@ -53,47 +106,8 @@
         </div>
         {{/PROJECT}}
 
-        <div class="mdui-divider-dark" style="height: 10px"></div>
-        <div class="mdui-card" style="overflow-y: auto;height: 700px">
-        <from>
-        <lable style="font-weight: 400">添加一个项目:{{ADDPROJ}}</lable>
-        <div class="mdui-textfield">
-              <label id="mess31" class="mdui-textfield-label">项目名称</label>
-                <textarea Class="mdui-textfield-input"></textarea>
         </div>
-        <div class="mdui-textfield">
-              <label id="mess32" class="mdui-textfield-label">项目简介</label>
-                <textarea class="mdui-textfield-input"></textarea>
-        </div>
-        <div class="mdui-textfield">
-              <label id="mess33" class="mdui-textfield-label">运行环境</label>
-                <textarea class="mdui-textfield-input"></textarea>
-        </div>
-        <div class="mdui-textfield">
-              <label id="mess34" class="mdui-textfield-label">项目功能</label>
-                <textarea class="mdui-textfield-input"></textarea>
-        </div>
-        <div class="mdui-textfield">
-              <label id="mess35" class="mdui-textfield-label">核心流程</label>
-                <textarea class="mdui-textfield-input"></textarea>
-        </div>
-        <div class="mdui-textfield">
-              <label id="mess36" class="mdui-textfield-label">相关链接</label>
-                <textarea class="mdui-textfield-input"></textarea>
-        </div>
-        <button id="addpro" class="mdui-btn mdui-ripple" style="margin-left: 90%" onclick="Addpro()">确定</button>
-        </from>
-        <br>
-        <br>
-        <from action="deproj_cgi" method="DELETE" style="position: relative;left: 5%;top: 50px">
-        <lable>需要删除的项目:</lable><br>
-        <select id="delproj"  name="delproj">
-        {{#DELPROJ}}
-        <option value="{{value1}}">{{value1}}</option>
-        {{/DELPROJ}}
-        </select><br>
-        <label >{{DELPMESS}}</label><br>
-        <input type="button" value="删除" name="delp" onclick="Deleteproj()" >
-    </from>
     </div>
-    </div>
+</div>
+</body>
+</html>

@@ -17,11 +17,10 @@ namespace httpserver{
         std::vector<std::string> output;
         StringUtil::Split(first_line," ",&output);
         if(output.size()!=3){
-            Log(ERROR)<<" first line loss"<<"\n";
+            LogToFile(ERROR)<<" first line loss"<<"\n";
             return -1;
         }
         *method=output[0];
-        Log(ERROR)<<"首行解析"<<*method<<"\n";
         *url=UrlUtil::deescapeURL(output[1]);
         return 1;
     }
@@ -41,11 +40,11 @@ namespace httpserver{
     int ParseHeadler(const std::string Headler_line , httpserver::Headlers* headler){
         size_t pos=Headler_line.find(':');
         if(pos==std::string::npos){
-            Log(ERROR)<< " Headlers error"<<Headler_line<<"\n";
+            LogToFile(ERROR)<< " Headlers error"<<Headler_line<<"\n";
             return -1;
         }
         if(pos+2>=Headler_line.size()){
-            Log(ERROR)<< " Headlers error"<<Headler_line<<"\n";
+            LogToFile(ERROR)<< " Headlers error"<<Headler_line<<"\n";
             return -1;
         }
         (*headler)[Headler_line.substr(0,pos)]
@@ -62,18 +61,18 @@ namespace httpserver{
         int ret =0;
         ret=FileUtil::Readline(context->socket_fd,&first_line);
         if(ret<0){
-            Log(ERROR)<<"requset Readline error"<<std::endl;
+            LogToFile(ERROR)<<"requset Readline error"<<std::endl;
             return -1;
         }
         ret = httpserver::Parseline(first_line,&req->method,&req->url);
         if(ret<0)
         {
-            Log(INFO)<<"request Parseline error"<< first_line<<std::endl;
+            LogToFile(INFO)<<"request Parseline error"<< first_line<<std::endl;
             return -1;
         }
         ret=httpserver::Parseurl(req->url,&req->url_argu,&req->url_path);
         if(ret<0){
-            Log(INFO)<<"request Parseurl error"<<req->url<<std::endl;
+            LogToFile(INFO)<<"request Parseurl error"<<req->url<<std::endl;
             return -1;
         }
         std::string headler_line;
@@ -84,7 +83,7 @@ namespace httpserver{
             }  
             ret=httpserver::ParseHeadler(headler_line,&req->headler);
             if(ret<0){
-                Log(ERROR)<<"ParseHeadler error"<<"\n";
+                LogToFile(ERROR)<<"ParseHeadler error"<<"\n";
                 return -1;
             }
         }
@@ -105,7 +104,7 @@ namespace httpserver{
                 int n=std::stoi((*it).second);
                 contlen=n;
             }else{
-                Log(ERROR)<<" request error"<<"\n";
+                LogToFile(ERROR)<<" request error"<<"\n";
                 return -1;
             }   
 
@@ -114,7 +113,7 @@ namespace httpserver{
                 std::vector<std::string> type;
                 StringUtil::Split(req->headler["Content-Type"],";",&type);
                 if(type.empty()){
-                    Log(ERROR)<<" request error"<<"\n";
+                    LogToFile(ERROR)<<" request error"<<"\n";
                     return -1;
                 }else{
                     if(type[0]=="application/x-www-form-urlencoded"){
@@ -129,16 +128,16 @@ namespace httpserver{
                             FileUtil::ReadNFile(context->socket_fd,contlen,cookie[1]);
                             return 1;
                         }else{
-                            Log(ERROR)<<" request error"<<"\n";
+                            LogToFile(ERROR)<<" request error"<<"\n";
                             return -1;
                         }
                     }else{
-                        Log(ERROR)<<" request error"<<type[0]<<"\n";
+                        LogToFile(ERROR)<<" request error"<<type[0]<<"\n";
                         return -1;
                     }
                 }
             }else{
-                Log(ERROR)<<" request error"<<"\n";
+                LogToFile(ERROR)<<" request error"<<"\n";
                 return -1;
             }   
         }else if(req->method=="DELETE"){
@@ -188,23 +187,17 @@ namespace httpserver{
         const Request* req=&context->request;
         Response* resp=&context->response;
 
-        Log(DEBUG)<<"method静态文件处理"<<"\n";
         std::string file_path;
         GetFilePath(req->url_path,&file_path);
-        Log(DEBUG)<<"method静态文件处理路径"<<file_path<<"\n";
         if((access(file_path.c_str(),F_OK))!=-1){
-        Log(DEBUG)<<"文件存在"<<file_path<<"\n";
             if((access(file_path.c_str(),X_OK))!=-1){
-                Log(DEBUG)<<"文件可执行"<<file_path<<"\n";
                 ProcessCGI(context);
                 return 1;
             }else{
-                Log(DEBUG)<<"文件不可执行"<<file_path<<"\n";
                 int ret=FileUtil::ReadAll(file_path,&resp->body);
                 return 1;
             }
         }else{
-            Log(ERROR)<<"文件不存在"<<file_path<<"\n";
             return -1;
         }
     }
@@ -258,13 +251,10 @@ namespace httpserver{
                 std::string file_path;
                 GetFilePath(req.url_path,&file_path);
                 if((access(file_path.c_str(),F_OK))!=-1){
-                    Log(DEBUG)<<"文件存在"<<file_path<<"\n";
                     if((access(file_path.c_str(),X_OK))==-1){
-                        Log(DEBUG)<<"文件不可执行"<<file_path<<"\n";
                         process404(context);
                     }
                 }else{
-                    Log(DEBUG)<<"不文件存在"<<file_path<<"\n";
                     process404(context);
                 }
                 env2="QUERY_STRING="+req.url_argu;
@@ -274,20 +264,17 @@ namespace httpserver{
                 dup2(child_read,0);
                 dup2(child_write,1);
                 if((execle(file_path.c_str(),file_path.c_str(),NULL,envp))==-1){
-                    Log(ERROR)<<"file_path:"<< file_path<<"\n";
-                    Log(ERROR)<<"execle error"<<"\n";
+                    LogToFile(ERROR)<<"file_path:"<< file_path<<"\n";
+                    LogToFile(ERROR)<<"execle error"<<"\n";
                 }
             }else if(req.method=="POST"){
                 std::string file_path;
                 GetFilePath(req.url_path,&file_path);
                 if((access(file_path.c_str(),F_OK))!=-1){
-                    Log(DEBUG)<<"文件存在"<<file_path<<"\n";
                     if((access(file_path.c_str(),X_OK))==-1){
-                        Log(DEBUG)<<"文件不可执行"<<file_path<<"\n";
                         process404(context);
                     }
                 }else{
-                    Log(DEBUG)<<"不文件存在"<<file_path<<"\n";
                     process404(context);
                 }
 
@@ -319,19 +306,19 @@ namespace httpserver{
                 dup2(child_read,0);
                 dup2(child_write,1);
                 if((execle(file_path.c_str(),file_path.c_str(),NULL,envp))==-1){
-                    Log(ERROR)<<"file_path:"<< file_path<<"\n";
-                    Log(ERROR)<<"execle error"<<"\n";
+                    LogToFile(ERROR)<<"file_path:"<< file_path<<"\n";
+                    LogToFile(ERROR)<<"execle error"<<"\n";
                 }
             }else if(req.method=="DELETE"){
                 env2="QUERY_STRING="+req.url_path;
-                Log(DEBUG)<<"参数"<<req.url_path<<"\n";
+                LogToFile(DEBUG)<<"参数"<<req.url_path<<"\n";
                 std::string del_path("./wwwroot/delfile_cgi");
                 std::string env3;
                 Headlers::const_iterator pos=req.headler.find("Cookie");
                 if(pos!=req.headler.end()){
                     env3="COOKIE"+pos->second;
                 }
-                Log(DEBUG)<<"路径"<<del_path<<"\n";
+                LogToFile(DEBUG)<<"路径"<<del_path<<"\n";
                 char * const envp[] = {const_cast<char*>(env1.c_str()),const_cast<char*>(env2.c_str()),\
                     const_cast<char*>(env3.c_str()), NULL};
                 close(father_read);
@@ -340,12 +327,12 @@ namespace httpserver{
                 dup2(child_write,1);
                 //程序替换，参数一是CGI的路径，参数二是CGI程序的参数，参数三必须是NULL
                 if((execle(del_path.c_str(),del_path.c_str(),NULL,envp))==-1){
-                    Log(ERROR)<<"file_path:"<< del_path<<"\n";
-                    Log(ERROR)<<"execle error"<<"\n";
+                    LogToFile(ERROR)<<"file_path:"<< del_path<<"\n";
+                    LogToFile(ERROR)<<"execle error"<<"\n";
                 }
 
             }else{
-                Log(DEBUG)<<"request error"<<"\n";
+                LogToFile(DEBUG)<<"request error"<<"\n";
                 process404(context);
             }
         }
@@ -369,7 +356,6 @@ END:
         Response* resp=&context->response;
         resp->state=200;
         resp->message="OK";
-        Log(DEBUG)<<"method"<<req->method<<"\n";
         if(req->method=="GET"){
             return ProcessStaticFile(context);
         }else if(req->method=="POST"){
@@ -377,7 +363,7 @@ END:
         }else if(req->method=="DELETE"){
             return ProcessCGI(context);
         }else{
-            Log(ERROR)<<"Unsupport Method"<< req->method <<"\n";  
+            LogToFile(ERROR)<<"Unsupport Method"<< req->method <<"\n";  
             return -1;
         }
         return 1;
@@ -452,7 +438,7 @@ END:
         int sockt_fd=socket(AF_INET,SOCK_STREAM,0);
         if(sockt_fd<0)
         {
-            Log(CAITICAL)<<"socket"<<std::endl;
+            LogToFile(CAITICAL)<<"socket"<<std::endl;
             return 2;
         }
         //给socket加一个参数使得文件描述符重用，不至于出现大量的timw_wait
@@ -466,13 +452,13 @@ END:
         int ret=bind(sockt_fd,(sockaddr*)&server_sock,sizeof(server_sock));
         if(ret<0)
         {
-            Log(CAITICAL)<<"bind"<<std::endl;
+            LogToFile(CAITICAL)<<"bind"<<std::endl;
             return 3;
         }
 
         if(listen(sockt_fd,5)<0)
         {
-            Log(CAITICAL)<<"listen"<<std::endl;
+            LogToFile(CAITICAL)<<"listen"<<std::endl;
             return 4;
         }
         while(1)
@@ -482,7 +468,7 @@ END:
             int client_socket_fd =accept(sockt_fd,(sockaddr*)&client_addr,&len);
             if(client_socket_fd<0)
             {
-                Log(INFO)<<"accept"<<std::endl;
+                LogToFile(INFO)<<"accept"<<std::endl;
                 continue;
             }
             pthread_t tid;

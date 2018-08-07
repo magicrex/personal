@@ -27,102 +27,15 @@ void Error(const char* str_error){
 void Info(std::string username,const char* message){
 
     std::vector<std::vector<std::string> > table1;
-    std::vector<std::vector<std::string> > table2;
     std::vector<std::vector<std::string> > table3;
     //将信息读到一个字符串数组中
     table1=resumeselect(username.c_str());
-    table2=noteselect(username.c_str());
     table3=projectselect(username.c_str());
     int len1=table1.size();
-    int len2=table2.size();
     int len3=table3.size();
     //开始将信息填入模板中
     ctemplate::TemplateDictionary dict("personal");
     //将姓名读入标题
-    dict.SetValue("USERNAME",username.c_str());
-    //字符串数组输出
-    //个人简历模块
-    for(int i=0;i<len1;i++){
-        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("RESUME");
-        p->SetValue("value1",table1[i][0].c_str());
-        p->SetValue("value2",table1[i][1].c_str());
-        p->SetValue("value3",table1[i][2].c_str());
-        p->SetValue("value4",table1[i][3].c_str());
-    }
-    if(1){
-       dict.ShowSection("RESUME"); 
-    }
-
-    dict.SetValue("UPMESS","请上传PDF格式的文件");
-
-    for(int i=0;i<len1;i++){
-        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("DELFILE");
-        p->SetValue("value1",table1[i][0].c_str());
-    }
-    if(1){
-       dict.ShowSection("DELFILE"); 
-    }
-
-    dict.SetValue("DELFMESS","建议下载之后，再删除文件");
-
-    for(int i=0;i<len1;i++){
-        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("MODIMESS");
-        p->SetValue("value1",table1[i][0].c_str());
-    }
-    if(1){
-       dict.ShowSection("MODIMESS"); 
-    }
-
-    dict.SetValue("MESSMESS","简介字数少于20个");
-
-    //学习笔记模块
-    for(int i=0;i<len2;i++){
-        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("NOTES");
-        p->SetValue("value1",table2[i][0].c_str());
-        p->SetValue("value2",table2[i][1].c_str());
-        p->SetValue("value3",table2[i][2].c_str());
-        p->SetValue("value4",table2[i][3].c_str());
-        p->SetValue("value5",table2[i][4].c_str());
-    }
-    if(1){
-       dict.ShowSection("NOTES"); 
-    }
-
-    for(int i=0;i<len2;i++){
-        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("DELNOTE");
-        p->SetValue("value1",table2[i][0].c_str());
-    }
-    if(1){
-       dict.ShowSection("DELNOTE"); 
-    
-    }
-
-    dict.SetValue("DELNMESS","建议保存之后，再删除内容");
-
-    //项目练习模块
-    for(int i=0;i<len3;i++){
-        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("PROJECT");
-        p->SetValue("value1",table3[i][0].c_str());
-        p->SetValue("value2",table3[i][1].c_str());
-        p->SetValue("value3",table3[i][2].c_str());
-        p->SetValue("value4",table3[i][3].c_str());
-        p->SetValue("value5",table3[i][4].c_str());
-        p->SetValue("value6",table3[i][5].c_str());
-    }
-    if(1){
-       dict.ShowSection("PROJECT"); 
-    }
-
-
-    for(int i=0;i<len3;i++){
-        ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("DELPROJ");
-        p->SetValue("value1",table3[i][0].c_str());
-    }
-    if(1){
-       dict.ShowSection("DELPROJ"); 
-    }
-
-    dict.SetValue("DELPMESS","建议保存之后，再删除内容");
 
     for(int i=0;i<len1;i++){
         ctemplate::TemplateDictionary* p=dict.AddSectionDictionary("SETRESU");
@@ -141,7 +54,7 @@ void Info(std::string username,const char* message){
        dict.ShowSection("SETPROJ"); 
     }
 
-    dict.SetValue("SETMESS","设置成功");
+    dict.SetValue("SETMESS",message);
 
     //将所有内容输出到标准输出
     ctemplate::Template* tpl = ctemplate::Template::GetTemplate("/home/master/Git/httpserver/wwwroot/set_cgi.tpl",ctemplate::DO_NOT_STRIP);
