@@ -1,0 +1,4 @@
+Log file created at: 2018/08/09 18:56:07
+Running on machine: localhost.localdomain
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W0809 18:56:07.905999 19730 test.cpp:9] thisis the 1st warning!

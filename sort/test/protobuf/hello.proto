@@ -1,0 +1,22 @@
+
+//指定版本2或者3
+syntax ="proto2";
+//打包，c++会生成类似命名空间
+package hello;
+//定义一个数据格式
+message Request{
+    //修饰限定符：必须 类型会映射到不同语言的类型 字段名 字段标识符1-15一个字节 其他两个字节
+    required string method = 1;
+    required string url = 2;
+    //嵌套使用
+    message Healder{
+        required string key = 1;
+        required string value = 2;
+    }
+    required string data = 3;
+}
+
+message Response{
+    required int32  status = 1;
+    required string data = 2;
+}
