@@ -2,6 +2,7 @@
 #include<vector>
 #include<unordered_map>
 #include"index.pb.h"
+#include<cppjieba/Jieba.hpp>
 namespace doc_index{
 
 typedef doc_index_proto::DocInfo DocInfo;
@@ -10,6 +11,16 @@ typedef std::vector<DocInfo> ForWardIndex;
 typedef std::vector<Weight> InvertedList;
 typedef std::unordered_map<std::string,InvertedList> InvertedIndex;
 
+
+struct WordCnt{
+    int title_cnt;
+    int content_cnt;
+    int first_pos;
+
+    WordCnt():title_cnt(0),content_cnt(0),first_pos(-1) {}
+};
+
+typedef std::unordered_map<std::string,WordCnt>  WordCntMap;
 //a.构建，raw_input中的相关内容进行解析在内存中构造出索引结构(hash
 //b,保存，把内存中的索引结构进行序列化，存在文件中，序列化依赖于刚才的index.proto 制作索引的
 //可执行程序来调用保存
@@ -50,7 +61,13 @@ public:
 private:
     ForWardIndex forward_index_;
     InvertedIndex inverted_index_;
-    
+    cppjieba::Jieba jieba_;
+    //以下为具体每步函数
+    const DocInfo* BuildForward(const std::string& line);
+    void BuildInverted(const DocInfo& doc_info);
+    void SortInverted();
+    void SplitTitle(const std::string& title,DocInfo* doc_info);
+    void SplitContent(const std::string& content,DocInfo* doc_info);
     static Index* inst_;
 };//end Index
 

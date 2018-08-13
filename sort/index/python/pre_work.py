@@ -1,14 +1,14 @@
 #coding:utf-8
 import os
-import sys
 import re
 from bs4 import BeautifulSoup
+import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 input_path='../data/input/'
 output_path='../data/tmp/raw_input'
-url_prefix= 'https://www.boost.org/doc/libs/1_53_0/doc/'
+url_prefix= 'http://www.cplusplus.com/reference/'
 
 
 ##过滤HTML中的标签
@@ -65,32 +65,32 @@ def replaceCharEntity(htmlstr):
     return htmlstr
 
 
-def enum_file(input_path):
+def enum_file(input_path,filelist):
     '枚举目录中的所有子目录和文件'
-    file_list = []
-    for basedir,dirnames,filenames in os.walk(input_path):
-        for f in filenames:
-            if os.path.splitext(f)[-1] == '.html':
-            #只关注扩展名为html的文件
-                continue
-            file_list.append(dirnames + '/' + f)
-    return file_list
+    fs = os.listdir(input_path)
+    for f1 in fs:
+        tmp_path = os.path.join(input_path,f1)
+        if not os.path.isdir(tmp_path):
+            filelist.append(tmp_path)
+            return filelist
+        else:
+            enum_file(tmp_path,filelist)
 
 def parse_url(file_path):
     #切片操作
     return url_prefix + file_path[len(input_path):]
 
-def parse_title(html):
-    soup = BeautifulSoup(html,'html.parser')
-    return soup.find('title'),string
+def parse_title(file_path):
+    t = file_path.split('/')
+    return t[-2]
 
-def parse_content():
+def parse_content(html):
     return filter_tags(html)
 
 def parse_file(file_path):
     '得到的结果是一个三元组：jump_url，title,content'
     html = open(file_path).read()
-    return parse_url(file_path),parse_title(html),parse_content(html)
+    return parse_url(file_path),parse_title(file_path),parse_content(html)
 
 def write_result(result,output_file):
     '把三元组当做一行写入到一个输出文件中'
@@ -100,13 +100,15 @@ def write_result(result,output_file):
 def run():
     '预处理操作的入口'
     #1.遍历 input_path所有文件和路径
-    file_list = enum_file(input_path)
+    file_list = []
+    enum_file(input_path,file_list)
     with open(output_path,'w') as output_file:
         #2.针对每一个文件，解析其中的内容
         for f in file_list:
             result = parse_file(f)
         #3.内容写入到最终的输出结果中
             write_result(result,output_file)
+    print "end"
 
 if __name__=='__main__':
     run()

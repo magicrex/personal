@@ -15,13 +15,14 @@ message DocInfo{
     required string show_url = 4;
     required string jump_url = 5;
     //以下两个字段，把标题的分词结果存起来
-    required Pair title_token = 6;
-    required Pair content_token = 7;
+    repeated Pair title_token = 6;
+    repeated Pair content_token = 7;
 };
 
 message Weight{
     required uint64 doc_id = 1;
     required int32 weight = 2;
+    required int32 first_pos = 3;
 };
 
 message KwdInfo{
@@ -33,5 +34,5 @@ message KwdInfo{
 message Index{
     //包含了正排索引和倒排索引
     repeated DocInfo forward_index = 1;
-    required KwdInfo inverted_index = 2;
+    repeated KwdInfo inverted_index = 2;
 };
