@@ -36,7 +36,7 @@
         <tbody>
         <tr>
             <td>{{value1}}</td>
-            <td>{{value2}}</td>
+            <td><a href="{{value2}}">{{value2}}</a></td>
             <td>{{value3}}</td>
             <td>{{value4}}</td>
         </tr>

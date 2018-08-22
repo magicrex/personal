@@ -1,9 +1,3 @@
-/*************************************************************************
-     > File Name: httpserver.h
-      > Author:fuxing
-      > Mail: 374195407@qq.com 
-      > Created Time: Sun 15 Apr 2018 02:10:48 PM CST
- ************************************************************************/
 #pragma once
 #include<iostream>
 #include<stdio.h>
@@ -20,6 +14,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<fcntl.h>
+#include<base/base.h>
 //获取静态文件的完整路径
 //用来存放请求的结构体
 typedef struct sockaddr sockaddr;

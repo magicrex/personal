@@ -178,7 +178,7 @@ int main(){
                 if(projectupdate5(username.c_str(),title.c_str(),flown.c_str())){
                     if(projectupdate6(username.c_str(),title.c_str(),urln.c_str())){
                         Error(urln.c_str());
-                        //Info(username.c_str(),"无");
+                        Info(username.c_str(),"无");
                         return 0;
                     }else{
                         Error("project 数据库 未知错误");

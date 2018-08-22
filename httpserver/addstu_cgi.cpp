@@ -172,7 +172,7 @@ int main(){
         std::string classn(output[2]);
         std::string urln(output[3]);
         if(noteinsert(username.c_str(),title.c_str(),message.c_str(),classn.c_str(),urln.c_str())){
-            Info(username.c_str(),"无");
+            Info(username.c_str(),"插入成功");
             return 0;
         }else{
             Error("note 数据库 未知错误");

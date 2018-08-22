@@ -23,7 +23,7 @@ void showfun(std::string username){
     std::vector<std::vector<std::string> > table3;
     //将信息读到一个字符串数组中
     table1=setselect(username.c_str());
-    table2=resumeselect(username.c_str());
+    table2=noteselect(username.c_str());
     table3=projectselect(username.c_str());
     int len1=table1.size();
     int len2=table2.size();

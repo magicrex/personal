@@ -3,7 +3,7 @@ syntax='proto2';
 package doc_index_proto;
 
 message Pair{
-    required uint32 beg = 1;
+    required uint32 begin = 1;
     required uint32 end = 2;
 };
 
@@ -20,7 +20,7 @@ message DocInfo{
 };
 
 message Weight{
-    required uint64 doc_id = 1;
+    required uint64 id = 1;
     required int32 weight = 2;
     required int32 first_pos = 3;
 };
@@ -28,7 +28,7 @@ message Weight{
 message KwdInfo{
     //用来存放key和value
     required string key = 1;
-    required Weight doc_list = 2;
+    repeated Weight doc_list = 2;
 };
 
 message Index{

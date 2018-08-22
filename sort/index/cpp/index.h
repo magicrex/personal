@@ -3,6 +3,9 @@
 #include<unordered_map>
 #include"index.pb.h"
 #include<cppjieba/Jieba.hpp>
+#include<base/base.h>
+#include"util.hpp"
+#include<fstream>
 namespace doc_index{
 
 typedef doc_index_proto::DocInfo DocInfo;
@@ -53,21 +56,26 @@ public:
               const std::string& inverted_dump_path);
 
     //根据doc_id获取到文档的详细信息
-    DocInfo* GetDocInfo(uint64_t doc_id) const;
+    const DocInfo* GetDocInfo(uint64_t doc_id) const;
 
     //根据关键词获取到文档id
     const InvertedList* GetInvertedList(const std::string key) const;
+
+    void CutWordWithoutStopWord(const std::string& query,std::vector<std::string>* words);
 
 private:
     ForWardIndex forward_index_;
     InvertedIndex inverted_index_;
     cppjieba::Jieba jieba_;
+    common::DictUtil stop_word_dict_;    
     //以下为具体每步函数
     const DocInfo* BuildForward(const std::string& line);
     void BuildInverted(const DocInfo& doc_info);
     void SortInverted();
     void SplitTitle(const std::string& title,DocInfo* doc_info);
     void SplitContent(const std::string& content,DocInfo* doc_info);
+    int CalcWeight(const WordCnt word_pair);
+    static bool CmpWeight(const Weight& w1,const Weight& w2);
     static Index* inst_;
 };//end Index
 
