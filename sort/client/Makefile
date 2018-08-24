@@ -12,7 +12,7 @@ server.pb.cc:server.proto
 
 .PHONY:clean
 clean:
-	rm -f client server.pb.*
+	rm -f client server.pb.* ../wwwroot/client
 
 
 
