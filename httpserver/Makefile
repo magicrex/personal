@@ -1,7 +1,7 @@
 .PHONY:all
 
 BASE=-std=c++11 -lboost_system -lboost_filesystem
-DATA1=-I/usr/include/mysql -I/usr/local/include/mysql++ 
+DATA1=-I/usr/include/mysql -I./include/mysql++ -L./lib 
 DATA2=-L/usr/lib64/mysql -lmysqlpp -lmysqlclient -lnsl -lm
 TEMP=-lctemplate -lpthread
 all:httpserver login_cgi regist_cgi update_cgi upfile_cgi delfile_cgi modimess_cgi addstu_cgi addpro_cgi set_cgi delnote_cgi delproj_cgi select_cgi
